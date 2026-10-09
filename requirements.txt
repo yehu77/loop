@@ -1,0 +1,2 @@
+# The validated local environment has torch 2.10.0+cu128; no reinstall is needed.
+torch==2.10.0

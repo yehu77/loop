@@ -208,6 +208,13 @@ class Trainer:
         state = torch.load(path, map_location="cpu", weights_only=True)
         if state["format_version"] != 1:
             raise ValueError("Unsupported checkpoint format")
+        # Failure snapshots may contain an advanced data/RNG position but no
+        # accumulated gradients. They are evidence, not exact resume points.
+        if state.get("metadata", {}).get("failure", False):
+            raise ValueError(
+                "Cannot resume a diagnostic failure snapshot; fix the original error "
+                "and resume the last successfully completed checkpoint.pt, or start a new run."
+            )
         if state["rng_device_type"] != torch.device(device).type:
             raise ValueError("Exact training resume requires the same CPU/CUDA device type")
         trainer = cls(ModelConfig(**state["model_config"]), TrainConfig(**state["train_config"]),

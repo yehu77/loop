@@ -1,6 +1,23 @@
 # 单风场条件循环 DiT
 
-研究目标是在每次扩散去噪调用内部复用 Transformer 核心，生成单风场完整未来功率轨迹。已实现 v1 三个对照模型、扩散训练、EMA、断点恢复与 DDIM 采样；当前仅做合成数据工程检查，尚未接入真实数据或启动正式实验。
+研究目标是在每次扩散去噪调用内部复用 Transformer 核心，生成单风场完整未来功率轨迹。已实现 v1 三个对照模型、扩散训练、EMA、断点恢复与 DDIM 采样；已完成合成检查和固定 Zone 3 的真实数据连接验收，尚未开展正式模型对照实验。
+
+## 真实数据准备与 BASE-2 接口检查
+
+配置见 `configs/data_v1.json`，完整协议和来源边界见 [data_protocol.md](docs/data_protocol.md)。按“训练候选区间完整率 100%、最小编号”规则选择 Zone 3。按发布时间划分后，训练／验证／测试分别保留 547／71／90 个完整 24 小时窗口，NWP 标准化只拟合训练集。
+
+```bash
+conda activate code_rl_clean
+python prepare_data.py --source /home/u86177/work/multi_scaleCADM/Data \
+  --output outputs/data_v1_new
+python train_real.py --data outputs/data_v1_new/data.pt --device cuda \
+  --updates 20 --validation-limit 4 --scenarios 16 --sampling-steps 10 \
+  --output outputs/real_base_check
+```
+
+这些命令是短接口验收：仅用最早 4 个有效验证日，不读取测试集评分。真实入口复用 `Trainer`，只运行 BASE-2；固定按 EMA 验证 CRPS 选择检查点，raw 与训练集 RAND 只作诊断。场景和目标携带独立样本身份，使用 `evaluate.py` 核对并保存逐窗口分数；原 `metrics.py` 的低层公式保持不变。
+
+各输出目录必须不存在，避免覆盖数据版本和运行证据。原始 CSV、数据包及检查点均不提交；版本管理保留配置、处理代码、无原始数值的样本清单和丢弃记录。本轮实测见 [真实数据接口验收](docs/real_data_acceptance.md)。
 
 ## v1 架构
 
@@ -110,19 +127,21 @@ python check_wind_env.py
 - `model.py`：三个模型的全部网络组件与初始化。
 - `diffusion.py`：前向加噪、DDIM 与采样诊断。
 - `train.py`：训练更新、合成数据、标准化、EMA 与断点。
+- `data.py`、`prepare_data.py`：真实 CSV 对齐、窗口身份、切分、数据包和原始行追溯。
+- `train_real.py`、`evaluate.py`：复用 Trainer 的 BASE-2 真实入口，以及带身份校验的评分。
 - `tests/`：标准库 `unittest` 错误分支测试。
 - `outputs/`：本机生成的报告与模型产物，不提交版本管理。
 
 ```bash
 python -m unittest discover -s tests -v
-python -m py_compile model.py diffusion.py train.py check_wind_env.py
+python -m py_compile model.py diffusion.py train.py check_wind_env.py data.py prepare_data.py evaluate.py train_real.py
 ```
 
 Python 使用四空格缩进、`snake_case` 函数名。`pyproject.toml` 提供可选 Ruff 配置；已安装 Ruff 的开发环境可运行 `ruff check .` 和 `ruff format .`。运行模型不依赖 Ruff。
 
 ## 验收边界与后续工作
 
-独立概率评价器已在 `metrics.py` 中实现 CRPS、整条轨迹 ES／VS、点覆盖率和区间宽度，输入分别为 `[B,M,H,1]` 场景与 `[B,H,1]` 实测值。计算定义、权重和 CLI 见 [评价口径](docs/metrics.md)。用户提供的数据目录已完成只读检查，见 [候选数据审计](docs/data_audit.md)；尚未选定 zone 或实验切分。
+独立概率评价器已在 `metrics.py` 中实现 CRPS、整条轨迹 ES／VS、点覆盖率和区间宽度，输入分别为 `[B,M,H,1]` 场景与 `[B,H,1]` 实测值。计算定义、权重和 CLI 见 [评价口径](docs/metrics.md)。[候选数据审计](docs/data_audit.md) 保留 2026-10-12 的历史记录；此后确定的 zone、时间切分和可重放数据包见 [真实数据协议](docs/data_protocol.md)。
 
 2026-10-09 的原始验收记录包含 27 项通过的测试，以及 RTX 2060 上三个模型的 FP32／FP16 短训练、采样与 GPU AMP 断点续训，详见 [实测验收记录](docs/acceptance.md)。2026-10-12 本轮 CPU 回归检查为 42 项通过、1 项 CUDA 专用测试跳过，没有重跑 GPU 验收。
 
@@ -130,7 +149,7 @@ Python 使用四空格缩进、`snake_case` 函数名。`pyproject.toml` 提供�
 
 报告中的训练耗时含首次更新初始化开销，峰值显存是 PyTorch 的 allocated memory，包含当时存活的模型、EMA 和优化器，不是整卡占用。它们用于确认可运行，不能据此给三个架构作速度排名。少量更新后的场景不代表已学会条件分布。
 
-后续需固定真实单风场数据的来源、发布时间约定和训练／验证／测试切分，再将已实现的概率评价器接入验证流程。当前没有验证集最佳检查点选择，也没有正式对照实验结论。
+下一阶段是 BASE-2 的有限预算学习性试验和全验证集诊断，再决定是否开展循环机制对照。本地副本与官方源数据的来源核验仍待补齐；当前以明确记录的竞赛时钟假设运行。没有正式对照实验结论。
 
 CUDA 可用性接口依据 [PyTorch 官方文档](https://docs.pytorch.org/docs/2.9/generated/torch.cuda.is_available.html)。
 AMP 累积、反缩放与梯度裁剪顺序依据 [PyTorch 2.10 官方示例](https://docs.pytorch.org/docs/2.10/notes/amp_examples.html)。

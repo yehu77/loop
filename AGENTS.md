@@ -8,8 +8,8 @@ experimental conclusions. Public papers and baseline implementations may be used
 as explicitly attributed references.
 
 The v1 implementation exists in `model.py`, `diffusion.py`, and `train.py`.
-It currently uses synthetic data for execution checks, not real wind-power
-performance experiments. `README.md` describes the architecture and commands;
+It supports synthetic checks and identity-bound real-data BASE-2 interface runs;
+formal forecasting comparisons remain pending. `README.md` describes the commands;
 `docs/acceptance.md` records the original local RTX 2060 acceptance results.
 Do not rewrite historical results or present another machine's measurements as
 new local evidence. The GPU reports and checkpoints named there are local-only.
@@ -33,6 +33,10 @@ Synthetic execution success is not evidence that recurrence improves forecasting
 - `diffusion.py`: forward noising, DDIM sampling, clipping diagnostics.
 - `train.py`: synthetic data, training-only scaler, updates, EMA, checkpoints, CLI.
 - `check_wind_env.py`: standalone environment check; Python 3.8+.
+- `data.py`, `prepare_data.py`, `configs/data_v1.json`: frozen real-data protocol,
+  CSV alignment, source tracing, split manifests and training-only statistics.
+- `train_real.py`, `evaluate.py`: reuse Trainer for BASE-2 and score by sample
+  identity; see `docs/data_protocol.md` and `docs/real_data_acceptance.md`.
 - `tests/`: standard-library unittest regression tests.
 - `outputs/`: local generated artifacts; excluded from version control.
 
@@ -64,6 +68,12 @@ consumed microbatches without completing an optimizer update. It is diagnostic
 only and `Trainer.load` rejects it, even if renamed. Fix the original error and
 resume from an earlier normal checkpoint, or start a new run. Do not clear the
 failure flag to disguise a partial update as exact continuation.
+
+Real checkpoints additionally require the matching prepared-data fingerprint.
+Do not substitute another dataset merely because its sample count is equal.
+Keep raw/EMA validation sampling RNG separate from training and sample RAND
+reference trajectories only from the training split. Do not score the test split
+to choose a zone, hyperparameters, weights, or checkpoint.
 
 Keep `.aws/`, `.codex/`, `.agents/`, credentials, datasets, checkpoints, and large
 generated artifacts out of commits. Do not access or modify environment metadata

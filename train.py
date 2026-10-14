@@ -204,7 +204,7 @@ class Trainer:
         temporary.replace(path)
 
     @classmethod
-    def load(cls, path, device="cpu"):
+    def load(cls, path, device="cpu", expected_data_fingerprint=None):
         state = torch.load(path, map_location="cpu", weights_only=True)
         if state["format_version"] != 1:
             raise ValueError("Unsupported checkpoint format")
@@ -215,6 +215,9 @@ class Trainer:
                 "Cannot resume a diagnostic failure snapshot; fix the original error "
                 "and resume the last successfully completed checkpoint.pt, or start a new run."
             )
+        saved_identity = state.get("metadata", {}).get("data_fingerprint")
+        if saved_identity != expected_data_fingerprint:
+            raise ValueError("Checkpoint data fingerprint mismatch; supply the verified data package")
         if state["rng_device_type"] != torch.device(device).type:
             raise ValueError("Exact training resume requires the same CPU/CUDA device type")
         trainer = cls(ModelConfig(**state["model_config"]), TrainConfig(**state["train_config"]),

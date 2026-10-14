@@ -1,0 +1,22 @@
+{
+  "schema_version": 1,
+  "dataset": "gefcom2014_format_candidate",
+  "source_status": "local_copy_not_verified_against_official_archive",
+  "clock": "source_naive_unspecified_timezone",
+  "issue_rule": "daily_midnight_leads_1_to_24",
+  "power_unit": "capacity_fraction",
+  "horizon": 24,
+  "nwp_fields": ["U10", "V10", "U100", "V100"],
+  "calendar_fields": ["hour_sin", "hour_cos", "year_fraction_sin", "year_fraction_cos"],
+  "missing_rule": "drop_entire_window",
+  "zone_selection": {
+    "candidate_zones": [1, 2, 3, 4, 5, 6, 7, 8, 9, 10],
+    "minimum_training_complete_fraction": 1.0,
+    "rule": "lowest_eligible_zone"
+  },
+  "splits": {
+    "train": ["2012-01-01", "2013-06-30"],
+    "validation": ["2013-07-01", "2013-09-30"],
+    "test": ["2013-10-01", "2013-12-31"]
+  }
+}

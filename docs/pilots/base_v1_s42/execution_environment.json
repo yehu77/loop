@@ -1,0 +1,12 @@
+{
+  "execution_date": "2026-10-18",
+  "timezone": "Asia/Shanghai",
+  "python_version": "3.10.20",
+  "platform": "Linux-6.6.87.2-microsoft-standard-WSL2-x86_64-with-glibc2.39",
+  "device_name": "NVIDIA GeForce RTX 2060",
+  "device_memory_mib": 6144,
+  "source_commit": "1f2110a7aecdd0f75226a08ccc6de382e9227a25",
+  "source_files_changed": false,
+  "unit_tests_rerun": false,
+  "note": "FP32 learning pilot only; no AMP, peak-memory or controlled latency benchmark."
+}

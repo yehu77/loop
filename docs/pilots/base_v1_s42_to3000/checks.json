@@ -1,0 +1,23 @@
+{
+  "full_cpu_suite": {
+    "passed": 63,
+    "skipped_cuda_only": 1
+  },
+  "new_diagnostic_tests_passed": 5,
+  "formula_test_max_abs_error": {
+    "fp64": 3.0531133177191805e-16,
+    "fp32": 3.129243850708008e-07
+  },
+  "offline_raw_and_original_ema_match_training_endpoint": true,
+  "independent_cpu_reevaluation_exact": [
+    "raw",
+    "original_ema",
+    "restarted_ema"
+  ],
+  "four_protected_checkpoint_hashes_unchanged": true,
+  "device": "NVIDIA GeForce RTX 2060",
+  "gpu_memory_mib": 6144,
+  "driver": "617.42",
+  "precision": "FP32",
+  "test_split_scored": false
+}

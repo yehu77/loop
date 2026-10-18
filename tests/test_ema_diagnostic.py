@@ -26,13 +26,14 @@ class EMADiagnosticTests(unittest.TestCase):
         initial = deepcopy(model.state_dict())
         original = deepcopy(initial)
         anchor = restart = None
+        decay = 0.999
         for update in range(1, 3001):
             raw = {name: torch.randn(p.shape, generator=generator, dtype=dtype)
                    for name, p in model.named_parameters()}
             for name in raw:
-                original[name].lerp_(raw[name], 0.001)
+                original[name].lerp_(raw[name], 1 - decay)
                 if restart is not None:
-                    restart[name].lerp_(raw[name], 0.001)
+                    restart[name].lerp_(raw[name], 1 - decay)
             if update == 1000:
                 anchor = (deepcopy(raw), deepcopy(original))
                 restart = deepcopy(raw)
@@ -42,7 +43,7 @@ class EMADiagnosticTests(unittest.TestCase):
         anchor_raw["counter"] = torch.tensor(-9)
         anchor_raw["position"] = torch.full((3,), -9., dtype=dtype)
         before = deepcopy((anchor_raw, anchor[1], original))
-        result = reconstruct_ema_state(model, anchor_raw, anchor[1], original, 0.999, 2000)
+        result = reconstruct_ema_state(model, anchor_raw, anchor[1], original, decay, 2000)
         errors = [(result[name] - restart[name]).abs().max().item()
                   for name, _ in model.named_parameters()]
         for name, _ in model.named_buffers():

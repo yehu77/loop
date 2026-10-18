@@ -156,7 +156,7 @@ def run(args):
         context.model = context.ema = model
         prediction, target, diagnostics = validation_artifacts(
             context, package, end["metadata"]["run_config"], "raw" if label == "raw" else "ema")
-        diagnostics.update(weights=label, diagnostic_only=True, restart_update=1000)
+        diagnostics.update(weights=label, diagnostic_only=True, diagnostic_anchor_update=1000)
         reports[label] = write_evaluation(args.output / label, prediction, target, diagnostics)
         print("{} CRPS={:.8f} ES={:.8f} VS={:.8f}".format(
             label, *(reports[label][k] for k in ("crps", "energy_score", "variogram_score"))), flush=True)

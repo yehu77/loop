@@ -129,6 +129,7 @@ python check_wind_env.py
 - `train.py`：训练更新、合成数据、标准化、EMA 与断点。
 - `data.py`、`prepare_data.py`：真实 CSV 对齐、窗口身份、切分、数据包和原始行追溯。
 - `train_real.py`、`evaluate.py`：复用 Trainer 的 BASE-2 真实入口，以及带身份校验的评分。
+- `diagnose_ema.py`：固定 1,000→3,000 步的离线 EMA 历史诊断，不更新训练器或 best。
 - `tests/`：标准库 `unittest` 错误分支测试。
 - `outputs/`：本机生成的报告与模型产物，不提交版本管理。
 
@@ -149,7 +150,7 @@ Python 使用四空格缩进、`snake_case` 函数名。`pyproject.toml` 提供�
 
 报告中的训练耗时含首次更新初始化开销，峰值显存是 PyTorch 的 allocated memory，包含当时存活的模型、EMA 和优化器，不是整卡占用。它们用于确认可运行，不能据此给三个架构作速度排名。少量更新后的场景不代表已学会条件分布。
 
-2026-10-18 已完成 BASE-2 的 1,000 次 FP32 更新和全部 71 个有效验证日评价，见 [pilot 记录与学习曲线](docs/base_pilot_v1_s42.md)。raw 出现学习信号，但按既定规则选中的 EMA 仍明显滞后；下一步优先分析训练长度与 EMA，尚未开展循环机制对照。本地副本与官方源数据的来源核验仍待补齐；当前以明确记录的竞赛时钟假设运行。没有正式对照实验结论。
+2026-10-18 已完成 BASE-2 的 [1,000 步 pilot](docs/base_pilot_v1_s42.md)，随后按原配置[续训至 3,000 步并完成一次离线 EMA 历史诊断](docs/base_pilot_to3000_ema.md)。延长训练缓解了原 EMA 滞后，固定重启历史的诊断副本进一步改善了评分与校准；它没有替换原规则选中的检查点。下一步先冻结所有架构一致使用的权重协议，尚未开展循环机制对照。本地副本与官方源数据的来源核验仍待补齐；当前以明确记录的竞赛时钟假设运行。没有正式对照实验结论。
 
 CUDA 可用性接口依据 [PyTorch 官方文档](https://docs.pytorch.org/docs/2.9/generated/torch.cuda.is_available.html)。
 AMP 累积、反缩放与梯度裁剪顺序依据 [PyTorch 2.10 官方示例](https://docs.pytorch.org/docs/2.10/notes/amp_examples.html)。

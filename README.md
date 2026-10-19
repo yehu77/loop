@@ -15,7 +15,7 @@ python train_real.py --data outputs/data_v1_new/data.pt --device cuda \
   --output outputs/real_base_check
 ```
 
-这些命令是短接口验收：仅用最早 4 个有效验证日，不读取测试集评分。真实入口复用 `Trainer`，只运行 BASE-2；固定按 EMA 验证 CRPS 选择检查点，raw 与训练集 RAND 只作诊断。场景和目标携带独立样本身份，使用 `evaluate.py` 核对并保存逐窗口分数；原 `metrics.py` 的低层公式保持不变。
+这些命令是短接口验收：仅用最早 4 个有效验证日，不读取测试集评分。上述 v1 接口命令复用 `Trainer`，默认运行 BASE-2；固定按 EMA 验证 CRPS 选择检查点，raw 与训练集 RAND 只作诊断。场景和目标携带独立样本身份，使用 `evaluate.py` 核对并保存逐窗口分数；原 `metrics.py` 的低层公式保持不变。
 
 各输出目录必须不存在，避免覆盖数据版本和运行证据。原始 CSV、数据包及检查点均不提交；版本管理保留配置、处理代码、无原始数值的样本清单和丢弃记录。本轮实测见 [真实数据接口验收](docs/real_data_acceptance.md)。
 
@@ -154,3 +154,12 @@ Python 使用四空格缩进、`snake_case` 函数名。`pyproject.toml` 提供�
 
 CUDA 可用性接口依据 [PyTorch 官方文档](https://docs.pytorch.org/docs/2.9/generated/torch.cuda.is_available.html)。
 AMP 累积、反缩放与梯度裁剪顺序依据 [PyTorch 2.10 官方示例](https://docs.pytorch.org/docs/2.10/notes/amp_examples.html)。
+
+## 训练协议 v2
+
+[冻结协议](docs/training_protocol_v2.md)规定三种架构从头训练 3,000 次成功更新，
+第 1,000 步完整复制 raw 到 EMA，从第 1,001 步开始平均。
+真实入口支持 `--variant base|loop|untied --training-protocol-version 2`；
+默认仍为 v1，旧断点保持原语义。BASE/LOOP 初始化匹配，UNTIED 的公共部分及首个 Core
+匹配，额外 Core 使用独立随机流。主结果是固定终点 EMA，辅助 best 保存在 `selected/`。
+测试集不参与评价或选择。

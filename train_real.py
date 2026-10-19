@@ -1,4 +1,4 @@
-"""BASE-2 real-data runner using the existing Trainer, EMA and DDIM sampler."""
+"""Identity-bound real-data runner with explicit v1/v2 training protocols."""
 
 import argparse
 from dataclasses import asdict
@@ -10,7 +10,7 @@ import time
 
 import torch
 
-from data import RealBatches, load_package
+from data import RealBatches, load_package, tensor_hash
 from diffusion import sample_scenarios
 from evaluate import identified_artifact, write_evaluation
 from model import ModelConfig
@@ -29,14 +29,22 @@ def validation_artifacts(trainer, package, run_config, weights="ema"):
     values, metadata = validation_panel(package, run_config["validation_limit"])
     if weights not in ("raw", "ema"):
         raise ValueError("weights must be raw or ema")
+    if weights == "ema" and not getattr(trainer, "ema_initialized", True):
+        raise ValueError("EMA is not initialized; use raw diagnostics before its start update")
     model = trainer.ema if weights == "ema" else trainer.model
     generator = torch.Generator(device=trainer.device).manual_seed(run_config["validation_seed"])
     nwp = trainer.weather_scaler.transform(values["nwp"].to(trainer.device))
+    synchronize(trainer.device)
+    started = time.perf_counter()
     trajectories, diagnostics = sample_scenarios(
         model, trainer.schedule, nwp, values["calendar"].to(trainer.device),
         scenarios=run_config["scenarios"], sampling_steps=run_config["sampling_steps"],
         chunk_size=run_config["chunk_size"], generator=generator,
     )
+    synchronize(trainer.device)
+    if run_config.get("record_sampling_cost", False):
+        diagnostics["sampling_seconds"] = time.perf_counter() - started
+        diagnostics["generated_trajectories"] = len(metadata) * run_config["scenarios"]
     diagnostics.update({"weights": weights, "successful_updates": trainer.updates,
                         "validation_seed": run_config["validation_seed"]})
     manifest = package["manifest"]
@@ -56,12 +64,12 @@ def rand_artifacts(package, run_config):
              "training_indices": indices.tolist(), "rand_seed": run_config["rand_seed"]})
 
 
-def load_real_checkpoint(path, package, device):
+def load_real_checkpoint(path, package, device, **expectations):
     trainer, batch_state, metadata = Trainer.load(
-        path, device, expected_data_fingerprint=package["manifest"]["data_fingerprint"]
+        path, device, expected_data_fingerprint=package["manifest"]["data_fingerprint"], **expectations
     )
-    if metadata.get("data_kind") != "real" or trainer.model.config.variant != "base":
-        raise ValueError("This runner resumes real-data BASE-2 checkpoints only")
+    if metadata.get("data_kind") != "real":
+        raise ValueError("This runner resumes real-data checkpoints only")
     batches = RealBatches(package, trainer.config.microbatch_size, trainer.config.seed)
     batches.load_state_dict(batch_state)
     return trainer, batches, metadata
@@ -71,18 +79,24 @@ def run(args):
     package = load_package(args.data)
     manifest = package["manifest"]
     if args.resume:
-        trainer, batches, checkpoint_metadata = load_real_checkpoint(args.resume, package, args.device)
+        trainer, batches, checkpoint_metadata = load_real_checkpoint(
+            args.resume, package, args.device, expected_variant=args.variant,
+            expected_training_protocol_version=args.training_protocol_version,
+            expected_ema_start_update=args.ema_start_update)
         run_config = checkpoint_metadata["run_config"]
         best_score = checkpoint_metadata["best_validation_crps"]
         best_update = checkpoint_metadata["best_update"]
         previous_best = args.resume.parent / "checkpoint_best.pt"
-        if not previous_best.is_file():
+        if best_score is not None and not previous_best.is_file():
             raise ValueError("Resume requires checkpoint_best.pt beside the supplied checkpoint")
-        best_state = torch.load(previous_best, map_location="cpu", weights_only=True)
-        if (best_state["metadata"].get("data_fingerprint") != manifest["data_fingerprint"]
+        best_state = torch.load(previous_best, map_location="cpu", weights_only=True) if best_score is not None else None
+        if best_state is not None and (best_state["metadata"].get("data_fingerprint") != manifest["data_fingerprint"]
                 or best_state["metadata"].get("run_config") != run_config
                 or best_state["metadata"].get("best_validation_crps") != best_score
                 or best_state["metadata"].get("best_update") != best_update
+                or best_state["model_config"] != asdict(trainer.model.config)
+                or TrainConfig(**best_state["train_config"]) != trainer.config
+                or best_state["updates"] != best_update
                 or best_state["metadata"].get("failure", False)):
             raise ValueError("Best checkpoint does not match the resumed run")
     else:
@@ -94,14 +108,31 @@ def run(args):
             "weights_reported": ["raw", "ema"], "test_evaluation": "not performed",
         }
         scaler = WeatherScaler(*(torch.tensor(manifest["scaler"][k]) for k in ("mean", "std")))
+        version = args.training_protocol_version or 1
+        start = args.ema_start_update if args.ema_start_update is not None else (1000 if version == 2 else 0)
         config = TrainConfig(amp=args.amp, seed=args.seed, microbatch_size=args.microbatch_size,
-                             accumulation_steps=args.accumulation_steps)
-        trainer = Trainer(ModelConfig(variant="base"), config, scaler, args.device)
+                             accumulation_steps=args.accumulation_steps,
+                             training_protocol_version=version, ema_start_update=start)
+        trainer = Trainer(ModelConfig(variant=args.variant or "base"), config, scaler, args.device)
         batches = RealBatches(package, config.microbatch_size, config.seed)
         best_score, best_update = None, None
+        if version == 2:
+            run_config.update({
+                "selection": "auxiliary best: ready EMA on scheduled validation nodes; minimum CRPS; earliest tie",
+                "primary": "fixed endpoint delayed EMA (formal comparison: update 3000)",
+                "record_sampling_cost": True,
+                "rng_streams": {"canonical_initialization": config.seed, "extra_cores": config.seed + 10000,
+                                "data_order": config.seed, "training_noise": config.seed + 1,
+                                "validation": 2026, "rand": 2027},
+                "initialization": "BASE canonical; common components and core 0 copied; independent extra cores",
+            })
     _, panel_metadata = validation_panel(package, run_config["validation_limit"])
     output = args.output
     output.mkdir(parents=True, exist_ok=False)
+    if not args.resume:
+        (output / "initialization.json").write_text(json.dumps({
+            key: tensor_hash(value) for key, value in trainer.model.state_dict().items()
+        }, indent=2) + "\n")
     (output / "config.json").write_text(json.dumps({
         "model": asdict(trainer.model.config), "training": asdict(trainer.config),
         "evaluation": run_config, "additional_successful_update_budget": args.updates,
@@ -111,7 +142,7 @@ def run(args):
         "resume_from": str(args.resume) if args.resume else None,
     }, indent=2) + "\n")
     (output / "data_manifest.json").write_text(json.dumps(manifest, indent=2) + "\n")
-    if args.resume:
+    if args.resume and best_score is not None:
         shutil.copyfile(previous_best, output / "checkpoint_best.pt")
     rand_report = write_evaluation(output / "rand", *rand_artifacts(package, run_config))
     validation_history, training_history = [], []
@@ -123,21 +154,26 @@ def run(args):
 
     def validate():
         nonlocal best_score, best_update
-        entry = {"updates": trainer.updates}
-        for weights in ("raw", "ema"):
+        entry = {"updates": trainer.updates, "ema_initialized": trainer.ema_initialized,
+                 "ema_num_averaged_updates": trainer.ema_num_averaged_updates}
+        for weights in (("raw", "ema") if trainer.ema_initialized else ("raw",)):
             prediction, target, diagnostics = validation_artifacts(trainer, package, run_config, weights)
             directory = output / "validation" / ("update_{:06d}".format(trainer.updates)) / weights
             report = write_evaluation(directory, prediction, target, diagnostics)
             entry[weights] = {key: report[key] for key in ("crps", "energy_score", "variogram_score")}
             entry[weights]["boundary_fraction"] = diagnostics["zero_power_fraction"] + diagnostics["full_power_fraction"]
+            if "sampling_seconds" in diagnostics:
+                entry[weights]["sampling_seconds"] = diagnostics["sampling_seconds"]
         validation_history.append(entry)
-        score = entry["ema"]["crps"]
-        if best_score is None or score < best_score:
+        score = entry.get("ema", {}).get("crps")
+        eligible = (trainer.config.training_protocol_version == 1
+                    or trainer.updates % run_config["validate_every"] == 0)
+        if score is not None and eligible and (best_score is None or score < best_score):
             best_score, best_update = score, trainer.updates
             trainer.save(output / "checkpoint_best.pt", batches, metadata())
         (output / "validation_history.json").write_text(json.dumps(validation_history, indent=2) + "\n")
-        print("validation update={} raw_CRPS={:.6f} EMA_CRPS={:.6f} RAND_CRPS={:.6f}".format(
-            trainer.updates, entry["raw"]["crps"], entry["ema"]["crps"], rand_report["crps"]), flush=True)
+        print("validation update={} raw_CRPS={:.6f} EMA_CRPS={} RAND_CRPS={:.6f}".format(
+            trainer.updates, entry["raw"]["crps"], score, rand_report["crps"]), flush=True)
 
     validate()  # Includes the untrained model, or the resumed state, as a diagnostic.
     trainer.save(output / "checkpoint_last.pt", batches, metadata())
@@ -156,23 +192,46 @@ def run(args):
             entry["attempts"] = trainer.attempts
             entry["samples_consumed_total"] = trainer.attempts * trainer.config.microbatch_size * trainer.config.accumulation_steps
             training_history.append(entry)
+            if (entry["did_update"] and trainer.config.training_protocol_version == 2
+                    and trainer.updates == trainer.config.ema_start_update):
+                trainer.save(output / "checkpoint_ema_start.pt", batches, metadata())
             if entry["did_update"] and (trainer.updates % run_config["validate_every"] == 0
                                          or trainer.updates == target_updates):
                 validate()
             trainer.save(output / "checkpoint_last.pt", batches, metadata())
             (output / "training_history.json").write_text(json.dumps(training_history, indent=2) + "\n")
-            print("BASE-2 update={} loss={:.6f}".format(trainer.updates, entry["loss"]), flush=True)
+            print("{} update={} loss={:.6f}".format(trainer.model.config.variant, trainer.updates, entry["loss"]), flush=True)
     except (FloatingPointError, ValueError, RuntimeError, KeyboardInterrupt):
         trainer.save(output / "failure.pt", batches, {**metadata(), "failure": True})
         raise
-    # Top-level score artifacts always refer to the selected EMA checkpoint.
+    if trainer.config.training_protocol_version == 2:
+        # Reuse the saved endpoint evaluation; keep best in a separate directory.
+        endpoint = output / "validation" / ("update_{:06d}".format(trainer.updates)) / "ema"
+        if trainer.ema_initialized:
+            for path in endpoint.iterdir():
+                shutil.copyfile(path, output / path.name)
+        (output / "cost.json").write_text(json.dumps({
+            "parameters": sum(p.numel() for p in trainer.model.parameters()),
+            "core_executions_per_denoise": 1 if trainer.model.config.variant == "base" else trainer.model.config.rounds,
+            "independent_cores": len(trainer.model.cores),
+            "successful_updates": trainer.updates, "attempts": trainer.attempts,
+            "sample_exposures": trainer.attempts * trainer.config.microbatch_size * trainer.config.accumulation_steps,
+            "training_seconds_this_segment": sum(row["training_seconds"] for row in training_history),
+            "timing_scope": "synchronized train_update only; validation, checkpoint IO excluded",
+            "primary_update": trainer.updates if trainer.ema_initialized else None,
+            "auxiliary_best_update": best_update,
+        }, indent=2) + "\n")
+    if best_score is None:
+        print("Run saved; EMA not yet eligible for best selection", flush=True)
+        return
     best, _, _ = load_real_checkpoint(output / "checkpoint_best.pt", package, args.device)
     prediction, target, diagnostics = validation_artifacts(best, package, run_config, "ema")
     selected_dir = output / "selected"
     write_evaluation(selected_dir, prediction, target, diagnostics)
-    for path in selected_dir.iterdir():
-        path.rename(output / path.name)
-    selected_dir.rmdir()
+    if trainer.config.training_protocol_version == 1:
+        for path in selected_dir.iterdir():
+            path.rename(output / path.name)
+        selected_dir.rmdir()
     print("Run: {} ; selected update={}".format(output.resolve(), best_update), flush=True)
 
 
@@ -181,6 +240,12 @@ def main():
     parser.add_argument("--data", type=Path, required=True, help="Prepared data.pt")
     parser.add_argument("--output", type=Path)
     parser.add_argument("--resume", type=Path)
+    parser.add_argument("--variant", choices=("base", "loop", "untied"),
+                        help="New run defaults to base; resume must match when specified")
+    parser.add_argument("--training-protocol-version", type=int, choices=(1, 2),
+                        help="New run defaults to v1; v2 enables matched initialization and delayed EMA")
+    parser.add_argument("--ema-start-update", type=int,
+                        help="Default: v1=0, v2=1000; small values for interface tests only")
     parser.add_argument("--device", choices=("cpu", "cuda"), default="cpu")
     parser.add_argument("--updates", type=int, default=20, help="Additional successful optimizer updates")
     parser.add_argument("--amp", action="store_true")

@@ -1,0 +1,15 @@
+{
+  "raw_endpoint_max_abs_difference_vs_v1": 0.0,
+  "raw_anchor_max_abs_difference_vs_v1": 0.0,
+  "training_loss_max_abs_difference_vs_v1": 0.0,
+  "gradient_norm_max_abs_difference_vs_v1": 0.0,
+  "training_noise_and_batch_rng_equal": true,
+  "online_vs_reconstructed_ema_parameter_max_abs_difference": 3.337860107421875e-06,
+  "ema_averaged_updates": 2000,
+  "interpretation": "FP32 online recurrence and FP64 reconstruction followed by FP32 rounding need not be bitwise equal",
+  "online_vs_offline_score_differences": {
+    "crps": -1.2921617123518025e-08,
+    "energy_score": -4.008148440926007e-08,
+    "variogram_score": -5.0239709423749446e-06
+  }
+}

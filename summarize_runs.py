@@ -165,6 +165,20 @@ def audit_run(spec, protocol):
                     "Terminal checkpoint changed")
     endpoints = [checkpoint["updates"] for checkpoint in checkpoints]
     require(endpoints[-1] == protocol["endpoint_update"], "Incomplete endpoint budget")
+    anchors = [p / "checkpoint_ema_start.pt" for p in directories
+               if (p / "checkpoint_ema_start.pt").exists()]
+    require(bool(anchors), "Missing EMA copy-boundary checkpoint")
+    for path in anchors:
+        anchor = load(path)
+        require(anchor["updates"] == protocol["ema_start_update"]
+                and anchor["ema_initialized"] and anchor["ema_num_averaged_updates"] == 0,
+                "Invalid EMA copy boundary")
+        require(anchor["model_config"] == config["model"] and anchor["train_config"] == training
+                and anchor["metadata"]["data_fingerprint"] == config["data_fingerprint"],
+                "EMA anchor identity differs")
+        require(anchor["model"].keys() == anchor["ema"].keys()
+                and all(torch.equal(value, anchor["ema"][key])
+                        for key, value in anchor["model"].items()), "EMA anchor is not an exact raw copy")
     history = stitch([read(p / "training_history.json") for p in directories], endpoints)
     validation, best = select_nodes([read(p / "validation_history.json") for p in directories], endpoints,
                                     protocol["ema_start_update"], protocol["validate_every"], endpoints[-1])
@@ -188,6 +202,7 @@ def audit_run(spec, protocol):
         require(report["sample_ids"] == config["validation_sample_ids"] and report["split"] == "validation",
                 "Scoring panel identity mismatch")
         scores = load(directory / "scores_per_window.pt")
+        require(len(scores["intervals"]) == len(per_window["intervals"]), "Interval count differs")
         for metric in ("crps", "energy_score", "variogram_score"):
             require(torch.equal(scores[metric], per_window[metric]), "Per-window score mismatch")
         for actual, expected in zip(scores["intervals"], per_window["intervals"]):

@@ -2,7 +2,7 @@
 
 import argparse
 from copy import deepcopy
-from dataclasses import asdict, dataclass
+from dataclasses import asdict, dataclass, replace
 from datetime import datetime, timezone
 import json
 import math
@@ -26,6 +26,8 @@ class TrainConfig:
     diffusion_steps: int = 1000
     amp: bool = False
     seed: int = 42
+    training_protocol_version: int = 1
+    ema_start_update: int = 0
 
     def __post_init__(self):
         if min(self.learning_rate, self.microbatch_size, self.accumulation_steps,
@@ -33,6 +35,28 @@ class TrainConfig:
             raise ValueError("Invalid training hyperparameters")
         if not 0 <= self.ema_decay < 1:
             raise ValueError("ema_decay must be in [0, 1)")
+        if self.training_protocol_version not in (1, 2):
+            raise ValueError("Unsupported training protocol version")
+        if (not isinstance(self.ema_start_update, int) or self.ema_start_update < 0
+                or (self.training_protocol_version == 1 and self.ema_start_update != 0)
+                or (self.training_protocol_version == 2 and self.ema_start_update < 1)):
+            raise ValueError("v1 starts EMA at initialization; v2 requires a positive start update")
+
+
+def matched_model(model_config, seed):
+    """Preserve the original BASE initialization; isolate extra-core randomness."""
+    reference = ConditionalLoopDiT(replace(model_config, variant="base"))
+    if model_config.variant == "base":
+        return reference
+    # No extra initialization consumes the canonical BASE global RNG stream.
+    with torch.random.fork_rng(devices=[]):
+        torch.random.default_generator.manual_seed(seed + 10000)
+        model = ConditionalLoopDiT(model_config)
+    # All common components (including core 0) match, with independent storage.
+    state = model.state_dict()
+    state.update(reference.state_dict())
+    model.load_state_dict(state)
+    return model
 
 
 class WeatherScaler:
@@ -113,8 +137,12 @@ class Trainer:
         if train_config.amp and self.device.type != "cuda":
             raise ValueError("This v1 runner supports FP16 AMP on CUDA only")
         torch.manual_seed(train_config.seed)
-        self.model = ConditionalLoopDiT(model_config).to(self.device)
+        self.model = (matched_model(model_config, train_config.seed)
+                      if train_config.training_protocol_version == 2
+                      else ConditionalLoopDiT(model_config)).to(self.device)
         self.ema = deepcopy(self.model).eval().requires_grad_(False)
+        self.ema_initialized = train_config.ema_start_update == 0
+        self.ema_num_averaged_updates = 0
         self.schedule = LinearNoiseSchedule(train_config.diffusion_steps).to(self.device)
         self.weather_scaler = weather_scaler
         # Decay matrix weights, not biases; all LayerNorms have no affine parameters.
@@ -174,21 +202,35 @@ class Trainer:
         self.attempts += 1
         if did_update:
             self.updates += 1
-            with torch.no_grad():
-                for ema_parameter, parameter in zip(self.ema.parameters(), self.model.parameters()):
-                    ema_parameter.lerp_(parameter, 1 - self.config.ema_decay)
-                for ema_buffer, buffer in zip(self.ema.buffers(), self.model.buffers()):
-                    ema_buffer.copy_(buffer)
+            self.update_ema()
         else:
             self.skipped += 1
         return {"loss": loss_sum / self.config.accumulation_steps, "grad_norm": grad_norm,
                 "did_update": did_update, "updates": self.updates, "skipped": self.skipped}
 
+    @torch.no_grad()
+    def update_ema(self):
+        """Called only after incrementing the completed successful-update count."""
+        start = self.config.ema_start_update
+        if self.updates < start:
+            return
+        if self.updates == start and not self.ema_initialized:
+            self.ema.load_state_dict(self.model.state_dict())
+            self.ema_initialized = True
+            return
+        if not self.ema_initialized:
+            raise RuntimeError("EMA start boundary was missed")
+        for ema_parameter, parameter in zip(self.ema.parameters(), self.model.parameters()):
+            ema_parameter.lerp_(parameter, 1 - self.config.ema_decay)
+        for ema_buffer, buffer in zip(self.ema.buffers(), self.model.buffers()):
+            ema_buffer.copy_(buffer)
+        self.ema_num_averaged_updates += 1
+
     def save(self, path, batches, metadata=None):
         path = Path(path)
         path.parent.mkdir(parents=True, exist_ok=True)
         state = {
-            "format_version": 1, "model_config": asdict(self.model.config),
+            "format_version": 2, "model_config": asdict(self.model.config),
             "train_config": asdict(self.config), "model": self.model.state_dict(),
             "ema": self.ema.state_dict(), "optimizer": self.optimizer.state_dict(),
             "amp_scaler": self.amp_scaler.state_dict(),
@@ -198,15 +240,19 @@ class Trainer:
             "rng_device_type": self.device.type,
             "data": batches.state_dict(), "metadata": metadata or {},
             "attempts": self.attempts, "updates": self.updates, "skipped": self.skipped,
+            "ema_initialized": self.ema_initialized,
+            "ema_num_averaged_updates": self.ema_num_averaged_updates,
         }
         temporary = path.with_suffix(path.suffix + ".tmp")
         torch.save(state, temporary)
         temporary.replace(path)
 
     @classmethod
-    def load(cls, path, device="cpu", expected_data_fingerprint=None):
+    def load(cls, path, device="cpu", expected_data_fingerprint=None,
+             expected_variant=None, expected_training_protocol_version=None,
+             expected_ema_start_update=None):
         state = torch.load(path, map_location="cpu", weights_only=True)
-        if state["format_version"] != 1:
+        if state["format_version"] not in (1, 2):
             raise ValueError("Unsupported checkpoint format")
         # Failure snapshots may contain an advanced data/RNG position but no
         # accumulated gradients. They are evidence, not exact resume points.
@@ -220,7 +266,23 @@ class Trainer:
             raise ValueError("Checkpoint data fingerprint mismatch; supply the verified data package")
         if state["rng_device_type"] != torch.device(device).type:
             raise ValueError("Exact training resume requires the same CPU/CUDA device type")
-        trainer = cls(ModelConfig(**state["model_config"]), TrainConfig(**state["train_config"]),
+        config = TrainConfig(**state["train_config"])
+        if expected_variant is not None and state["model_config"]["variant"] != expected_variant:
+            raise ValueError("Checkpoint variant mismatch")
+        if (expected_training_protocol_version is not None
+                and config.training_protocol_version != expected_training_protocol_version):
+            raise ValueError("Checkpoint training protocol mismatch")
+        if expected_ema_start_update is not None and config.ema_start_update != expected_ema_start_update:
+            raise ValueError("Checkpoint EMA start update mismatch")
+        initialized = state["updates"] >= config.ema_start_update
+        averaged = max(0, state["updates"] - config.ema_start_update)
+        if state["format_version"] == 2:
+            if (state.get("ema_initialized") is not initialized
+                    or state.get("ema_num_averaged_updates") != averaged):
+                raise ValueError("Checkpoint EMA state is inconsistent with successful updates")
+        elif config.training_protocol_version != 1:
+            raise ValueError("Legacy checkpoint cannot declare a v2 protocol")
+        trainer = cls(ModelConfig(**state["model_config"]), config,
                       WeatherScaler(**state["weather_scaler"]), device)
         trainer.model.load_state_dict(state["model"])
         trainer.ema.load_state_dict(state["ema"])
@@ -233,6 +295,7 @@ class Trainer:
         trainer.attempts, trainer.updates, trainer.skipped = (
             state["attempts"], state["updates"], state["skipped"]
         )
+        trainer.ema_initialized, trainer.ema_num_averaged_updates = initialized, averaged
         return trainer, state["data"], state["metadata"]
 
 

@@ -1,6 +1,6 @@
 # 单风场条件循环 DiT
 
-研究目标是在每次扩散去噪调用内部复用 Transformer 核心，生成单风场完整未来功率轨迹。已实现 v1 三个对照模型、扩散训练、EMA、断点恢复与 DDIM 采样；已完成合成检查和固定 Zone 3 的真实数据连接验收，尚未开展正式模型对照实验。
+研究目标是在每次扩散去噪调用内部复用 Transformer 核心，生成单风场完整未来功率轨迹。已实现 v1 三个对照模型、扩散训练、EMA、断点恢复与 DDIM 采样；已完成合成检查、固定 Zone 3 的真实数据连接验收，以及统一 v2 配方下 seed 42 的三模型筛查，跨种子验证仍待开展。
 
 ## 真实数据准备与 BASE-2 接口检查
 
@@ -15,7 +15,7 @@ python train_real.py --data outputs/data_v1_new/data.pt --device cuda \
   --output outputs/real_base_check
 ```
 
-这些命令是短接口验收：仅用最早 4 个有效验证日，不读取测试集评分。真实入口复用 `Trainer`，只运行 BASE-2；固定按 EMA 验证 CRPS 选择检查点，raw 与训练集 RAND 只作诊断。场景和目标携带独立样本身份，使用 `evaluate.py` 核对并保存逐窗口分数；原 `metrics.py` 的低层公式保持不变。
+这些命令是短接口验收：仅用最早 4 个有效验证日，不读取测试集评分。上述 v1 接口命令复用 `Trainer`，默认运行 BASE-2；固定按 EMA 验证 CRPS 选择检查点，raw 与训练集 RAND 只作诊断。场景和目标携带独立样本身份，使用 `evaluate.py` 核对并保存逐窗口分数；原 `metrics.py` 的低层公式保持不变。
 
 各输出目录必须不存在，避免覆盖数据版本和运行证据。原始 CSV、数据包及检查点均不提交；版本管理保留配置、处理代码、无原始数值的样本清单和丢弃记录。本轮实测见 [真实数据接口验收](docs/real_data_acceptance.md)。
 
@@ -128,7 +128,9 @@ python check_wind_env.py
 - `diffusion.py`：前向加噪、DDIM 与采样诊断。
 - `train.py`：训练更新、合成数据、标准化、EMA 与断点。
 - `data.py`、`prepare_data.py`：真实 CSV 对齐、窗口身份、切分、数据包和原始行追溯。
-- `train_real.py`、`evaluate.py`：复用 Trainer 的 BASE-2 真实入口，以及带身份校验的评分。
+- `train_real.py`、`evaluate.py`：复用 Trainer 的真实训练入口（v2 支持三种架构），以及带身份校验的评分。
+- `summarize_runs.py`：按运行清单核对身份、续训分段和冻结协议，独立重评并汇总种子内配对差值。
+- `diagnose_ema.py`：固定 1,000→3,000 步的离线 EMA 历史诊断，不更新训练器或 best。
 - `tests/`：标准库 `unittest` 错误分支测试。
 - `outputs/`：本机生成的报告与模型产物，不提交版本管理。
 
@@ -149,7 +151,29 @@ Python 使用四空格缩进、`snake_case` 函数名。`pyproject.toml` 提供�
 
 报告中的训练耗时含首次更新初始化开销，峰值显存是 PyTorch 的 allocated memory，包含当时存活的模型、EMA 和优化器，不是整卡占用。它们用于确认可运行，不能据此给三个架构作速度排名。少量更新后的场景不代表已学会条件分布。
 
-下一阶段是 BASE-2 的有限预算学习性试验和全验证集诊断，再决定是否开展循环机制对照。本地副本与官方源数据的来源核验仍待补齐；当前以明确记录的竞赛时钟假设运行。没有正式对照实验结论。
+2026-10-18 已完成 BASE-2 的 [1,000 步 pilot](docs/base_pilot_v1_s42.md)，随后按原配置[续训至 3,000 步并完成一次离线 EMA 历史诊断](docs/base_pilot_to3000_ema.md)。延长训练缓解了原 EMA 滞后，固定重启历史的诊断副本进一步改善了评分与校准；它没有替换原规则选中的检查点。这些 v1 记录保持原协议；后续 v2 对照见下文。本地副本与官方源数据的来源核验仍待补齐；当前以明确记录的竞赛时钟假设运行。正式多种子结论仍待验证。
 
 CUDA 可用性接口依据 [PyTorch 官方文档](https://docs.pytorch.org/docs/2.9/generated/torch.cuda.is_available.html)。
 AMP 累积、反缩放与梯度裁剪顺序依据 [PyTorch 2.10 官方示例](https://docs.pytorch.org/docs/2.10/notes/amp_examples.html)。
+
+## 训练协议 v2
+
+[冻结协议](docs/training_protocol_v2.md)规定三种架构从头训练 3,000 次成功更新，
+第 1,000 步完整复制 raw 到 EMA，从第 1,001 步开始平均。
+真实入口支持 `--variant base|loop|untied --training-protocol-version 2`；
+默认仍为 v1，旧断点保持原语义。BASE/LOOP 初始化匹配，UNTIED 的公共部分及首个 Core
+匹配，额外 Core 使用独立随机流。主结果是固定终点 EMA，辅助 best 保存在 `selected/`。
+测试集不参与评价或选择。
+
+已完成 [v2 单种子架构对照](docs/architecture_v2_s42.md)：三模型各保留 3,000 次成功更新，
+主表采用终点延迟 EMA，辅助 best 也均选中 3,000 步。CRPS 为 BASE 0.076405、
+LOOP 0.077436、UNTIED 0.074488；本轮未观察到 LOOP 优于 BASE。
+UNTIED 在第 2,499 步检查点后恢复完成，分段证据和成本边界均记录在报告中。
+测试集未评分，结果仅为 seed 42、71 个完整验证日上的机制筛查。
+
+随后按原配方完成 seed 43、44 共六次训练，见 [v2 三种子稳健性检查](docs/architecture_v2_three_seeds.md)。
+LOOP−BASE 的三种子平均 CRPS 差值为 −0.000915，样本标准差 0.002177，
+其中两次改善、一次变差；LOOP 的平均采样耗时约为 BASE 的 1.59 倍。
+UNTIED 的 CRPS、ES、VS 在三个种子中均优于 BASE。当前冻结两轮全共享方案的结果，
+不将其确立为默认主方法，也不追加轮数、种子或调参；测试集继续未评分。
+固定终点与辅助 best、逐日分数、完整曲线和运行链路均保留。

@@ -1,0 +1,32 @@
+{
+  "checked_at_utc": "2026-10-22T09:42:34.821467+00:00",
+  "python": "3.10.20",
+  "torch": "2.10.0+cu128",
+  "training_device": "NVIDIA RTX 2060; CUDA; FP32",
+  "unit_tests": {
+    "total": 82,
+    "passed": 80,
+    "skipped": 2,
+    "cuda_unit_tests_rerun": false
+  },
+  "new_summary_tests": 9,
+  "independently_rescored_saved_panels": 18,
+  "seed42_archived_scores_and_costs_unchanged": true,
+  "source_and_data_hashes_match_frozen_protocol": true,
+  "matched_common_initialization_and_terminal_training_rng_verified": true,
+  "ema_start_copy_and_averaging_counts_verified": true,
+  "retained_successful_updates_per_model": 3000,
+  "retained_window_exposures_per_model": 96000,
+  "all_retained_losses_and_gradient_norms_finite": true,
+  "resume_checkpoint_best_and_prior_lineage_hashes_unchanged": true,
+  "rand_scores_identical_across_nine_runs": true,
+  "test_split_scored": false,
+  "six_run_queue_status": "complete; no active training process found on host",
+  "interrupted_runs": [
+    "seed42 untied:2499+501 (previously recorded)",
+    "seed44 base:2749+251"
+  ],
+  "unrecorded_interrupted_work": "not included in retained-update time; cause of exits unknown",
+  "experiments_beyond_the_six_declared_runs": false,
+  "saved_per_window_sample_ids_and_data_fingerprints_verified": true
+}

@@ -1,0 +1,77 @@
+[
+  {
+    "updates": 0,
+    "raw": {
+      "crps": 0.25139916256449696,
+      "energy_score": 1.151358717040973,
+      "variogram_score": 33.278325222671945,
+      "boundary_fraction": 0.9947946071624756
+    },
+    "ema": {
+      "crps": 0.25139916256449696,
+      "energy_score": 1.151358717040973,
+      "variogram_score": 33.278325222671945,
+      "boundary_fraction": 0.9947946071624756
+    }
+  },
+  {
+    "updates": 250,
+    "raw": {
+      "crps": 0.11027554528619873,
+      "energy_score": 0.6611946977675668,
+      "variogram_score": 22.17036839446744,
+      "boundary_fraction": 0.06705985963344574
+    },
+    "ema": {
+      "crps": 0.25091292475798715,
+      "energy_score": 1.1508187920539756,
+      "variogram_score": 33.494839604834496,
+      "boundary_fraction": 0.9695657193660736
+    }
+  },
+  {
+    "updates": 500,
+    "raw": {
+      "crps": 0.10297040476238374,
+      "energy_score": 0.6175516477486193,
+      "variogram_score": 19.187794538305575,
+      "boundary_fraction": 0.04640258103609085
+    },
+    "ema": {
+      "crps": 0.24723424030315355,
+      "energy_score": 1.1455074492752095,
+      "variogram_score": 34.50874284230934,
+      "boundary_fraction": 0.9125997722148895
+    }
+  },
+  {
+    "updates": 750,
+    "raw": {
+      "crps": 0.09753218649646553,
+      "energy_score": 0.5865490244997892,
+      "variogram_score": 19.40485957623738,
+      "boundary_fraction": 0.04396713711321354
+    },
+    "ema": {
+      "crps": 0.232003095387844,
+      "energy_score": 1.123291273479931,
+      "variogram_score": 37.30741315663528,
+      "boundary_fraction": 0.7949471771717072
+    }
+  },
+  {
+    "updates": 1000,
+    "raw": {
+      "crps": 0.0851165351516395,
+      "energy_score": 0.51961400996626,
+      "variogram_score": 15.93955251773396,
+      "boundary_fraction": 0.06734741851687431
+    },
+    "ema": {
+      "crps": 0.20311728755923572,
+      "energy_score": 1.0764575494517874,
+      "variogram_score": 39.00652911837536,
+      "boundary_fraction": 0.583943635225296
+    }
+  }
+]

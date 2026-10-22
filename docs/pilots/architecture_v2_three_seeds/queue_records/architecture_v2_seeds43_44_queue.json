@@ -1,0 +1,49 @@
+{
+  "plan_sha256": "d2267d2981ddc6c80e1db3e8f43607118c635f23f4480f7c8960556d598ff02c",
+  "pid": 44929,
+  "completed": [
+    "outputs/architecture_v2_s43_base",
+    "outputs/architecture_v2_s43_loop",
+    "outputs/architecture_v2_s43_untied"
+  ],
+  "active": {
+    "seed": 44,
+    "variant": "base",
+    "output": "outputs/architecture_v2_s44_base",
+    "command": [
+      "/home/u86177/miniconda3/envs/code_rl_clean/bin/python",
+      "train_real.py",
+      "--data",
+      "outputs/data_v1_20261014/data.pt",
+      "--variant",
+      "base",
+      "--training-protocol-version",
+      "2",
+      "--ema-start-update",
+      "1000",
+      "--device",
+      "cuda",
+      "--updates",
+      "3000",
+      "--microbatch-size",
+      "4",
+      "--accumulation-steps",
+      "8",
+      "--validate-every",
+      "250",
+      "--scenarios",
+      "100",
+      "--sampling-steps",
+      "50",
+      "--chunk-size",
+      "16",
+      "--seed",
+      "44",
+      "--output",
+      "outputs/architecture_v2_s44_base"
+    ],
+    "pid": 84235
+  },
+  "status": "running",
+  "started_unix": 1792569870.7327194
+}

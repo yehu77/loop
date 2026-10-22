@@ -1,0 +1,12 @@
+{
+  "parameters": 208065,
+  "core_executions_per_denoise": 1,
+  "independent_cores": 1,
+  "successful_updates": 3000,
+  "attempts": 3000,
+  "sample_exposures": 96000,
+  "training_seconds_this_segment": 292.18271875999244,
+  "timing_scope": "synchronized train_update only; validation, checkpoint IO excluded",
+  "primary_update": 3000,
+  "auxiliary_best_update": 3000
+}

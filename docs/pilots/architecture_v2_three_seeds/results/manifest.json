@@ -1,0 +1,130 @@
+{
+  "seeds": [
+    42,
+    43,
+    44
+  ],
+  "protocol": {
+    "endpoint_update": 3000,
+    "ema_start_update": 1000,
+    "validate_every": 250,
+    "validation_days": 71,
+    "data_fingerprint": "403ff1adc1df6b1bd6dd79b24f206f164daf3161f829bf7a232fddf90a9168a4",
+    "data_sha256": "805db2e33e98300e263b540241ec19f45b2d2f61bb67d10c30e355f1e2ed4964",
+    "training_source_sha256": {
+      "model.py": "ac265b755daf81b104bba9436e68d88a3e6eb8cc50887322c400a8ddeaa02676",
+      "diffusion.py": "325a2af9b2901cfd20b71b72289cc2054eea195ed042db6323aa426de87979c8",
+      "train.py": "b082df86678795d47a5a177dc3989ef1c91ec04691508812456d6ee65eb782be",
+      "train_real.py": "d52e466196551967896f3a34cc505c61648e2d72f3ab607e63f8edb9d8aecf1f",
+      "data.py": "70b53a721ecb59b93e2450a241b712530a1813e343f1a4b0d88b593d88dc3557",
+      "evaluate.py": "5e53d88cb2f03271c696b98d2dfd4e88244f2ab47755788289765fe73792cbc3",
+      "metrics.py": "254c106f7d007eb9859ddfd59b6ef1a581d49ccbccaf4b449e6fb296c6dbad26"
+    },
+    "training": {
+      "learning_rate": 0.0001,
+      "weight_decay": 0.0001,
+      "microbatch_size": 4,
+      "accumulation_steps": 8,
+      "max_grad_norm": 1.0,
+      "ema_decay": 0.999,
+      "diffusion_steps": 1000,
+      "amp": false,
+      "training_protocol_version": 2,
+      "ema_start_update": 1000
+    },
+    "evaluation": {
+      "validation_limit": null,
+      "validation_seed": 2026,
+      "rand_seed": 2027,
+      "scenarios": 100,
+      "sampling_steps": 50,
+      "chunk_size": 16,
+      "validate_every": 250,
+      "selection": "auxiliary best: ready EMA on scheduled validation nodes; minimum CRPS; earliest tie",
+      "weights_reported": [
+        "raw",
+        "ema"
+      ],
+      "test_evaluation": "not performed",
+      "primary": "fixed endpoint delayed EMA (formal comparison: update 3000)",
+      "record_sampling_cost": true,
+      "initialization": "BASE canonical; common components and core 0 copied; independent extra cores"
+    },
+    "model": {
+      "horizon": 24,
+      "nwp_features": 4,
+      "hidden_dim": 64,
+      "heads": 4,
+      "ffn_dim": 256,
+      "blocks_per_core": 2,
+      "rounds": 2
+    }
+  },
+  "runs": [
+    {
+      "seed": 42,
+      "variant": "base",
+      "segments": [
+        "outputs/architecture_v2_s42_base"
+      ]
+    },
+    {
+      "seed": 42,
+      "variant": "loop",
+      "segments": [
+        "outputs/architecture_v2_s42_loop"
+      ]
+    },
+    {
+      "seed": 42,
+      "variant": "untied",
+      "segments": [
+        "outputs/architecture_v2_s42_untied",
+        "outputs/architecture_v2_s42_untied_resumed"
+      ]
+    },
+    {
+      "seed": 43,
+      "variant": "base",
+      "segments": [
+        "outputs/architecture_v2_s43_base"
+      ]
+    },
+    {
+      "seed": 43,
+      "variant": "loop",
+      "segments": [
+        "outputs/architecture_v2_s43_loop"
+      ]
+    },
+    {
+      "seed": 43,
+      "variant": "untied",
+      "segments": [
+        "outputs/architecture_v2_s43_untied"
+      ]
+    },
+    {
+      "seed": 44,
+      "variant": "base",
+      "segments": [
+        "outputs/architecture_v2_s44_base",
+        "outputs/architecture_v2_s44_base_resumed"
+      ]
+    },
+    {
+      "seed": 44,
+      "variant": "loop",
+      "segments": [
+        "outputs/architecture_v2_s44_loop"
+      ]
+    },
+    {
+      "seed": 44,
+      "variant": "untied",
+      "segments": [
+        "outputs/architecture_v2_s44_untied"
+      ]
+    }
+  ]
+}

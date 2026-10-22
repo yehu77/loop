@@ -1,0 +1,11 @@
+Extracted from the full tests_cpu.log (not a separate test run).
+test_equal_scores_cannot_disguise_changed_window_identity (test_run_summary.RunSummaryTests) ... ok
+test_generic_segments_keep_only_saved_boundary (test_run_summary.RunSummaryTests) ... ok
+test_missing_nodes_and_invalid_ema_count_rejected (test_run_summary.RunSummaryTests) ... ok
+test_off_grid_resume_score_cannot_win_and_ties_choose_earlier (test_run_summary.RunSummaryTests) ... ok
+test_pair_within_seed_then_sample_standard_deviation (test_run_summary.RunSummaryTests) ... ok
+test_reject_duplicate_rows_or_missing_architecture (test_run_summary.RunSummaryTests) ... ok
+test_reject_missing_duplicate_or_reversed_updates (test_run_summary.RunSummaryTests) ... ok
+test_report_refuses_existing_or_overlapping_destination (test_run_summary.RunSummaryTests) ... ok
+test_resume_reevaluation_can_change_timing_but_not_scores (test_run_summary.RunSummaryTests) ... ok
+9 summary tests passed.

@@ -32,6 +32,11 @@ def load(path):
     return torch.load(path, map_location="cpu", weights_only=True)
 
 
+def verify_score_identity(saved, expected):
+    require(saved["sample_ids"] == expected["sample_ids"], "Per-window sample identity differs")
+    require(saved["data_fingerprint"] == expected["data_fingerprint"], "Per-window data identity differs")
+
+
 def stats(values):
     require(bool(values) and all(math.isfinite(x) for x in values), "Invalid observations")
     return {"n_seeds": len(values), "mean": statistics.mean(values),
@@ -202,6 +207,7 @@ def audit_run(spec, protocol):
         require(report["sample_ids"] == config["validation_sample_ids"] and report["split"] == "validation",
                 "Scoring panel identity mismatch")
         scores = load(directory / "scores_per_window.pt")
+        verify_score_identity(scores, per_window)
         require(len(scores["intervals"]) == len(per_window["intervals"]), "Interval count differs")
         for metric in ("crps", "energy_score", "variogram_score"):
             require(torch.equal(scores[metric], per_window[metric]), "Per-window score mismatch")

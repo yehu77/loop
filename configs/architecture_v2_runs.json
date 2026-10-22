@@ -108,7 +108,8 @@
       "seed": 44,
       "variant": "base",
       "segments": [
-        "outputs/architecture_v2_s44_base"
+        "outputs/architecture_v2_s44_base",
+        "outputs/architecture_v2_s44_base_resumed"
       ]
     },
     {

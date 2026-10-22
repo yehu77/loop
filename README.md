@@ -128,7 +128,8 @@ python check_wind_env.py
 - `diffusion.py`：前向加噪、DDIM 与采样诊断。
 - `train.py`：训练更新、合成数据、标准化、EMA 与断点。
 - `data.py`、`prepare_data.py`：真实 CSV 对齐、窗口身份、切分、数据包和原始行追溯。
-- `train_real.py`、`evaluate.py`：复用 Trainer 的 BASE-2 真实入口，以及带身份校验的评分。
+- `train_real.py`、`evaluate.py`：复用 Trainer 的真实训练入口（v2 支持三种架构），以及带身份校验的评分。
+- `summarize_runs.py`：按运行清单核对身份、续训分段和冻结协议，独立重评并汇总种子内配对差值。
 - `diagnose_ema.py`：固定 1,000→3,000 步的离线 EMA 历史诊断，不更新训练器或 best。
 - `tests/`：标准库 `unittest` 错误分支测试。
 - `outputs/`：本机生成的报告与模型产物，不提交版本管理。
@@ -169,3 +170,10 @@ AMP 累积、反缩放与梯度裁剪顺序依据 [PyTorch 2.10 官方示例](ht
 LOOP 0.077436、UNTIED 0.074488；本轮未观察到 LOOP 优于 BASE。
 UNTIED 在第 2,499 步检查点后恢复完成，分段证据和成本边界均记录在报告中。
 测试集未评分，结果仅为 seed 42、71 个完整验证日上的机制筛查。
+
+随后按原配方完成 seed 43、44 共六次训练，见 [v2 三种子稳健性检查](docs/architecture_v2_three_seeds.md)。
+LOOP−BASE 的三种子平均 CRPS 差值为 −0.000915，样本标准差 0.002177，
+其中两次改善、一次变差；LOOP 的平均采样耗时约为 BASE 的 1.59 倍。
+UNTIED 的 CRPS、ES、VS 在三个种子中均优于 BASE。当前冻结两轮全共享方案的结果，
+不将其确立为默认主方法，也不追加轮数、种子或调参；测试集继续未评分。
+固定终点与辅助 best、逐日分数、完整曲线和运行链路均保留。

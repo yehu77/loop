@@ -4,10 +4,21 @@ import tempfile
 import unittest
 
 from summarize_runs import (COSTS, SCORES, paired_summary, select_nodes, stats,
-                            stitch, summarize)
+                            stitch, summarize, verify_score_identity)
 
 
 class RunSummaryTests(unittest.TestCase):
+    def test_equal_scores_cannot_disguise_changed_window_identity(self):
+        expected = {"sample_ids": ["day_a", "day_b"], "data_fingerprint": "frozen",
+                    "crps": [0.1, 0.1]}
+        verify_score_identity(deepcopy(expected), expected)
+        for key, replacement in (("sample_ids", ["day_b", "day_a"]),
+                                 ("data_fingerprint", "another_dataset")):
+            saved = deepcopy(expected)
+            saved[key] = replacement
+            with self.assertRaisesRegex(ValueError, "identity differs"):
+                verify_score_identity(saved, expected)
+
     def rows(self):
         rows = []
         for seed, difference in ((42, 1.0), (43, 2.0), (44, 3.0)):

@@ -1,0 +1,365 @@
+{
+  "scope": "Descriptive within each trained model; average the five permutations per day; days are not independent trainings",
+  "rows": [
+    {
+      "training_seed": 42,
+      "variant": "base",
+      "metric": "energy_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 49,
+      "days_negative_after_permutation_mean": 22
+    },
+    {
+      "training_seed": 42,
+      "variant": "base",
+      "metric": "variogram_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 59,
+      "days_negative_after_permutation_mean": 12
+    },
+    {
+      "training_seed": 42,
+      "variant": "base",
+      "metric": "increment_1h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 71,
+      "days_negative_after_permutation_mean": 0
+    },
+    {
+      "training_seed": 42,
+      "variant": "base",
+      "metric": "increment_3h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 47,
+      "days_negative_after_permutation_mean": 24
+    },
+    {
+      "training_seed": 42,
+      "variant": "base",
+      "metric": "daily_mean_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 42,
+      "days_negative_after_permutation_mean": 29
+    },
+    {
+      "training_seed": 42,
+      "variant": "loop",
+      "metric": "energy_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 49,
+      "days_negative_after_permutation_mean": 22
+    },
+    {
+      "training_seed": 42,
+      "variant": "loop",
+      "metric": "variogram_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 57,
+      "days_negative_after_permutation_mean": 14
+    },
+    {
+      "training_seed": 42,
+      "variant": "loop",
+      "metric": "increment_1h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 70,
+      "days_negative_after_permutation_mean": 1
+    },
+    {
+      "training_seed": 42,
+      "variant": "loop",
+      "metric": "increment_3h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 49,
+      "days_negative_after_permutation_mean": 22
+    },
+    {
+      "training_seed": 42,
+      "variant": "loop",
+      "metric": "daily_mean_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 38,
+      "days_negative_after_permutation_mean": 33
+    },
+    {
+      "training_seed": 42,
+      "variant": "untied",
+      "metric": "energy_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 46,
+      "days_negative_after_permutation_mean": 25
+    },
+    {
+      "training_seed": 42,
+      "variant": "untied",
+      "metric": "variogram_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 55,
+      "days_negative_after_permutation_mean": 16
+    },
+    {
+      "training_seed": 42,
+      "variant": "untied",
+      "metric": "increment_1h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 70,
+      "days_negative_after_permutation_mean": 1
+    },
+    {
+      "training_seed": 42,
+      "variant": "untied",
+      "metric": "increment_3h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 48,
+      "days_negative_after_permutation_mean": 23
+    },
+    {
+      "training_seed": 42,
+      "variant": "untied",
+      "metric": "daily_mean_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 31,
+      "days_negative_after_permutation_mean": 40
+    },
+    {
+      "training_seed": 43,
+      "variant": "base",
+      "metric": "energy_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 50,
+      "days_negative_after_permutation_mean": 21
+    },
+    {
+      "training_seed": 43,
+      "variant": "base",
+      "metric": "variogram_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 55,
+      "days_negative_after_permutation_mean": 16
+    },
+    {
+      "training_seed": 43,
+      "variant": "base",
+      "metric": "increment_1h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 71,
+      "days_negative_after_permutation_mean": 0
+    },
+    {
+      "training_seed": 43,
+      "variant": "base",
+      "metric": "increment_3h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 48,
+      "days_negative_after_permutation_mean": 23
+    },
+    {
+      "training_seed": 43,
+      "variant": "base",
+      "metric": "daily_mean_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 40,
+      "days_negative_after_permutation_mean": 31
+    },
+    {
+      "training_seed": 43,
+      "variant": "loop",
+      "metric": "energy_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 49,
+      "days_negative_after_permutation_mean": 22
+    },
+    {
+      "training_seed": 43,
+      "variant": "loop",
+      "metric": "variogram_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 56,
+      "days_negative_after_permutation_mean": 15
+    },
+    {
+      "training_seed": 43,
+      "variant": "loop",
+      "metric": "increment_1h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 71,
+      "days_negative_after_permutation_mean": 0
+    },
+    {
+      "training_seed": 43,
+      "variant": "loop",
+      "metric": "increment_3h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 49,
+      "days_negative_after_permutation_mean": 22
+    },
+    {
+      "training_seed": 43,
+      "variant": "loop",
+      "metric": "daily_mean_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 39,
+      "days_negative_after_permutation_mean": 32
+    },
+    {
+      "training_seed": 43,
+      "variant": "untied",
+      "metric": "energy_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 46,
+      "days_negative_after_permutation_mean": 25
+    },
+    {
+      "training_seed": 43,
+      "variant": "untied",
+      "metric": "variogram_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 55,
+      "days_negative_after_permutation_mean": 16
+    },
+    {
+      "training_seed": 43,
+      "variant": "untied",
+      "metric": "increment_1h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 70,
+      "days_negative_after_permutation_mean": 1
+    },
+    {
+      "training_seed": 43,
+      "variant": "untied",
+      "metric": "increment_3h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 50,
+      "days_negative_after_permutation_mean": 21
+    },
+    {
+      "training_seed": 43,
+      "variant": "untied",
+      "metric": "daily_mean_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 42,
+      "days_negative_after_permutation_mean": 29
+    },
+    {
+      "training_seed": 44,
+      "variant": "base",
+      "metric": "energy_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 50,
+      "days_negative_after_permutation_mean": 21
+    },
+    {
+      "training_seed": 44,
+      "variant": "base",
+      "metric": "variogram_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 57,
+      "days_negative_after_permutation_mean": 14
+    },
+    {
+      "training_seed": 44,
+      "variant": "base",
+      "metric": "increment_1h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 71,
+      "days_negative_after_permutation_mean": 0
+    },
+    {
+      "training_seed": 44,
+      "variant": "base",
+      "metric": "increment_3h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 49,
+      "days_negative_after_permutation_mean": 22
+    },
+    {
+      "training_seed": 44,
+      "variant": "base",
+      "metric": "daily_mean_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 41,
+      "days_negative_after_permutation_mean": 30
+    },
+    {
+      "training_seed": 44,
+      "variant": "loop",
+      "metric": "energy_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 45,
+      "days_negative_after_permutation_mean": 26
+    },
+    {
+      "training_seed": 44,
+      "variant": "loop",
+      "metric": "variogram_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 55,
+      "days_negative_after_permutation_mean": 16
+    },
+    {
+      "training_seed": 44,
+      "variant": "loop",
+      "metric": "increment_1h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 69,
+      "days_negative_after_permutation_mean": 2
+    },
+    {
+      "training_seed": 44,
+      "variant": "loop",
+      "metric": "increment_3h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 46,
+      "days_negative_after_permutation_mean": 25
+    },
+    {
+      "training_seed": 44,
+      "variant": "loop",
+      "metric": "daily_mean_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 40,
+      "days_negative_after_permutation_mean": 31
+    },
+    {
+      "training_seed": 44,
+      "variant": "untied",
+      "metric": "energy_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 49,
+      "days_negative_after_permutation_mean": 22
+    },
+    {
+      "training_seed": 44,
+      "variant": "untied",
+      "metric": "variogram_score",
+      "days": 71,
+      "days_positive_after_permutation_mean": 56,
+      "days_negative_after_permutation_mean": 15
+    },
+    {
+      "training_seed": 44,
+      "variant": "untied",
+      "metric": "increment_1h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 70,
+      "days_negative_after_permutation_mean": 1
+    },
+    {
+      "training_seed": 44,
+      "variant": "untied",
+      "metric": "increment_3h_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 47,
+      "days_negative_after_permutation_mean": 24
+    },
+    {
+      "training_seed": 44,
+      "variant": "untied",
+      "metric": "daily_mean_crps",
+      "days": 71,
+      "days_positive_after_permutation_mean": 40,
+      "days_negative_after_permutation_mean": 31
+    }
+  ]
+}

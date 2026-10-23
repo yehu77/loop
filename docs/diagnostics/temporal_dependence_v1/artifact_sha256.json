@@ -1,0 +1,20 @@
+{
+  "local_only": {
+    "outputs/temporal_dependence_v1/permutations.pt": "63fbcf4625d120e1e2c05a8eee2cfefa9ad3cf430a4a1aca982408cdde0df543",
+    "outputs/temporal_dependence_v1/scores_per_lead.pt": "8fb5df7974e33b99145337a6ea662c9b47dfd00f64b64e195d79f3cc8f9131fe"
+  },
+  "archived_files": {
+    "config.json": "58634e92ae753ebfdeb08f189aa55f4ba0cda3e7eb047fbe372b36041a493d98",
+    "per_run.csv": "c80311b50ed2b22d55d401469c3b188f4c0388a6d36b97bb1f5c5f6e68f25b66",
+    "tests_cpu.log": "5546db6d268193c57d1bc955d73cedd0153321a00cff851af22dc00bbe4ee62b",
+    "report.json": "eed1cf455dca4f458dd5da873910efb35a040dc41a0aa9259749c7e6e504cd12",
+    "per_permutation.csv": "1c7820cf90c5ad0c340b8856130a584fe8c8484cc8b61bed21a1e27be9969b34",
+    "execution.log": "2955f82bad300c8ce5e258555799545cc346f4e760257a294863347e5dd90810",
+    "per_day.csv": "6654deffc5fbf993b573b9266eb7412579c856ad0f4fc6b6665e50c3d48416d2",
+    "daily_direction_counts.json": "affc000e3a10fd45a16557ddfee676f8c640876011c5f103ddb6ca1343787347",
+    "verification.json": "93da19dea1c9cc8f202971a961e22d48eeffef635ccd28817d6587c28c0060dc",
+    "permutation_effects.png": "aaf54600f798a39d17ec751d8eb733d82c8add7b19b713baeb751e0466b4aa6b",
+    "plot_results.py": "d0be048fae8dd9a32dfe8761d0f7a1419bf9445cd2e2f3ccefd14979328ac37f"
+  },
+  "note": "No checkpoint/model is loaded. Local tensors hold permutation indices and scores, not new generated power scenarios."
+}

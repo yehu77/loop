@@ -1,0 +1,10 @@
+{"training_seed": 42, "variant": "base", "permutations_completed": 5}
+{"training_seed": 42, "variant": "loop", "permutations_completed": 5}
+{"training_seed": 42, "variant": "untied", "permutations_completed": 5}
+{"training_seed": 43, "variant": "base", "permutations_completed": 5}
+{"training_seed": 43, "variant": "loop", "permutations_completed": 5}
+{"training_seed": 43, "variant": "untied", "permutations_completed": 5}
+{"training_seed": 44, "variant": "base", "permutations_completed": 5}
+{"training_seed": 44, "variant": "loop", "permutations_completed": 5}
+{"training_seed": 44, "variant": "untied", "permutations_completed": 5}
+R01 complete: /home/u86177/work/loop/outputs/temporal_dependence_v1

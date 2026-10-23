@@ -177,3 +177,19 @@ LOOP−BASE 的三种子平均 CRPS 差值为 −0.000915，样本标准差 0.00
 UNTIED 的 CRPS、ES、VS 在三个种子中均优于 BASE。当前冻结两轮全共享方案的结果，
 不将其确立为默认主方法，也不追加轮数、种子或调参；测试集继续未评分。
 固定终点与辅助 best、逐日分数、完整曲线和运行链路均保留。
+
+## R01：时间配对的只读诊断
+
+[时间配对诊断报告](docs/temporal_dependence_v1.md)使用上述九组固定终点的已有场景，
+对每个日、每个小时独立打乱成员编号，固定五个排列种子并在模型间复用。
+小时边际评分完全不变，但 ES、VS、1h/3h 增量 CRPS 和日均功率 CRPS 的
+全验证集均值均变差。这说明已有时间配对有评分价值，不能据此宣称 LOOP 特有优势。
+逐日差异、全部五次结果及共同排列不变性检查均保留；未启动 R02–R06。
+
+```bash
+python -m diagnostics.temporal_dependence \
+  --config configs/diagnostics/temporal_dependence_v1.json \
+  --output outputs/temporal_dependence_v1_recheck
+```
+
+入口拒绝覆盖输出或修改源运行，只读取保存的验证场景，不训练、不重新采样或评分测试集。

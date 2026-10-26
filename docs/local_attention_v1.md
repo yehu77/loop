@@ -94,4 +94,3 @@ initial tensors and final data/noise RNG positions must match same-seed BASE.
 Training costs exclude validation and checkpoint I/O; observed latency is not
 a theoretical FLOP comparison. The old BASE primary/best panels for seed 42 have
 already been independently re-scored successfully with the unchanged evaluator.
-

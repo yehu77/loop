@@ -1,0 +1,307 @@
+{
+  "schema_version": 1,
+  "stage": "R01",
+  "reference_commit": "c3d0ea7f1b0546dce544ec4601525cc0bfbd67af",
+  "endpoint_update": 3000,
+  "weights": "ema",
+  "shape": [
+    71,
+    100,
+    24,
+    1
+  ],
+  "training_seeds": [
+    42,
+    43,
+    44
+  ],
+  "variants": [
+    "base",
+    "loop",
+    "untied"
+  ],
+  "permutation_seeds": [
+    1101,
+    1102,
+    1103,
+    1104,
+    1105
+  ],
+  "lags": [
+    1,
+    3
+  ],
+  "interval_levels": [
+    0.8,
+    0.9
+  ],
+  "variogram_power": 0.5,
+  "atol": 1e-10,
+  "rtol": 1e-10,
+  "data_fingerprint": "403ff1adc1df6b1bd6dd79b24f206f164daf3161f829bf7a232fddf90a9168a4",
+  "sample_ids": [
+    "zone03_20130701T000000",
+    "zone03_20130702T000000",
+    "zone03_20130703T000000",
+    "zone03_20130704T000000",
+    "zone03_20130705T000000",
+    "zone03_20130706T000000",
+    "zone03_20130707T000000",
+    "zone03_20130708T000000",
+    "zone03_20130710T000000",
+    "zone03_20130711T000000",
+    "zone03_20130712T000000",
+    "zone03_20130713T000000",
+    "zone03_20130714T000000",
+    "zone03_20130716T000000",
+    "zone03_20130717T000000",
+    "zone03_20130719T000000",
+    "zone03_20130720T000000",
+    "zone03_20130721T000000",
+    "zone03_20130722T000000",
+    "zone03_20130723T000000",
+    "zone03_20130724T000000",
+    "zone03_20130726T000000",
+    "zone03_20130727T000000",
+    "zone03_20130728T000000",
+    "zone03_20130801T000000",
+    "zone03_20130802T000000",
+    "zone03_20130803T000000",
+    "zone03_20130804T000000",
+    "zone03_20130805T000000",
+    "zone03_20130806T000000",
+    "zone03_20130809T000000",
+    "zone03_20130810T000000",
+    "zone03_20130811T000000",
+    "zone03_20130812T000000",
+    "zone03_20130813T000000",
+    "zone03_20130814T000000",
+    "zone03_20130815T000000",
+    "zone03_20130816T000000",
+    "zone03_20130817T000000",
+    "zone03_20130818T000000",
+    "zone03_20130819T000000",
+    "zone03_20130820T000000",
+    "zone03_20130821T000000",
+    "zone03_20130822T000000",
+    "zone03_20130823T000000",
+    "zone03_20130825T000000",
+    "zone03_20130827T000000",
+    "zone03_20130828T000000",
+    "zone03_20130829T000000",
+    "zone03_20130831T000000",
+    "zone03_20130903T000000",
+    "zone03_20130904T000000",
+    "zone03_20130906T000000",
+    "zone03_20130909T000000",
+    "zone03_20130910T000000",
+    "zone03_20130911T000000",
+    "zone03_20130912T000000",
+    "zone03_20130915T000000",
+    "zone03_20130918T000000",
+    "zone03_20130919T000000",
+    "zone03_20130920T000000",
+    "zone03_20130921T000000",
+    "zone03_20130922T000000",
+    "zone03_20130923T000000",
+    "zone03_20130924T000000",
+    "zone03_20130925T000000",
+    "zone03_20130926T000000",
+    "zone03_20130927T000000",
+    "zone03_20130928T000000",
+    "zone03_20130929T000000",
+    "zone03_20130930T000000"
+  ],
+  "protected_sources": {
+    "model.py": "ac265b755daf81b104bba9436e68d88a3e6eb8cc50887322c400a8ddeaa02676",
+    "diffusion.py": "325a2af9b2901cfd20b71b72289cc2054eea195ed042db6323aa426de87979c8",
+    "train.py": "b082df86678795d47a5a177dc3989ef1c91ec04691508812456d6ee65eb782be",
+    "train_real.py": "d52e466196551967896f3a34cc505c61648e2d72f3ab607e63f8edb9d8aecf1f",
+    "data.py": "70b53a721ecb59b93e2450a241b712530a1813e343f1a4b0d88b593d88dc3557",
+    "evaluate.py": "5e53d88cb2f03271c696b98d2dfd4e88244f2ab47755788289765fe73792cbc3",
+    "metrics.py": "254c106f7d007eb9859ddfd59b6ef1a581d49ccbccaf4b449e6fb296c6dbad26",
+    "configs/architecture_v2_runs.json": "a4b8b03952c09d00782116ea315ec20e2f32e3c86c195d26af555d157e129bc3",
+    "docs/pilots/architecture_v2_three_seeds/results/evidence.json": "d8003329f9b88500b4ff2ce90c5d0d300c0bbbc50cb688697d085fd030873784"
+  },
+  "runs": [
+    {
+      "training_seed": 42,
+      "variant": "base",
+      "run_directory": "outputs/architecture_v2_s42_base",
+      "source_directories": [
+        "outputs/architecture_v2_s42_base"
+      ],
+      "protected_files": {
+        "outputs/architecture_v2_s42_base/scores_per_window.pt": "138513c0d80e242a7c041fc25241ac6b3114d2b560e12054ac9576ee51c71904",
+        "outputs/architecture_v2_s42_base/scenarios.pt": "1a5a89a407df96ee9afc90e242ed0660a01d66e2a9e889d391e5edbe1e0a2b38",
+        "outputs/architecture_v2_s42_base/checkpoint_last.pt": "db3500a95f194cd6a64cc99dde4d5e82dc6cec98e65230d97a43e6a712e91961",
+        "outputs/architecture_v2_s42_base/checkpoint_best.pt": "0a58dd8591e623a9a9427fcd135c7fcff197878ec41878081715f82b7b8bdb19",
+        "outputs/architecture_v2_s42_base/targets.pt": "b8053fc60dd262c358d188dcc4e45b036eaeaa6e819428ba6732000cf6d6da99",
+        "outputs/architecture_v2_s42_base/checkpoint_ema_start.pt": "5749662534cfa46ff82f3f57e154c2ccdf83ad748528f48f065baf3c2fb46936",
+        "outputs/architecture_v2_s42_base/config.json": "3310c6810c173e80ba88763fd7fa8ed2e6ea2c54142e1fec6b9e14eb24626935",
+        "outputs/architecture_v2_s42_base/sample_metadata.json": "d231c98af4751c70134d92e77da124fff8262a2f31c74e12917322aefbf4ba0f",
+        "outputs/architecture_v2_s42_base/metrics.json": "14095ad230ba7f6db058e75e9d5a48e845c4f2199b615077794812885f553821"
+      }
+    },
+    {
+      "training_seed": 42,
+      "variant": "loop",
+      "run_directory": "outputs/architecture_v2_s42_loop",
+      "source_directories": [
+        "outputs/architecture_v2_s42_loop"
+      ],
+      "protected_files": {
+        "outputs/architecture_v2_s42_loop/scores_per_window.pt": "74d1e03383b171d61936b2fc49b56fae6d3646091144dce06b8ed2ccfbfa127f",
+        "outputs/architecture_v2_s42_loop/scenarios.pt": "f580523033e624256f4ced81a1bd7500faedebdf090278a5219482d2a8bf8220",
+        "outputs/architecture_v2_s42_loop/checkpoint_last.pt": "747024ba0cf0cc7ec4b58460c90946f85746cdaacce3ae6c4814987dadd50a72",
+        "outputs/architecture_v2_s42_loop/checkpoint_best.pt": "b222bc51cea0deb3321785c51eb27545e4d434d9ca00616d9bda18311e22281a",
+        "outputs/architecture_v2_s42_loop/targets.pt": "b8053fc60dd262c358d188dcc4e45b036eaeaa6e819428ba6732000cf6d6da99",
+        "outputs/architecture_v2_s42_loop/checkpoint_ema_start.pt": "bd6ba246f1cc167fe4c11604c872ff3c64c7306c879c4912f13dc63a957ab9e2",
+        "outputs/architecture_v2_s42_loop/config.json": "d6bbc8cff440182a8f8d325a4d905b438227432b02128b9a3e88d567da9293f0",
+        "outputs/architecture_v2_s42_loop/sample_metadata.json": "d231c98af4751c70134d92e77da124fff8262a2f31c74e12917322aefbf4ba0f",
+        "outputs/architecture_v2_s42_loop/metrics.json": "f2fa0c7cf52e554985f635c6e0e2570eb037dc3939ef452cb8769f738c8d8953"
+      }
+    },
+    {
+      "training_seed": 42,
+      "variant": "untied",
+      "run_directory": "outputs/architecture_v2_s42_untied_resumed",
+      "source_directories": [
+        "outputs/architecture_v2_s42_untied",
+        "outputs/architecture_v2_s42_untied_resumed"
+      ],
+      "protected_files": {
+        "outputs/architecture_v2_s42_untied/checkpoint_last.pt": "22e9e6b5a4b09b8cb8bbc95b5e775e5fef9265411db84ded316b981b472eff5f",
+        "outputs/architecture_v2_s42_untied/checkpoint_best.pt": "b9df84c62913a4fdd89f69002961708459676861ebc788d7ed0933d50f60f7b8",
+        "outputs/architecture_v2_s42_untied/checkpoint_ema_start.pt": "d8a3b79c1f20245a66a5366d675a47b362a695cec529d2513ad82fac636cc3da",
+        "outputs/architecture_v2_s42_untied_resumed/scores_per_window.pt": "11b2889a43f884f985e61d4d7c89709eb6a1fff7193ccc7cbae2183dd1360344",
+        "outputs/architecture_v2_s42_untied_resumed/scenarios.pt": "82fd3e771702300792a7988252c9c2861ebd6040be9c1fc81ff363708a18d917",
+        "outputs/architecture_v2_s42_untied_resumed/checkpoint_last.pt": "26c41bb6557da9c527f5dca7e3af44b05439deb17193bef91f67861751cfb1c1",
+        "outputs/architecture_v2_s42_untied_resumed/checkpoint_best.pt": "fb06356e6f336f26b79790f55bab454e611473a99f871ca9f8d817533db6f5d5",
+        "outputs/architecture_v2_s42_untied_resumed/targets.pt": "b8053fc60dd262c358d188dcc4e45b036eaeaa6e819428ba6732000cf6d6da99",
+        "outputs/architecture_v2_s42_untied/config.json": "2c9c90ebc9fb20b171d62057968755084e949e779f1ef699da6e8c7a24ee2655",
+        "outputs/architecture_v2_s42_untied_resumed/config.json": "ccdd04395ec0e095ad3798ef0b77615876f24820699ef240498ac82186c85cf3",
+        "outputs/architecture_v2_s42_untied_resumed/sample_metadata.json": "d231c98af4751c70134d92e77da124fff8262a2f31c74e12917322aefbf4ba0f",
+        "outputs/architecture_v2_s42_untied_resumed/metrics.json": "161e99f18a81d6a12b93d123b4b3c2cb3b52147ccbe59676b8b4d931897375da"
+      }
+    },
+    {
+      "training_seed": 43,
+      "variant": "base",
+      "run_directory": "outputs/architecture_v2_s43_base",
+      "source_directories": [
+        "outputs/architecture_v2_s43_base"
+      ],
+      "protected_files": {
+        "outputs/architecture_v2_s43_base/scores_per_window.pt": "768ca8e322ca2cb3d07f62d21b99ccb4b39ea2562781712ef689a6cb30945202",
+        "outputs/architecture_v2_s43_base/scenarios.pt": "1c7d9a9eb6131344c52aa1ac973758cb42859386e53ffc330f875f5c59d4714c",
+        "outputs/architecture_v2_s43_base/checkpoint_last.pt": "7731084d00d529beb194124cc124ef2a6ddb833549e0eda2f5f39809aa0290f0",
+        "outputs/architecture_v2_s43_base/checkpoint_best.pt": "5bc10e21bce654b51fd71a3636bd6266d1051b1ca7d3ccdc3bbb06871f1c315e",
+        "outputs/architecture_v2_s43_base/targets.pt": "b8053fc60dd262c358d188dcc4e45b036eaeaa6e819428ba6732000cf6d6da99",
+        "outputs/architecture_v2_s43_base/checkpoint_ema_start.pt": "3e7f913fb9f3be8912743ec8a7bb1a9644e8105b0357901a259c4ff3f297f6fe",
+        "outputs/architecture_v2_s43_base/config.json": "5d8ea1ed15fe34d8047b3c3950bab15dfc813bd5de62ce48caf920be30e51345",
+        "outputs/architecture_v2_s43_base/sample_metadata.json": "d231c98af4751c70134d92e77da124fff8262a2f31c74e12917322aefbf4ba0f",
+        "outputs/architecture_v2_s43_base/metrics.json": "70e66d2b0504d7f261573c9706ac37e04ea313dc82b986cc330a58b6cfa442b5"
+      }
+    },
+    {
+      "training_seed": 43,
+      "variant": "loop",
+      "run_directory": "outputs/architecture_v2_s43_loop",
+      "source_directories": [
+        "outputs/architecture_v2_s43_loop"
+      ],
+      "protected_files": {
+        "outputs/architecture_v2_s43_loop/scores_per_window.pt": "4e88379af937189b2243d5bf075334ca8cf28e9c022164f60acfbe2d0ae723fa",
+        "outputs/architecture_v2_s43_loop/scenarios.pt": "b08f75a5efb4c0b4647d0464fdf3405d4e7903de9fc1886dd1606b2f20490c61",
+        "outputs/architecture_v2_s43_loop/checkpoint_last.pt": "4e038c61898424a7526f5c176f3d91db76aca42a2ee4fafc9c32fae3f4fd3004",
+        "outputs/architecture_v2_s43_loop/checkpoint_best.pt": "01b0724922f2957baac86b2ff88f71416c2c6ff54d3c71c90595f65c6ca471c1",
+        "outputs/architecture_v2_s43_loop/targets.pt": "b8053fc60dd262c358d188dcc4e45b036eaeaa6e819428ba6732000cf6d6da99",
+        "outputs/architecture_v2_s43_loop/checkpoint_ema_start.pt": "a9117f4d7999e5adeaf5082a1943cbbf733bd2bf0192f99abec8aea43296bfd5",
+        "outputs/architecture_v2_s43_loop/config.json": "55a1c024484f68eb2fb0b0301862d54f2400f26ad96eafcb63bc7398a13d20c6",
+        "outputs/architecture_v2_s43_loop/sample_metadata.json": "d231c98af4751c70134d92e77da124fff8262a2f31c74e12917322aefbf4ba0f",
+        "outputs/architecture_v2_s43_loop/metrics.json": "8d4ab54392c45e2dcc3bb66e322dc379a1a25f18077ca9ec4d83607d04d1a6a4"
+      }
+    },
+    {
+      "training_seed": 43,
+      "variant": "untied",
+      "run_directory": "outputs/architecture_v2_s43_untied",
+      "source_directories": [
+        "outputs/architecture_v2_s43_untied"
+      ],
+      "protected_files": {
+        "outputs/architecture_v2_s43_untied/scores_per_window.pt": "ab5c38cf3a36b38322c6290283761585ab0042ca0cb945ed2352a7bb72cc9f69",
+        "outputs/architecture_v2_s43_untied/scenarios.pt": "0d029d40f4a4c0c87fddc2f430a610e3bc2f1b6ecb009dafd1346ec5c3b77c7b",
+        "outputs/architecture_v2_s43_untied/checkpoint_last.pt": "e5042846e3562f843141f96947f08170f079c7ad9124846d6eb6581c0f9984db",
+        "outputs/architecture_v2_s43_untied/checkpoint_best.pt": "e1354cc27603fec40d0acdd812e392e67dd93cf1b8241abadd4eaf4f4e8a9fed",
+        "outputs/architecture_v2_s43_untied/targets.pt": "b8053fc60dd262c358d188dcc4e45b036eaeaa6e819428ba6732000cf6d6da99",
+        "outputs/architecture_v2_s43_untied/checkpoint_ema_start.pt": "df7dc33254610b99b522d62e5af80ceff20f560e097861f96e0afc9ce1b7996d",
+        "outputs/architecture_v2_s43_untied/config.json": "1102078e0e81dfb544f594add3178ab4d7a08a1ce1883ed398ecc11a4f1d28ec",
+        "outputs/architecture_v2_s43_untied/sample_metadata.json": "d231c98af4751c70134d92e77da124fff8262a2f31c74e12917322aefbf4ba0f",
+        "outputs/architecture_v2_s43_untied/metrics.json": "af7f501230400ba435be4be26418777220aed03a006b9c16069884cbdb7a631c"
+      }
+    },
+    {
+      "training_seed": 44,
+      "variant": "base",
+      "run_directory": "outputs/architecture_v2_s44_base_resumed",
+      "source_directories": [
+        "outputs/architecture_v2_s44_base",
+        "outputs/architecture_v2_s44_base_resumed"
+      ],
+      "protected_files": {
+        "outputs/architecture_v2_s44_base/checkpoint_last.pt": "3dd2c398c93b0277185bb39a878ea33b857022f1667622a9a1a10ebee09a7395",
+        "outputs/architecture_v2_s44_base/checkpoint_best.pt": "a337a1a1d52a8e721d5880d1603c45be0118951c900c61001fba4cfd8ca13f66",
+        "outputs/architecture_v2_s44_base/checkpoint_ema_start.pt": "b59c3d5815515ec9e3c6d3db7ba7641caf2b41894198ff80e637fecd29f93500",
+        "outputs/architecture_v2_s44_base_resumed/scores_per_window.pt": "e8c9a8f28e1b69a17ff7a63a9bdc4e15fb95294f07b1ae5dce1f3daced39c80a",
+        "outputs/architecture_v2_s44_base_resumed/scenarios.pt": "aa228591081f96ff88a40b8bdc6cc8a0fdf5b42bb256d165eca078d744c5605d",
+        "outputs/architecture_v2_s44_base_resumed/checkpoint_last.pt": "66a29fb9726b0651d3520f9c3780ab4e9ac174b8ac3b5e8872421053cc1e2870",
+        "outputs/architecture_v2_s44_base_resumed/checkpoint_best.pt": "018d4b64f5569e556b399acd53618bfd3561affb8b5e90811dae15443dc595f2",
+        "outputs/architecture_v2_s44_base_resumed/targets.pt": "b8053fc60dd262c358d188dcc4e45b036eaeaa6e819428ba6732000cf6d6da99",
+        "outputs/architecture_v2_s44_base/config.json": "e5962889c4e192fd0cad6f93ebef1e030cc448e1947b716797a16b06fc8f6c95",
+        "outputs/architecture_v2_s44_base_resumed/config.json": "7021df9740f56448bfd8581a8fa0d65bcec79c5b472cc17eac2138560f71eea7",
+        "outputs/architecture_v2_s44_base_resumed/sample_metadata.json": "d231c98af4751c70134d92e77da124fff8262a2f31c74e12917322aefbf4ba0f",
+        "outputs/architecture_v2_s44_base_resumed/metrics.json": "210a3e81ae5b6673a161b675f86c6482b7ef7ecc103584fe85c4978cb1fd55da"
+      }
+    },
+    {
+      "training_seed": 44,
+      "variant": "loop",
+      "run_directory": "outputs/architecture_v2_s44_loop",
+      "source_directories": [
+        "outputs/architecture_v2_s44_loop"
+      ],
+      "protected_files": {
+        "outputs/architecture_v2_s44_loop/scores_per_window.pt": "d77f52c6281981997568a576746d9f6ae4af0f46955c35c4366d5dc2f94b3948",
+        "outputs/architecture_v2_s44_loop/scenarios.pt": "a81068e2cfe759827114944fe659793f5ec2f941ea4766966b13f091d8d20033",
+        "outputs/architecture_v2_s44_loop/checkpoint_last.pt": "d486664e7915f3b8dea7517cbdf556517f1aab464ec90adccc0f65270bec749c",
+        "outputs/architecture_v2_s44_loop/checkpoint_best.pt": "412959ba5bf38c309eabcafd9ba9b19d69e64d5dfd14653175e42a58a0302206",
+        "outputs/architecture_v2_s44_loop/targets.pt": "b8053fc60dd262c358d188dcc4e45b036eaeaa6e819428ba6732000cf6d6da99",
+        "outputs/architecture_v2_s44_loop/checkpoint_ema_start.pt": "ef828c888655b5bfb674ea76e5d293464e6d12af6b6f1827e441fb7c74d2a1d1",
+        "outputs/architecture_v2_s44_loop/config.json": "d644c31582cc19f01095946012449a60b29b79cd3088cafe7d249246f7a7d806",
+        "outputs/architecture_v2_s44_loop/sample_metadata.json": "d231c98af4751c70134d92e77da124fff8262a2f31c74e12917322aefbf4ba0f",
+        "outputs/architecture_v2_s44_loop/metrics.json": "d6c92d53943374e74ab3f9065525e11edeee2abdac9a5c2376791662ecef4c08"
+      }
+    },
+    {
+      "training_seed": 44,
+      "variant": "untied",
+      "run_directory": "outputs/architecture_v2_s44_untied",
+      "source_directories": [
+        "outputs/architecture_v2_s44_untied"
+      ],
+      "protected_files": {
+        "outputs/architecture_v2_s44_untied/scores_per_window.pt": "3878d3c3232d786e17ac59108fb45a82a7c07386f3710319acdeeff5e95faecc",
+        "outputs/architecture_v2_s44_untied/scenarios.pt": "440dd58fffbbf43f2277d006aa8677a4a43b246248b1436add9c4c7080ef322c",
+        "outputs/architecture_v2_s44_untied/checkpoint_last.pt": "666dba6e479ad9cbb9848b836d9f89b0f39e87e02cdcae851de1b353e632ee12",
+        "outputs/architecture_v2_s44_untied/checkpoint_best.pt": "63ce6e19af42c9f82cfb0f8dfe0752692528776fbe4c5698649673f860d2ea68",
+        "outputs/architecture_v2_s44_untied/targets.pt": "b8053fc60dd262c358d188dcc4e45b036eaeaa6e819428ba6732000cf6d6da99",
+        "outputs/architecture_v2_s44_untied/checkpoint_ema_start.pt": "c8c2f46721672bbdf41ca38a3ee18dc52dd67dbab2b9cab0a9ee7ee1eed5cad0",
+        "outputs/architecture_v2_s44_untied/config.json": "0f13255a6bab29d8e3f1858abb23128d73d4abbdd1ddf49ac096837733a895da",
+        "outputs/architecture_v2_s44_untied/sample_metadata.json": "d231c98af4751c70134d92e77da124fff8262a2f31c74e12917322aefbf4ba0f",
+        "outputs/architecture_v2_s44_untied/metrics.json": "a86fddc1a8514a3665535a7c4e473afc656a150965464896707857ccab0f7f0e"
+      }
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "reference_commit": "c3d0ea7f1b0546dce544ec4601525cc0bfbd67af",
+  "diagnostic_commit": "6f1bd1ef86f3986935323db8e19417d818bd1fe6",
+  "diagnostic_git_status": "",
+  "protected_files_unchanged": 96,
+  "all_sorted_marginals_exact": true,
+  "marginal_max_abs_error": 0.0,
+  "common_permutation_max_abs_error": 7.105427357601002e-15,
+  "real_common_permutation_controls": 45,
+  "csv_unique_day_rows": 31950,
+  "csv_aggregate_groups_verified_from_days": 450,
+  "tests": {
+    "total": 95,
+    "passed": 93,
+    "skipped": 2,
+    "new_r01_tests": 13,
+    "execution": "CPU"
+  },
+  "new_model_training": false,
+  "new_model_sampling": false,
+  "test_split_scored": false,
+  "R02_R06_started": false
+}

@@ -1,0 +1,13 @@
+{
+  "status": "training_complete",
+  "pid": 13697,
+  "started_unix": 1793027809.107163,
+  "completed": [
+    "outputs/local_v2_s42",
+    "outputs/local_v2_s43",
+    "outputs/local_v2_s44"
+  ],
+  "active": null,
+  "plan_sha256": "db9ca4fdf88782c100269df4eb927d8cfaa2c8284fb97782caffc3d9dc580ec5",
+  "ended_unix": 1793034062.181887
+}

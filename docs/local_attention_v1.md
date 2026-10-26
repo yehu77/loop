@@ -76,8 +76,10 @@ The two report tests check seed-level pairing and reject scope, initialization,
 protocol, sample identity, RNG and data-position drift. Syntax and whitespace
 checks passed. These are engineering results, not forecasting outcomes.
 
-The queue is running, starting with seed 42. No formal R02 result is claimed yet.
-Once all three runs pass engineering audits, generate the independent report:
+All three runs finished successfully, with no skipped updates or resume segments.
+The automatic report completed after all engineering gates passed. The commands
+below reproduce the report (choose a new output directory; existing outputs are
+intentionally rejected):
 
 ```bash
 python -m diagnostics.summarize_local_reference \
@@ -94,3 +96,114 @@ initial tensors and final data/noise RNG positions must match same-seed BASE.
 Training costs exclude validation and checkpoint I/O; observed latency is not
 a theoretical FLOP comparison. The old BASE primary/best panels for seed 42 have
 already been independently re-scored successfully with the unchanged evaluator.
+
+## Completed experiment and interpretation
+
+All three LOCAL runs reached 3,000 successful updates, with 96,000 training-window
+exposures each and 2,000 EMA averaging updates after the exact copy at 1,000.
+The queue ran for 104.2 minutes, including validation and checkpoint I/O; final
+report generation took less than a minute. Seed 42 used source commit `46360ec`;
+43 and 44 used `1c05c50`. All three have identical frozen training-source hashes;
+the intervening commits only added reporting/tests/docs. Recorded Python is
+3.10.20, PyTorch 2.10.0+cu128, GPU RTX 2060. The original nine runs were not repeated.
+
+The 24 primary/best saved panels passed independent re-scoring. Initialization
+hashes and final training-noise/data RNG positions matched historical same-seed
+BASE. All 1,670 protected artifact hashes were rechecked after scoring and remain
+unchanged. A separate CSV review verified 24 × 71 unique sample identities,
+per-day reaggregation and all 426 paired daily rows at `atol=rtol=1e-12`.
+These are new artifact checks; the CPU/GPU regression results above were not
+rerun during this documentation-only completion.
+
+### Primary endpoint: LOCAL versus BASE
+
+Three-seed means follow. Positive score changes are worse. Percentages divide
+the difference of model means by the BASE mean; they do not rank the importance
+of different temporal scales or establish statistical significance.
+
+| Metric | BASE | LOCAL | Relative change |
+|---|---:|---:|---:|
+| Hourly CRPS | 0.078467 | 0.079864 | +1.78% |
+| ES | 0.481974 | 0.496249 | +2.96% |
+| VS | 14.784732 | 16.072396 | +8.71% |
+| 1h increment CRPS | 0.050915 | 0.064248 | +26.19% |
+| 3h increment CRPS | 0.087914 | 0.093765 | +6.66% |
+| Daily-mean-power CRPS | 0.037564 | 0.040312 | +7.32% |
+
+Mean 90% point coverage falls from **89.28% to 85.70%**, while mean interval
+width falls from **0.43893 to 0.41418**. Narrower intervals therefore are not an
+unqualified improvement. Both 80% and 90% per-day results are in the archive.
+
+| Training seed | BASE CRPS | LOCAL CRPS | LOCAL − BASE |
+|---|---:|---:|---:|
+| 42 | 0.076405 | 0.079158 | +0.002753 |
+| 43 | 0.080470 | 0.080245 | -0.000224 |
+| 44 | 0.078527 | 0.080189 | +0.001662 |
+
+CRPS is slightly better for LOCAL in seed 43 and worse in 42/44. All five
+structural scores (ES, VS and the three transformed CRPS scores) are worse for
+LOCAL in **each** training seed. Paired difference mean and sample SD across
+three training seeds are:
+
+| Metric | Mean LOCAL − BASE | Sample SD |
+|---|---:|---:|
+| Hourly CRPS | +0.001397 | 0.001506 |
+| ES | +0.014275 | 0.007590 |
+| VS | +1.287664 | 0.300157 |
+| 1h increment CRPS | +0.013333 | 0.000712 |
+| 3h increment CRPS | +0.005852 | 0.000526 |
+| Daily-mean-power CRPS | +0.002748 | 0.000954 |
+
+These SDs are descriptive, not confidence intervals. Each seed has 70/71 days
+with worse LOCAL 1h-increment CRPS, whereas daily-mean CRPS worsens on only
+32/71, 35/71 and 38/71 days for seeds 42, 43 and 44. Negative daily differences
+are retained; aggregate worsening is not uniform day-by-day worsening. The
+71 shared validation days are not 71 independent model fits.
+
+All 12 models select update 3,000 under the unchanged auxiliary best-CRPS rule.
+The separate best table is retained even though its score values coincide with
+the primary table. Sampling times can differ between the two evaluations.
+
+### What this supports
+
+At this frozen budget, hourly CRPS is comparatively close, but removing
+cross-hour interaction consistently worsens joint, increment and daily-aggregate
+scores. Together with R01, this supports a useful role for temporal information
+exchange that hourly CRPS alone understates. Ordinary BASE-2 already captures
+much of this benefit. R02 does **not** establish that recurrence is necessary,
+or that temporal dependence alone explains the difference: full attention can
+also use neighboring weather and noisy-power information, and diagonal attention
+changes the effective role of Q/K. No equivalence or significance test was used
+to declare the marginal scores "the same".
+
+The mean synchronized training-update totals are 282.18 s for BASE and 281.98 s
+for LOCAL; primary-panel sampling times average 67.60 s and 72.57 s respectively.
+These are observed timings of a dense masked implementation across separate
+runs, excluding validation/IO from training-update cost. They establish neither
+a speed benefit nor equal theoretical computation/effective capacity. Parameter
+elements remain 208,065 in both models.
+
+Development evidence remains limited to three seeds and 71 complete validation
+days (21/92 candidate days were excluded). Repeated validation use, unresolved
+original-source/NWP availability evidence and limited season coverage remain
+unchanged. No test scores were computed. R03 and all later stages are unstarted;
+this result supplies a basis for deciding the next mechanism diagnostic, not
+permission to launch further training or expand recurrence depth.
+
+### Archived evidence
+
+[Summary and all model rows](diagnostics/local_attention_v1/summary.json),
+[paired seed differences](diagnostics/local_attention_v1/paired_seed_differences.csv),
+[paired daily differences](diagnostics/local_attention_v1/paired_daily_differences.csv),
+[all per-day scores](diagnostics/local_attention_v1/scores_per_day.csv),
+[artifact audits](diagnostics/local_attention_v1/evidence.json) and
+[completion checks](diagnostics/local_attention_v1/verification.json) accompany
+full LOCAL learning histories, configs, lineages and test logs in the archive.
+Raw data, checkpoints, scenarios and per-lead tensors remain local under
+`outputs/`; archive checksums also identify the local per-lead tensor file.
+
+![Primary endpoint by model and seed](diagnostics/local_attention_v1/comparison.png)
+
+Circle = seed 42, square = seed 43, triangle = seed 44. Lines connect the same
+training seed, not a sequence of progressively trained models. LOOP/UNTIED are
+unchanged contextual references, not new R02 training runs.

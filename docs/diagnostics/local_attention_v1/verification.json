@@ -1,0 +1,34 @@
+{
+  "reviewed_at_utc": "2026-10-26T18:09:10.478387+00:00",
+  "training_commit": "46360ec",
+  "completion_commit_before_archiving": "1c05c50",
+  "cpu_tests": {
+    "total": 104,
+    "passed": 100,
+    "skipped_cuda": 4,
+    "rerun_during_report_review": false
+  },
+  "gpu_local_tests": {
+    "total": 7,
+    "passed": 7,
+    "device": "RTX 2060",
+    "rerun_during_report_review": false
+  },
+  "all_three_formal_runs": {
+    "successful_updates_each": 3000,
+    "skipped_each": 0,
+    "sample_exposures_each": 96000,
+    "engineering_audits_passed": true
+  },
+  "independent_saved_panels_rescored": 24,
+  "source_hashes_rechecked_after_scoring": 1670,
+  "daily_rows_checked": 1704,
+  "paired_daily_rows_checked": 426,
+  "daily_reaggregation_atol": 1e-12,
+  "daily_reaggregation_rtol": 1e-12,
+  "same_seed_initialization_and_final_noise_data_rng_matched": true,
+  "primary_and_auxiliary_best_all_selected_update": 3000,
+  "test_scoring": false,
+  "new_sampling_during_report_review": false,
+  "R03_started": false
+}

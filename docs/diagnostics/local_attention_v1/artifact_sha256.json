@@ -1,0 +1,38 @@
+{
+  "archived": {
+    "comparison.png": "a15037f75c69ad398bab898ae4d9b282499e4225ac731b35d40f296a4ae007ec",
+    "config.json": "db9ca4fdf88782c100269df4eb927d8cfaa2c8284fb97782caffc3d9dc580ec5",
+    "evidence.json": "9121cc8a155fec7ef62e6c3093d4842db7ce88aa392b52e9977ea09f4c13e54c",
+    "local_v2_queue.json": "42f57f9e0ffb445c55568f31e874fdaef40caa3cf363fe62188592082310530c",
+    "local_v2_queue.log": "42f57f9e0ffb445c55568f31e874fdaef40caa3cf363fe62188592082310530c",
+    "local_v2_report.log": "260b3a8bd0ac9ae7da581cae0be8d44c44bf228259321ad95ab13e834d754954",
+    "local_v2_report_status.json": "0780058e3d742af475f9833976ab2b6a54edd0454c01ba8e51579eed5b2bd5ed",
+    "local_v2_s42.lineage.json": "491fe829fab53cfaa3d1c5bbc8a2aeb830754f75a27ca1527aafbaa0e33de4df",
+    "local_v2_s42.log": "43528d97b9884e0a330a8c34e92bb9e2e9894c9ebffc077175df53ed53900062",
+    "local_v2_s43.lineage.json": "edf940e829abdaa6a1f6d88e4cd66cc1eb05b0d8934367c9abe9bf96e25f36bc",
+    "local_v2_s43.log": "302f3ae6c3aaa3d42e9e00e1c25d6cba9b299a4bcb2cb2d2bd8d0aa05906c429",
+    "local_v2_s44.lineage.json": "641ed3b14bd403bc4b8fa9ad7f02a8f824a6bba882a98d87a026d1248670cc48",
+    "local_v2_s44.log": "9345221f44b0eaa29e76d6643bd1e78d37bd36ab093997db088e524e24a07e77",
+    "paired_daily_differences.csv": "648a8b484c2d4b4f2581941e47ae0a49a80a48717444d2a145f325b1bb3db16e",
+    "paired_seed_differences.csv": "a34a1c267beab9ca7eed16b8351ae6131266f4b7932fc3e73396d0a791c0f092",
+    "protected_sha256.json": "6eaa43e6a908fba066303cc3cdd9f8c7b441ee1fffb40719251da6ad2edb3118",
+    "r02_tests_cpu.log": "cdc05dfe7adbe65b135ef5456cb891228e3c8d227ac34759a0695439bd052a63",
+    "r02_tests_cuda.log": "1e3452f9fc5c05245097dc74fc77f5ed89416c98d6716c79d937b4803753c462",
+    "s42_local/config.json": "d9b7884e86af760a7791be1a2c50eaf5659692e7c7e02c564da4e7fa1b8cbdc9",
+    "s42_local/training_history.json": "4ed1cae5fb1b9dea9aa7021581ddb7a13b587b56e3c5fb4f94a277fe0f692e91",
+    "s42_local/validation_history.json": "8cf56db3d6351dc69d7e023dc5a705df55a63199ef2a33d24b2f47b32ab106b6",
+    "s43_local/config.json": "acf61cee71ef15b8ae7886cf42a1e08d6eec6b92f36f4318f84c5f149aef5236",
+    "s43_local/training_history.json": "fd53c56cd3797e5b7169e55c3479943a367c90e96d19ec219ad1d5e2239fb25b",
+    "s43_local/validation_history.json": "83998f448a63268abdfabee6d8cb395021dcde082df8146e7754263b1f61ccaa",
+    "s44_local/config.json": "1a8f68b377a6de208465a4f377138366f7fd29ff58f597fffb3dc69257a3dd5b",
+    "s44_local/training_history.json": "9c26b810ed489d1f5b3839e51f70c8975624624262625c7129a4a8f594a36201",
+    "s44_local/validation_history.json": "a808ad8a5dd1906913938c377680361dc90f46e79f51b88c8083878c77b5a4aa",
+    "scores.csv": "848df2a8af033d3d5da0a8a3f6dc1cbd0d8da667a2d4879ca494c74a6e6e8a34",
+    "scores_per_day.csv": "03c2597c2d16dd93211e6802af38d9c4fea1037c51d35ee187fa663e2fe833df",
+    "summary.json": "cf102773a0502242183f74706d836e846bdb58f677c61c24368c8de1dd8cd2e7",
+    "verification.json": "5fcf56b7d64349978eacad191fcf65e952323df3b632a3d9dbcc406cd4f7bfcf"
+  },
+  "local_only": {
+    "outputs/local_attention_v1_results/scores_per_lead.pt": "b312d8bce01573e2abfeb555e46977518355d3c913ec496b97461831607e11af"
+  }
+}

@@ -1,0 +1,12 @@
+test_diagonal_gpu_updates_and_resume (test_local_attention.LocalAttentionTests) ... ok
+test_full_call_unchanged_and_diagonal_single_key (test_local_attention.LocalAttentionTests) ... ok
+test_matched_initialization_and_rng_for_all_planned_seeds (test_local_attention.LocalAttentionTests) ... ok
+test_nonzero_forward_and_complete_sampling_isolation_cpu (test_local_attention.LocalAttentionTests) ... ok
+test_nonzero_forward_and_complete_sampling_isolation_cuda (test_local_attention.LocalAttentionTests) ... ok
+test_real_entry_legacy_best_and_local_resume_identity (test_local_attention.LocalAttentionTests) ... ok
+test_scope_validation_and_checkpoint_resume (test_local_attention.LocalAttentionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 3.766s
+
+OK

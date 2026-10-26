@@ -18,10 +18,13 @@ class ModelConfig:
     ffn_dim: int = 256
     blocks_per_core: int = 2
     rounds: int = 2
+    attention_scope: str = "full"
 
     def __post_init__(self):
         if self.variant not in ("base", "loop", "untied"):
             raise ValueError("variant must be base, loop, or untied")
+        if self.attention_scope not in ("full", "diagonal"):
+            raise ValueError("attention_scope must be full or diagonal")
         dimensions = (self.horizon, self.nwp_features, self.hidden_dim, self.heads,
                       self.ffn_dim, self.blocks_per_core, self.rounds)
         if any(not isinstance(value, int) or value < 1 for value in dimensions):
@@ -40,9 +43,10 @@ def sinusoidal_embedding(positions, dim):
 
 
 class SelfAttention(nn.Module):
-    def __init__(self, dim, heads):
+    def __init__(self, dim, heads, attention_scope="full"):
         super().__init__()
         self.heads = heads
+        self.attention_scope = attention_scope
         self.qkv = nn.Linear(dim, 3 * dim)
         self.projection = nn.Linear(dim, dim)
 
@@ -50,7 +54,15 @@ class SelfAttention(nn.Module):
         batch, horizon, dim = x.shape
         qkv = self.qkv(x).reshape(batch, horizon, 3, self.heads, dim // self.heads)
         q, k, v = qkv.permute(2, 0, 3, 1, 4).unbind(0)
-        attended = F.scaled_dot_product_attention(q, k, v, dropout_p=0.0, is_causal=False)
+        if self.attention_scope == "diagonal":
+            # SDPA boolean masks use True for allowed keys. Keep Q/K/V tensors;
+            # with one allowed key, Q/K cannot affect the attention weights.
+            mask = torch.eye(horizon, dtype=torch.bool, device=x.device)
+            attended = F.scaled_dot_product_attention(
+                q, k, v, attn_mask=mask, dropout_p=0.0, is_causal=False)
+        else:
+            # Preserve the historical full-attention call exactly.
+            attended = F.scaled_dot_product_attention(q, k, v, dropout_p=0.0, is_causal=False)
         return self.projection(attended.transpose(1, 2).reshape(batch, horizon, dim))
 
 
@@ -60,7 +72,7 @@ class AdaLNBlock(nn.Module):
         dim = config.hidden_dim
         self.norm_attention = nn.LayerNorm(dim, elementwise_affine=False, eps=1e-5)
         self.norm_ffn = nn.LayerNorm(dim, elementwise_affine=False, eps=1e-5)
-        self.attention = SelfAttention(dim, config.heads)
+        self.attention = SelfAttention(dim, config.heads, config.attention_scope)
         self.ffn = nn.Sequential(nn.Linear(dim, config.ffn_dim), nn.GELU(),
                                  nn.Linear(config.ffn_dim, dim))
         self.modulator = nn.Sequential(nn.SiLU(), nn.Linear(dim, 6 * dim))

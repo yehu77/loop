@@ -82,7 +82,8 @@ def run(args):
         trainer, batches, checkpoint_metadata = load_real_checkpoint(
             args.resume, package, args.device, expected_variant=args.variant,
             expected_training_protocol_version=args.training_protocol_version,
-            expected_ema_start_update=args.ema_start_update)
+            expected_ema_start_update=args.ema_start_update,
+            expected_attention_scope=getattr(args, "attention_scope", None))
         run_config = checkpoint_metadata["run_config"]
         best_score = checkpoint_metadata["best_validation_crps"]
         best_update = checkpoint_metadata["best_update"]
@@ -94,7 +95,7 @@ def run(args):
                 or best_state["metadata"].get("run_config") != run_config
                 or best_state["metadata"].get("best_validation_crps") != best_score
                 or best_state["metadata"].get("best_update") != best_update
-                or best_state["model_config"] != asdict(trainer.model.config)
+                or ModelConfig(**best_state["model_config"]) != trainer.model.config
                 or TrainConfig(**best_state["train_config"]) != trainer.config
                 or best_state["updates"] != best_update
                 or best_state["metadata"].get("failure", False)):
@@ -113,7 +114,9 @@ def run(args):
         config = TrainConfig(amp=args.amp, seed=args.seed, microbatch_size=args.microbatch_size,
                              accumulation_steps=args.accumulation_steps,
                              training_protocol_version=version, ema_start_update=start)
-        trainer = Trainer(ModelConfig(variant=args.variant or "base"), config, scaler, args.device)
+        trainer = Trainer(ModelConfig(variant=args.variant or "base",
+                                      attention_scope=getattr(args, "attention_scope", None) or "full"),
+                          config, scaler, args.device)
         batches = RealBatches(package, config.microbatch_size, config.seed)
         best_score, best_update = None, None
         if version == 2:
@@ -242,6 +245,8 @@ def main():
     parser.add_argument("--resume", type=Path)
     parser.add_argument("--variant", choices=("base", "loop", "untied"),
                         help="New run defaults to base; resume must match when specified")
+    parser.add_argument("--attention-scope", choices=("full", "diagonal"),
+                        help="New run defaults to full; resume inherits saved scope unless specified")
     parser.add_argument("--training-protocol-version", type=int, choices=(1, 2),
                         help="New run defaults to v1; v2 enables matched initialization and delayed EMA")
     parser.add_argument("--ema-start-update", type=int,

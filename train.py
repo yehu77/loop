@@ -250,7 +250,7 @@ class Trainer:
     @classmethod
     def load(cls, path, device="cpu", expected_data_fingerprint=None,
              expected_variant=None, expected_training_protocol_version=None,
-             expected_ema_start_update=None):
+             expected_ema_start_update=None, expected_attention_scope=None):
         state = torch.load(path, map_location="cpu", weights_only=True)
         if state["format_version"] not in (1, 2):
             raise ValueError("Unsupported checkpoint format")
@@ -267,6 +267,10 @@ class Trainer:
         if state["rng_device_type"] != torch.device(device).type:
             raise ValueError("Exact training resume requires the same CPU/CUDA device type")
         config = TrainConfig(**state["train_config"])
+        model_config = ModelConfig(**state["model_config"])
+        if (expected_attention_scope is not None
+                and model_config.attention_scope != expected_attention_scope):
+            raise ValueError("Checkpoint attention scope mismatch")
         if expected_variant is not None and state["model_config"]["variant"] != expected_variant:
             raise ValueError("Checkpoint variant mismatch")
         if (expected_training_protocol_version is not None
@@ -282,7 +286,7 @@ class Trainer:
                 raise ValueError("Checkpoint EMA state is inconsistent with successful updates")
         elif config.training_protocol_version != 1:
             raise ValueError("Legacy checkpoint cannot declare a v2 protocol")
-        trainer = cls(ModelConfig(**state["model_config"]), config,
+        trainer = cls(model_config, config,
                       WeatherScaler(**state["weather_scaler"]), device)
         trainer.model.load_state_dict(state["model"])
         trainer.ema.load_state_dict(state["ema"])

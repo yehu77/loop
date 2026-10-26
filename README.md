@@ -193,3 +193,12 @@ python -m diagnostics.temporal_dependence \
 ```
 
 入口拒绝覆盖输出或修改源运行，只读取保存的验证场景，不训练、不重新采样或评分测试集。
+
+### R02: LOCAL-2 temporal-interaction ablation
+
+[Protocol and evidence](docs/local_attention_v1.md): BASE-2 with
+`--attention-scope diagonal`, trained from matched initialization under v2.
+Legacy model configs default to `full`; resume inherits the saved scope unless
+explicitly checked by the flag. Three frozen seeds only; existing v2 results
+remain unchanged. Run `python -m diagnostics.run_local_reference` from the root
+in the validated CUDA environment; existing outputs are never overwritten.

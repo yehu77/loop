@@ -66,5 +66,32 @@ and a new resume segment, never deletion or replacement of old artifacts.
 
 ## Status
 
-Implementation and isolation checks are complete; formal training results pending.
-This document will record the execution commit and evidence after the frozen runs.
+Training implementation and the predeclared run configuration were frozen in
+`46360ec`. CPU regression: **104 tests, 100 passed, 4 CUDA-only skipped**
+(Python 3.10.20, PyTorch 2.10.0+cu128; CUDA unavailable inside the sandbox).
+The **7 LOCAL-specific tests all passed on the actual RTX 2060**, including
+FP32 optimizer updates and exact resumed continuation. CPU logs are
+`outputs/r02_tests_cpu.log`; GPU-specific logs are `outputs/r02_tests_cuda.log`.
+The two report tests check seed-level pairing and reject scope, initialization,
+protocol, sample identity, RNG and data-position drift. Syntax and whitespace
+checks passed. These are engineering results, not forecasting outcomes.
+
+The queue is running, starting with seed 42. No formal R02 result is claimed yet.
+Once all three runs pass engineering audits, generate the independent report:
+
+```bash
+python -m diagnostics.summarize_local_reference \
+  --output outputs/local_attention_v1_results
+MPLCONFIGDIR=/tmp/loop-pilot-mpl python -m diagnostics.plot_local_reference \
+  --results outputs/local_attention_v1_results \
+  --output outputs/local_attention_v1_results/comparison.png
+```
+
+The summary re-scores primary and auxiliary-best saved panels for all 12 models
+(nine historical plus three LOCAL), preserving per-lead arrays locally and
+per-day CSVs. It verifies original input hashes before and after scoring. LOCAL
+initial tensors and final data/noise RNG positions must match same-seed BASE.
+Training costs exclude validation and checkpoint I/O; observed latency is not
+a theoretical FLOP comparison. The old BASE primary/best panels for seed 42 have
+already been independently re-scored successfully with the unchanged evaluator.
+

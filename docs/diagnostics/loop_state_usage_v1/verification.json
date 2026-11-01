@@ -1,0 +1,24 @@
+{
+  "reviewed_utc": "2026-11-01T12:24:08.779541+00:00",
+  "protected_files_rechecked": 97,
+  "csv_rows_reaggregated": {
+    "per_input": 29820,
+    "per_day": 7455,
+    "per_run": 105
+  },
+  "reaggregation_atol": 1e-12,
+  "reaggregation_rtol": 1e-12,
+  "normal_forward_and_loop_reset_identity_max_abs": 0,
+  "parameter_buffer_hashes_unchanged": true,
+  "fixed_input_tensor_hashes_verified": true,
+  "cpu_tests": {
+    "total": 113,
+    "passed": 109,
+    "cuda_skipped": 4,
+    "new_R03_tests_passed": 9
+  },
+  "gpu_diagnostic_run": false,
+  "new_training": false,
+  "trajectory_sampling": false,
+  "test_scoring": false
+}

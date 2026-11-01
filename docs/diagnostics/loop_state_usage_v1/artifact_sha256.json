@@ -1,0 +1,16 @@
+{
+  "archived": {
+    "comparison.png": "a405092974f51870e2455c5c99c84fe36a2e813e3548c84a0f38ee3561f58d5a",
+    "config.json": "c3d0371085f8907bc5f05ac2faa0334653f25504cc60027ed4c40a505d1919ef",
+    "loop_state_usage_v1.log": "2724b77ae3c4ce4b2034ed3b57a4555f87ac1e684608517a4398e771ba30de0f",
+    "per_day.csv": "16e8c5dab0c1408f3bf5979d612c50dee84e999531843bf21dae86b8abd411ac",
+    "per_input.csv": "2ee4ac45d9412229d46206a6412ca3610c19af8c431529d22b081ef6f8abc6f9",
+    "per_run.csv": "5afc5062261d9de1c9e134bb051cd5e9a54fdf46ff22e25a100ce6eb80566137",
+    "r03_tests_cpu.log": "aebe19019379b5d096d09ad75c0c5a9c82dfc96f63083df3027b8971bde09e63",
+    "report.json": "1e1ffe32a5d54ffe97e8a1089802e7c72f7c753c49f6af58ecf6c0f6970598c4",
+    "verification.json": "ce2970297502f9e97a920fdf64818bbbe7fb4e41f52caefd2b0ab4450132612c"
+  },
+  "local_only": {
+    "outputs/loop_state_usage_v1/fixed_inputs.pt": "a4e4bf2adbb7650edddd19db16032d51f9d3d065a9ea105cfe6ed7fd655d80b3"
+  }
+}

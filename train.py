@@ -28,8 +28,18 @@ class TrainConfig:
     seed: int = 42
     training_protocol_version: int = 1
     ema_start_update: int = 0
+    supervision_mode: str = "final-only"
+    loss_weights: tuple = (0.0, 1.0)
 
     def __post_init__(self):
+        object.__setattr__(self, "loss_weights", tuple(self.loss_weights))
+        if self.supervision_mode not in ("final-only", "intermediate"):
+            raise ValueError("Unknown supervision mode")
+        if (len(self.loss_weights) != 2 or any(not math.isfinite(w) or w < 0 for w in self.loss_weights)
+                or not math.isclose(sum(self.loss_weights), 1.0, abs_tol=1e-12, rel_tol=0)
+                or (self.supervision_mode == "final-only" and self.loss_weights != (0.0, 1.0))
+                or (self.supervision_mode == "intermediate" and min(self.loss_weights) <= 0)):
+            raise ValueError("Invalid supervision loss weights")
         if min(self.learning_rate, self.microbatch_size, self.accumulation_steps,
                self.max_grad_norm) <= 0 or self.weight_decay < 0:
             raise ValueError("Invalid training hyperparameters")
@@ -132,6 +142,10 @@ class SyntheticBatches:
 
 class Trainer:
     def __init__(self, model_config, train_config, weather_scaler, device="cpu"):
+        if train_config.supervision_mode == "intermediate" and (
+                model_config.variant not in ("loop", "untied") or model_config.rounds != 2
+                or model_config.attention_scope != "full"):
+            raise ValueError("Intermediate supervision requires full-attention LOOP/UNTIED with two stages")
         self.device = torch.device(device)
         self.config = train_config
         if train_config.amp and self.device.type != "cuda":
@@ -160,6 +174,7 @@ class Trainer:
         self.model.train()
         self.optimizer.zero_grad(set_to_none=True)
         loss_sum = 0.0
+        loss1_sum = loss2_sum = 0.0
         for _ in range(self.config.accumulation_steps):
             batch = {name: value.to(self.device).float() for name, value in next(batches).items()}
             y, nwp, calendar = batch["y"], batch["nwp"], batch["calendar"]
@@ -176,8 +191,18 @@ class Trainer:
             noise = torch.randn(x0.shape, device=self.device, generator=self.generator)
             x_t = self.schedule.add_noise(x0, t, noise)
             with torch.autocast(self.device.type, dtype=torch.float16, enabled=self.config.amp):
-                predicted = self.model(x_t, nwp, calendar, t)
-            loss = (predicted.float() - noise).square().mean()
+                if self.config.supervision_mode == "intermediate":
+                    first, predicted = self.model.forward_stages(x_t, nwp, calendar, t)
+                else:
+                    predicted = self.model(x_t, nwp, calendar, t)
+            if self.config.supervision_mode == "intermediate":
+                loss1 = (first.float() - noise.float()).square().mean()
+                loss2 = (predicted.float() - noise.float()).square().mean()
+                loss = self.config.loss_weights[0] * loss1 + self.config.loss_weights[1] * loss2
+                loss1_sum += loss1.item()
+                loss2_sum += loss2.item()
+            else:
+                loss = (predicted.float() - noise).square().mean()
             if not torch.isfinite(loss):
                 raise FloatingPointError("Non-finite noise MSE; stop training")
             loss_sum += loss.item()
@@ -205,8 +230,12 @@ class Trainer:
             self.update_ema()
         else:
             self.skipped += 1
-        return {"loss": loss_sum / self.config.accumulation_steps, "grad_norm": grad_norm,
-                "did_update": did_update, "updates": self.updates, "skipped": self.skipped}
+        record = {"loss": loss_sum / self.config.accumulation_steps, "grad_norm": grad_norm,
+                  "did_update": did_update, "updates": self.updates, "skipped": self.skipped}
+        if self.config.supervision_mode == "intermediate":
+            record.update(loss1=loss1_sum / self.config.accumulation_steps,
+                          loss2=loss2_sum / self.config.accumulation_steps, loss_total=record["loss"])
+        return record
 
     @torch.no_grad()
     def update_ema(self):
@@ -250,7 +279,8 @@ class Trainer:
     @classmethod
     def load(cls, path, device="cpu", expected_data_fingerprint=None,
              expected_variant=None, expected_training_protocol_version=None,
-             expected_ema_start_update=None, expected_attention_scope=None):
+             expected_ema_start_update=None, expected_attention_scope=None,
+             expected_supervision_mode=None, expected_loss_weights=None):
         state = torch.load(path, map_location="cpu", weights_only=True)
         if state["format_version"] not in (1, 2):
             raise ValueError("Unsupported checkpoint format")
@@ -267,6 +297,10 @@ class Trainer:
         if state["rng_device_type"] != torch.device(device).type:
             raise ValueError("Exact training resume requires the same CPU/CUDA device type")
         config = TrainConfig(**state["train_config"])
+        if expected_supervision_mode is not None and config.supervision_mode != expected_supervision_mode:
+            raise ValueError("Checkpoint supervision mode mismatch")
+        if expected_loss_weights is not None and config.loss_weights != tuple(expected_loss_weights):
+            raise ValueError("Checkpoint loss weights mismatch")
         model_config = ModelConfig(**state["model_config"])
         if (expected_attention_scope is not None
                 and model_config.attention_scope != expected_attention_scope):

@@ -211,3 +211,11 @@ study of the nine original v2 EMA endpoints. Run
 It keeps five noise levels and three state interventions fixed, checks normal
 forward/reset identities, and reports denoising MSE separately by noise level.
 It does not train models or sample complete trajectories.
+
+### R04: shared-head intermediate supervision
+
+[Protocol and acceptance](docs/intermediate_supervision_v1.md): six frozen v2
+LOOP-DS/UNTIED-DS runs, using `--supervision-mode intermediate --loss-weights 0.5 0.5`.
+Old configs default to final-only; inference always reads the final state.
+`python -m diagnostics.run_intermediate_supervision` runs the bounded queue and
+then produces identity-checked four-cell scores and paired supervision effects.

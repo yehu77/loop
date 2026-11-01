@@ -1,0 +1,13 @@
+test_configuration_validates_weights_and_scope (test_intermediate_supervision.IntermediateSupervisionTests) ... ok
+test_gpu_updates_resume_and_final_only_sampling (test_intermediate_supervision.IntermediateSupervisionTests) ... ok
+test_gradient_sum_and_full_final_loss_path (test_intermediate_supervision.IntermediateSupervisionTests) ... ok
+test_identical_initial_parameters_and_rng_no_new_head_all_seeds (test_intermediate_supervision.IntermediateSupervisionTests) ... ok
+test_real_entry_ds_and_legacy_final_best_resume (test_intermediate_supervision.IntermediateSupervisionTests) ... ok
+test_resume_identity_and_exact_continuation_before_and_after_ema (test_intermediate_supervision.IntermediateSupervisionTests) ... ok
+test_single_pass_shared_head_and_final_forward_equivalence (test_intermediate_supervision.IntermediateSupervisionTests) ... ok
+test_training_logs_and_final_only_does_not_compute_stage_outputs (test_intermediate_supervision.IntermediateSupervisionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 5.724s
+
+OK

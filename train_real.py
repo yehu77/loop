@@ -83,7 +83,9 @@ def run(args):
             args.resume, package, args.device, expected_variant=args.variant,
             expected_training_protocol_version=args.training_protocol_version,
             expected_ema_start_update=args.ema_start_update,
-            expected_attention_scope=getattr(args, "attention_scope", None))
+            expected_attention_scope=getattr(args, "attention_scope", None),
+            expected_supervision_mode=getattr(args, "supervision_mode", None),
+            expected_loss_weights=getattr(args, "loss_weights", None))
         run_config = checkpoint_metadata["run_config"]
         best_score = checkpoint_metadata["best_validation_crps"]
         best_update = checkpoint_metadata["best_update"]
@@ -111,9 +113,13 @@ def run(args):
         scaler = WeatherScaler(*(torch.tensor(manifest["scaler"][k]) for k in ("mean", "std")))
         version = args.training_protocol_version or 1
         start = args.ema_start_update if args.ema_start_update is not None else (1000 if version == 2 else 0)
+        supervision = getattr(args, "supervision_mode", None) or "final-only"
+        weights = getattr(args, "loss_weights", None)
+        weights = tuple(weights) if weights is not None else ((0.5, 0.5) if supervision == "intermediate" else (0., 1.))
         config = TrainConfig(amp=args.amp, seed=args.seed, microbatch_size=args.microbatch_size,
                              accumulation_steps=args.accumulation_steps,
-                             training_protocol_version=version, ema_start_update=start)
+                             training_protocol_version=version, ema_start_update=start,
+                             supervision_mode=supervision, loss_weights=weights)
         trainer = Trainer(ModelConfig(variant=args.variant or "base",
                                       attention_scope=getattr(args, "attention_scope", None) or "full"),
                           config, scaler, args.device)
@@ -247,6 +253,10 @@ def main():
                         help="New run defaults to base; resume must match when specified")
     parser.add_argument("--attention-scope", choices=("full", "diagonal"),
                         help="New run defaults to full; resume inherits saved scope unless specified")
+    parser.add_argument("--supervision-mode", choices=("final-only", "intermediate"),
+                        help="New runs default to final-only; resume inherits saved mode unless specified")
+    parser.add_argument("--loss-weights", type=float, nargs=2, metavar=("FIRST", "FINAL"),
+                        help="Default final-only: 0 1; intermediate: 0.5 0.5; resume must match if specified")
     parser.add_argument("--training-protocol-version", type=int, choices=(1, 2),
                         help="New run defaults to v1; v2 enables matched initialization and delayed EMA")
     parser.add_argument("--ema-start-update", type=int,

@@ -154,7 +154,7 @@ class ConditionalLoopDiT(nn.Module):
             raise ValueError("calendar must have shape [B, horizon, 4]")
         return self.condition_mlp(torch.cat((nwp, calendar), dim=-1))
 
-    def denoise_with_cached_condition(self, x_t, condition, t, rounds=None):
+    def denoise_with_cached_condition(self, x_t, condition, t, rounds=None, return_stages=False):
         if x_t.ndim != 3 or x_t.shape[1:] != (self.config.horizon, 1):
             raise ValueError("x_t must have shape [B, horizon, 1]")
         if condition.shape != (*x_t.shape[:2], self.config.hidden_dim):
@@ -171,10 +171,22 @@ class ConditionalLoopDiT(nn.Module):
         evidence = evidence + self.position_encoding
         time_embedding = self.time_mlp(sinusoidal_embedding(t, self.config.hidden_dim))
         h = evidence
+        outputs = [] if return_stages else None
         for r in range(rounds):
             core = self.cores[r] if self.config.variant == "untied" else self.cores[0]
             h = core(h, evidence, time_embedding)
+            if return_stages:
+                outputs.append(self.output_head(h, time_embedding))
+        if return_stages:
+            return tuple(outputs)
         return self.output_head(h, time_embedding)
+
+    def forward_stages(self, x_t, nwp, calendar, t):
+        """Two shared-head readouts from one uninterrupted two-Core pass."""
+        if self.config.variant not in ("loop", "untied") or self.config.rounds != 2:
+            raise ValueError("Intermediate supervision requires two Core executions")
+        condition = self.encode_condition(nwp, calendar)
+        return self.denoise_with_cached_condition(x_t, condition, t, return_stages=True)
 
     def forward(self, x_t, nwp, calendar, t, rounds=None):
         condition = self.encode_condition(nwp, calendar)

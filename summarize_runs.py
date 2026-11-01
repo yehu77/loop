@@ -11,6 +11,7 @@ import torch
 
 from data import file_hash
 from evaluate import evaluate_artifacts
+from train import TrainConfig
 
 VARIANTS = ("base", "loop", "untied")
 SCORES = ("crps", "energy_score", "variogram_score", "coverage_90", "width_90",
@@ -151,7 +152,7 @@ def audit_run(spec, protocol):
         require(lineage["data_sha256"] == protocol["data_sha256"], "Prepared file changed")
         require(not checkpoint["metadata"].get("failure", False), "Diagnostic failure snapshot is not resumable")
         require(checkpoint["metadata"]["data_fingerprint"] == config["data_fingerprint"], "Checkpoint data differs")
-        require(checkpoint["train_config"] == training and checkpoint["model_config"] == config["model"],
+        require(TrainConfig(**checkpoint["train_config"]) == TrainConfig(**training) and checkpoint["model_config"] == config["model"],
                 "Checkpoint configuration differs")
         require(checkpoint["metadata"]["run_config"] == evaluation, "Checkpoint evaluation differs")
         update = checkpoint["updates"]
@@ -178,7 +179,7 @@ def audit_run(spec, protocol):
         require(anchor["updates"] == protocol["ema_start_update"]
                 and anchor["ema_initialized"] and anchor["ema_num_averaged_updates"] == 0,
                 "Invalid EMA copy boundary")
-        require(anchor["model_config"] == config["model"] and anchor["train_config"] == training
+        require(anchor["model_config"] == config["model"] and TrainConfig(**anchor["train_config"]) == TrainConfig(**training)
                 and anchor["metadata"]["data_fingerprint"] == config["data_fingerprint"],
                 "EMA anchor identity differs")
         require(anchor["model"].keys() == anchor["ema"].keys()
@@ -192,7 +193,7 @@ def audit_run(spec, protocol):
     require(not best_checkpoint["metadata"].get("failure", False), "Invalid best snapshot")
     require(best_checkpoint["updates"] == best, "Best is not minimum EMA CRPS on common nodes")
     require(best_checkpoint["metadata"]["data_fingerprint"] == config["data_fingerprint"], "Best data differs")
-    require(best_checkpoint["model_config"] == config["model"] and best_checkpoint["train_config"] == training,
+    require(best_checkpoint["model_config"] == config["model"] and TrainConfig(**best_checkpoint["train_config"]) == TrainConfig(**training),
             "Best configuration differs")
     cost = read(terminal / "cost.json")
     require(cost["auxiliary_best_update"] == best and cost["primary_update"] == endpoints[-1], "Cost panel differs")

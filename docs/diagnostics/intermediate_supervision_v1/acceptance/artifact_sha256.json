@@ -1,0 +1,7 @@
+{
+  "r04_tests_cpu.log": "5c61ff220d1fb9a8fa9a49bb94acf7076e93c0caf85548f9c71b2743e155377c",
+  "check_r04_legacy_replay.py": "e2153d299593113acc29ad09ca58dad8beabe7bcf9fc68dd44362dc5eee25c5b",
+  "r04_tests_cuda.log": "831122be50e74df34d14a39c88cf43de903dea60fccc5e15ef50ec51c36b27e8",
+  "r04_legacy_cpu.json": "bb2203305bbed9e263df40221bc8027edd7845dc861c8d84ff9c5d2e9012b47b",
+  "r04_legacy_cuda.json": "5e107ac00c223eb1a0c4419fe1524c778537e9b31b61ed292b17a15aaaa6d829"
+}

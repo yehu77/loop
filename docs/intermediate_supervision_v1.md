@@ -98,8 +98,10 @@ No additional R03-style readout diagnostic is required or launched in this v1.
 
 ## Status
 
-Engineering acceptance is complete; formal training starts after this protocol
-commit is frozen. CPU regression: **123 total, 118 passed, 5 CUDA-only skipped**.
+Engineering acceptance is complete. Training and reporting sources were frozen
+in `cd57515`; the six-run queue has started with seed-42 LOOP-DS. Startup checks
+confirmed exact historical LOOP initialization and the unchanged 71-day evaluation
+panel. Formal results are still pending. CPU regression: **123 total, 118 passed, 5 CUDA-only skipped**.
 The **8 R04 supervision tests all passed in the actual RTX 2060 environment**,
 including CUDA FP32 updates/resume and final-only sampling (other tests in that
 suite use CPU). Environment: Python 3.10.20, PyTorch 2.10.0+cu128. Gradient tests

@@ -202,3 +202,12 @@ Legacy model configs default to `full`; resume inherits the saved scope unless
 explicitly checked by the flag. Three frozen seeds only; existing v2 results
 remain unchanged. Run `python -m diagnostics.run_local_reference` from the root
 in the validated CUDA environment; existing outputs are never overwritten.
+
+### R03: first-state usage diagnostic
+
+[Protocol and results](docs/loop_state_usage_v1.md) describe a read-only forward
+study of the nine original v2 EMA endpoints. Run
+`python -m diagnostics.loop_state_usage --output outputs/loop_state_usage_v1`.
+It keeps five noise levels and three state interventions fixed, checks normal
+forward/reset identities, and reports denoising MSE separately by noise level.
+It does not train models or sample complete trajectories.

@@ -121,3 +121,25 @@ are archived. The replay script was invoked from the repository root with
 `PYTHONPATH=. python outputs/check_r04_legacy_replay.py cpu` and `cuda`; archived
 source identifies its exact historical comparison. No R04 forecasting outcome
 has been observed or claimed at this point.
+
+### Interrupted seed-44 queue and bounded continuation (2026-11-02)
+
+The first four runs (seeds 42/43, LOOP-DS and UNTIED-DS) completed 3,000 updates
+and passed the queue's artifact and paired-training audits. The original queue
+and seed-44 LOOP child were absent on the host when checked; the GPU was idle.
+The interruption cause and exit code are unknown. Its last normal checkpoint
+contains 1,999 successful updates, zero skipped updates, and no failure flag.
+The matching best checkpoint at update 1,750 remains available.
+
+`configs/intermediate_supervision_v1_resumed.json` retains the frozen protocol
+and adds the continuation segment. `python -m diagnostics.resume_intermediate_supervision`
+resumes exactly 1,001 updates into `outputs/intermediate_v1_s44_loop_resumed`,
+then runs the previously unstarted seed-44 UNTIED-DS for 3,000 updates. Original
+run artifacts are hash-protected and retained; the original queue status is
+archived locally. The first four runs are not repeated. Optimizer, EMA, data
+position and RNG are restored, without changing supervision or evaluation.
+
+The resumed update-1,999 evaluation is diagnostic and is excluded from the
+common best-selection nodes. The final report stitches the two LOOP segments;
+recorded training cost covers retained completed updates, not unknown work lost
+during interruption. No test scoring or extra training budget is added.

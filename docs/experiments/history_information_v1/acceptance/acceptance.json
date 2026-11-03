@@ -1,0 +1,29 @@
+{
+  "base_commit": "05d8eb3",
+  "python": "3.10.20",
+  "cpu_tests": {
+    "total": 143,
+    "passed": 137,
+    "skipped": 6
+  },
+  "history_interface_tests_in_cuda_environment": {
+    "total": 8,
+    "passed": 8,
+    "cuda_specific_tests": 1
+  },
+  "real_data_gpu_check": "three full-width groups; 6+2 vs uninterrupted 8 successful updates; exact raw/EMA/noise/data state",
+  "source_sha256": {
+    "model.py": "1705517b8f1d6ccfd5fb3a5ce8d9234af1f5b140494a2cb55411be8586003ded",
+    "diffusion.py": "242cf4c65bfe46c579a080d4e39aedd4e6f38bee634c18fd7e1180b0e59a012f",
+    "train.py": "e0978e26e03e4913325dc7499c2626ed099dc828163359236d06ff7d7161dc40",
+    "train_real.py": "caa75db8db50c489d351da5a7ef7bbe6e4ceec6076735745be41a2c99771c96c",
+    "data.py": "70b53a721ecb59b93e2450a241b712530a1813e343f1a4b0d88b593d88dc3557",
+    "history_data.py": "3748a072acc694dcca10cfd0ae9becd623986337a1de3b686a6b4b3b7f21190b",
+    "evaluate.py": "f3160c970c65fb4978e75fb83ad1b906446090eb753226132994ff1ef6e3da30",
+    "metrics.py": "254c106f7d007eb9859ddfd59b6ef1a581d49ccbccaf4b449e6fb296c6dbad26"
+  },
+  "execution_config_sha256": "bc0ede74f9676cb0c090cc869c2369d12208d801d51ce5108c753f1e55af7feb",
+  "old_artifacts_unchanged": 2176,
+  "short_check_is_not_forecasting_evidence": true,
+  "formal_training_status": "not_started_at_freeze"
+}

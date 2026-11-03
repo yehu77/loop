@@ -1,0 +1,144 @@
+validation update=0 raw_CRPS=0.293662 EMA_CRPS=None RAND_CRPS=0.128892
+base update=1 loss=1.042537
+base update=2 loss=0.921264
+validation update=3 raw_CRPS=0.292770 EMA_CRPS=0.2927703983538474 RAND_CRPS=0.128892
+base update=3 loss=0.987799
+base update=4 loss=1.027075
+base update=5 loss=1.039338
+validation update=6 raw_CRPS=0.290921 EMA_CRPS=0.29276664392091334 RAND_CRPS=0.128892
+base update=6 loss=0.912712
+Run: /home/u86177/work/loop/outputs/history_interface_acceptance/real_cuda/H0_first ; selected update=6
+validation update=6 raw_CRPS=0.290921 EMA_CRPS=0.29276664392091334 RAND_CRPS=0.128892
+base update=7 loss=0.942919
+validation update=8 raw_CRPS=0.290151 EMA_CRPS=0.2927608623479803 RAND_CRPS=0.128892
+base update=8 loss=1.035191
+Run: /home/u86177/work/loop/outputs/history_interface_acceptance/real_cuda/H0_resume ; selected update=6
+validation update=0 raw_CRPS=0.293662 EMA_CRPS=None RAND_CRPS=0.128892
+base update=1 loss=1.042537
+base update=2 loss=0.921264
+validation update=3 raw_CRPS=0.292770 EMA_CRPS=0.2927703983538474 RAND_CRPS=0.128892
+base update=3 loss=0.987799
+base update=4 loss=1.027075
+base update=5 loss=1.039338
+validation update=6 raw_CRPS=0.290921 EMA_CRPS=0.29276664392091334 RAND_CRPS=0.128892
+base update=6 loss=0.912712
+base update=7 loss=0.942919
+validation update=8 raw_CRPS=0.290151 EMA_CRPS=0.2927608623479803 RAND_CRPS=0.128892
+base update=8 loss=1.035191
+Run: /home/u86177/work/loop/outputs/history_interface_acceptance/real_cuda/H0_continuous ; selected update=6
+validation update=0 raw_CRPS=0.293662 EMA_CRPS=None RAND_CRPS=0.128892
+base update=1 loss=1.042537
+base update=2 loss=0.921264
+validation update=3 raw_CRPS=0.292771 EMA_CRPS=0.2927707378597309 RAND_CRPS=0.128892
+base update=3 loss=0.987799
+base update=4 loss=1.027075
+base update=5 loss=1.039338
+validation update=6 raw_CRPS=0.290923 EMA_CRPS=0.29276698517302674 RAND_CRPS=0.128892
+base update=6 loss=0.912712
+Run: /home/u86177/work/loop/outputs/history_interface_acceptance/real_cuda/H1_first ; selected update=6
+validation update=6 raw_CRPS=0.290923 EMA_CRPS=0.29276698517302674 RAND_CRPS=0.128892
+base update=7 loss=0.942919
+validation update=8 raw_CRPS=0.290152 EMA_CRPS=0.2927612070149432 RAND_CRPS=0.128892
+base update=8 loss=1.035191
+Run: /home/u86177/work/loop/outputs/history_interface_acceptance/real_cuda/H1_resume ; selected update=6
+validation update=0 raw_CRPS=0.293662 EMA_CRPS=None RAND_CRPS=0.128892
+base update=1 loss=1.042537
+base update=2 loss=0.921264
+validation update=3 raw_CRPS=0.292771 EMA_CRPS=0.2927707378597309 RAND_CRPS=0.128892
+base update=3 loss=0.987799
+base update=4 loss=1.027075
+base update=5 loss=1.039338
+validation update=6 raw_CRPS=0.290923 EMA_CRPS=0.29276698517302674 RAND_CRPS=0.128892
+base update=6 loss=0.912712
+base update=7 loss=0.942919
+validation update=8 raw_CRPS=0.290152 EMA_CRPS=0.2927612070149432 RAND_CRPS=0.128892
+base update=8 loss=1.035191
+Run: /home/u86177/work/loop/outputs/history_interface_acceptance/real_cuda/H1_continuous ; selected update=6
+validation update=0 raw_CRPS=0.293662 EMA_CRPS=None RAND_CRPS=0.128892
+base update=1 loss=1.042537
+base update=2 loss=0.921264
+validation update=3 raw_CRPS=0.292771 EMA_CRPS=0.2927709468640387 RAND_CRPS=0.128892
+base update=3 loss=0.987799
+base update=4 loss=1.027075
+base update=5 loss=1.039338
+validation update=6 raw_CRPS=0.290925 EMA_CRPS=0.292767195807149 RAND_CRPS=0.128892
+base update=6 loss=0.912713
+Run: /home/u86177/work/loop/outputs/history_interface_acceptance/real_cuda/H24_first ; selected update=6
+validation update=6 raw_CRPS=0.290925 EMA_CRPS=0.292767195807149 RAND_CRPS=0.128892
+base update=7 loss=0.942919
+validation update=8 raw_CRPS=0.290151 EMA_CRPS=0.29276142036542296 RAND_CRPS=0.128892
+base update=8 loss=1.035191
+Run: /home/u86177/work/loop/outputs/history_interface_acceptance/real_cuda/H24_resume ; selected update=6
+validation update=0 raw_CRPS=0.293662 EMA_CRPS=None RAND_CRPS=0.128892
+base update=1 loss=1.042537
+base update=2 loss=0.921264
+validation update=3 raw_CRPS=0.292771 EMA_CRPS=0.2927709468640387 RAND_CRPS=0.128892
+base update=3 loss=0.987799
+base update=4 loss=1.027075
+base update=5 loss=1.039338
+validation update=6 raw_CRPS=0.290925 EMA_CRPS=0.292767195807149 RAND_CRPS=0.128892
+base update=6 loss=0.912713
+base update=7 loss=0.942919
+validation update=8 raw_CRPS=0.290151 EMA_CRPS=0.29276142036542296 RAND_CRPS=0.128892
+base update=8 loss=1.035191
+Run: /home/u86177/work/loop/outputs/history_interface_acceptance/real_cuda/H24_continuous ; selected update=6
+{
+  "device": "cuda",
+  "torch": "2.10.0+cu128",
+  "data_sha256": "ac82d414a9dbf73d949c271af37d50e682ef3f58b23f0aad45f73a8741d431a9",
+  "records": [
+    {
+      "group": "H0",
+      "continuous_updates": 8,
+      "resumed_segments": [
+        6,
+        2
+      ],
+      "raw_ema_and_rng_exact": true,
+      "parameters": 208193,
+      "scenario_shape": [
+        2,
+        4,
+        24,
+        1
+      ]
+    },
+    {
+      "group": "H1",
+      "continuous_updates": 8,
+      "resumed_segments": [
+        6,
+        2
+      ],
+      "raw_ema_and_rng_exact": true,
+      "parameters": 208193,
+      "scenario_shape": [
+        2,
+        4,
+        24,
+        1
+      ]
+    },
+    {
+      "group": "H24",
+      "continuous_updates": 8,
+      "resumed_segments": [
+        6,
+        2
+      ],
+      "raw_ema_and_rng_exact": true,
+      "parameters": 208193,
+      "scenario_shape": [
+        2,
+        4,
+        24,
+        1
+      ]
+    }
+  ],
+  "matched_initializations": true,
+  "matched_data_and_noise_rng": true,
+  "formal_experiment": false,
+  "gpu": "NVIDIA GeForce RTX 2060",
+  "peak_allocated_bytes": 26242560
+}

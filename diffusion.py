@@ -45,7 +45,7 @@ def ddim_step(x_t, epsilon, schedule, t, s):
 
 @torch.no_grad()
 def sample_scenarios(model, schedule, nwp, calendar, scenarios=100, sampling_steps=50,
-                     chunk_size=16, generator=None, initial_noise=None):
+                     chunk_size=16, generator=None, initial_noise=None, history_power=None):
     """Return [B, M, H, 1] capacity-normalized trajectories and clipping diagnostics.
 
     nwp is already standardized with training-only statistics. Initial noise is
@@ -68,11 +68,13 @@ def sample_scenarios(model, schedule, nwp, calendar, scenarios=100, sampling_ste
     was_training = model.training
     model.eval()
     try:
-        condition = model.encode_condition(nwp, calendar)  # Cached across all DDIM calls.
+        condition = (model.encode_condition(nwp, calendar) if history_power is None else
+                     model.encode_condition(nwp, calendar, history_power))
         for start in range(0, len(flat_noise), chunk_size):
             end = min(start + chunk_size, len(flat_noise))
             indices = torch.arange(start, end, device=nwp.device) // scenarios
-            cached_condition = condition[indices]
+            cached_condition = ({key: value[indices] for key, value in condition.items()}
+                                if isinstance(condition, dict) else condition[indices])
             x = flat_noise[start:end]
             for index, (t, s) in enumerate(pairs):
                 times = torch.full((len(x),), t, device=x.device, dtype=torch.long)

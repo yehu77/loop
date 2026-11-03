@@ -1,0 +1,60 @@
+{
+  "device": "cuda",
+  "torch": "2.10.0+cu128",
+  "data_sha256": "ac82d414a9dbf73d949c271af37d50e682ef3f58b23f0aad45f73a8741d431a9",
+  "records": [
+    {
+      "group": "H0",
+      "continuous_updates": 8,
+      "resumed_segments": [
+        6,
+        2
+      ],
+      "raw_ema_and_rng_exact": true,
+      "parameters": 208193,
+      "scenario_shape": [
+        2,
+        4,
+        24,
+        1
+      ]
+    },
+    {
+      "group": "H1",
+      "continuous_updates": 8,
+      "resumed_segments": [
+        6,
+        2
+      ],
+      "raw_ema_and_rng_exact": true,
+      "parameters": 208193,
+      "scenario_shape": [
+        2,
+        4,
+        24,
+        1
+      ]
+    },
+    {
+      "group": "H24",
+      "continuous_updates": 8,
+      "resumed_segments": [
+        6,
+        2
+      ],
+      "raw_ema_and_rng_exact": true,
+      "parameters": 208193,
+      "scenario_shape": [
+        2,
+        4,
+        24,
+        1
+      ]
+    }
+  ],
+  "matched_initializations": true,
+  "matched_data_and_noise_rng": true,
+  "formal_experiment": false,
+  "gpu": "NVIDIA GeForce RTX 2060",
+  "peak_allocated_bytes": 26242560
+}

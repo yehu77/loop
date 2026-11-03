@@ -225,6 +225,9 @@ then produces identity-checked four-cell scores and paired supervision effects.
 [History protocol and acceptance](docs/history_information_v1.md) fixes a one-hour
 observation delay and H0/H1/H24 BASE plans on the same 545 training / 57 validation
 windows. `prepare_history.py` builds an identity-bound package from the original
-data and power CSVs. The 48-token model/training interface is **not implemented
-yet**; the three plans in `configs/history_information_v1/` are specifications,
-not supported `train_real.py` options. No history training or test scoring has run.
+data and power CSVs. The [48-token interface and acceptance](docs/history_base_screening_v1.md)
+now support `train_real.py --history-group H0|H1|H24` with this package.
+`python -m diagnostics.run_history_information` runs the three frozen BASE jobs
+and produces paired whole-trajectory and lead-group reports. The original group
+plans remain archived; `configs/history_information_v1/execution.json` binds the
+implemented sources. The test set remains unscored.

@@ -1,0 +1,82 @@
+# H0／H1／H24：共同 48-token 接口与训练记录
+
+## 实现范围
+
+基于已审阅的 `05d8eb3`，完成同一 BASE 的历史输入、逐块 key/value 掩码、
+DDIM 条件缓存、未来专属输出和组别绑定恢复。数据协议及指纹不变，时间戳语义
+已在 [数据协议](history_information_v1.md) 补充为研究假设。
+本轮仅三组 seed 42，未启动 LOOP／UNTIED、额外种子或测试评分。
+
+历史 24 点由 `visible_history()` 完成一次 `2*y-1`，不可见值经 `torch.where`
+清除后再投影；历史位置为 -24 至 -1，未来位置为 +1 至 +24。每个注意力块
+都屏蔽不可见历史 key/value，避免它们成为可读回的额外计算位置。未来 token
+保持双向注意力。三组参数量均为 **208,193**，包括同一个 `Linear(1,64)` 历史投影。
+
+缓存字典同时保存未来条件、固定历史初始编码和布尔可见性；采样时按同一个
+日期索引展开到场景。每个 DDIM 步重新构造 48-token 隐状态，历史隐状态可在
+本次 Core 内变化，不跨扩散步传递。加噪、MSE、输出头读出、DDIM 状态和场景
+始终只有未来 24 点。mask 在模型侧生成，不经过 Trainer 的统一浮点转换。
+
+旧配置默认 `history_group=None`，继续走原路径。新历史包通过显式
+`--history-group H0|H1|H24` 加载；检查点保存模型组别、历史接口版本、数据／协议
+指纹和训练源码哈希。跨组、数据版本或源码不匹配时拒绝静默恢复，原故障快照
+保护保持有效。恢复不重置优化器、数据位置、随机数或 EMA。
+
+## 验收结果
+
+- CPU 全量 unittest：**143 项，137 通过，6 项 CUDA 专用跳过**。
+- 实际 RTX 2060 环境的历史接口套件：**8 项全部通过**，其中 1 项专门在 CUDA
+  检查隔离、H0 等价性、训练／采样和恢复，其余覆盖 CPU 接口逻辑。
+- 真实共同数据、完整宽度 64：三组分别连续训练 8 步，与 6 步＋正常断点恢复
+  2 步逐位比较，raw／EMA、训练噪声和数据状态一致；场景形状均 `[2,4,24,1]`。
+  验收临时 EMA 启动点为 3、验证为 2 日／4 场景／4 DDIM 步，不是正式实验。
+- 直接回放 `05d8eb3` 的旧模型／Trainer 源码：BASE、LOOP、UNTIED 各 5 次更新，
+  CPU 和 CUDA 的 loss、梯度、raw、EMA、加噪 RNG 均逐位一致。
+- 旧实验和已审阅协议共 **2,176 个文件**保持哈希一致；数据包未重做。
+
+环境：Python 3.10.20、PyTorch 2.10.0+cu128、RTX 2060 6GB。
+短程真实数据验收的 PyTorch 峰值已分配显存为 26,242,560 字节；它不包含驱动等
+全部显存，也不是完整 100 场景验证的资源测量。
+
+隔离测试打开输出头和残差门。H0 全部历史、H1 前 23 点任意变化（含隐藏 NaN）
+不影响输出及固定噪声的完整采样；H1 最新值和 H24 较早值的扰动能改变输出。
+H0 与相同参数、未来 +1…+24 位置的 24-token 参考前向／采样在浮点容差内一致
+（CPU 前向 `atol=2e-6, rtol=2e-5`，采样及 CUDA 前向 `3e-6, 3e-5`）。
+缓存／直接前向、样本重排、chunk 切分和逐日单独采样一致；mask 逐块传入，
+历史变换仅一次。正对照仅证明通路有效，不证明模型已经学会利用历史。
+
+[验收清单与日志](experiments/history_information_v1/acceptance/acceptance.json)
+保留对应源码和数据身份。复核使用：
+
+```bash
+CUDA_VISIBLE_DEVICES='' python -m unittest discover -s tests -v
+python -m unittest discover -s tests -p test_history_interface.py -v
+python -m diagnostics.check_history_interface \
+  --data outputs/history_information_v1_20261103/data.pt \
+  --output outputs/history_acceptance_new --device cuda
+```
+
+## 冻结运行与汇总
+
+原三组计划文件保留为 `05d8eb3` 时的设计记录。
+[execution.json](../configs/history_information_v1/execution.json) 是已实现的执行配置，
+绑定这些计划、当前训练／汇总源码和数据哈希。队列按 **H0 → H1 → H24** 顺序执行，
+每次完成后检查初始化／随机数／EMA／检查点身份；异常即停止，不自动覆盖或重跑。
+
+```bash
+python -m diagnostics.run_history_information
+```
+
+正式规则仍是：545 个训练窗口、57 个验证日，FP32，4×8 有效批量，seed 42，
+各 3,000 次成功更新。第 1,000 步复制 raw 为 EMA，此后衰减 0.999。每 250 步
+验证，100 场景、DDIM50、chunk 16。每个保存面板记录初始采样噪声哈希，供跨组核对。
+主表为第 3,000 步最终 EMA；辅助 best 在 1000、1250、…、3000 中按 CRPS 选择。
+RAND 在共同面板重算，仅抽共同训练集完整轨迹。
+
+完成后自动输出 `outputs/history_information_v1_results/`：完整轨迹分数、逐日分数、
+1–6／7–12／13–24 小时 CRPS／覆盖率／宽度、三个配对差值及逐日配对差值、
+训练／验证历史和成本。主表、辅助 best、RAND 分开保留。独立重评分按样本身份
+连接，不把不同日期当作同一天；不将 57 日当作 57 次独立训练。
+
+截止本实现验收记录，正式三组结果仍待产生。历史收益、H24 相对 H1 的增益和
+提前量分布必须由固定实验回答，不据短程验收作预测结论。

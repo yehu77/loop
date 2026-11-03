@@ -10,11 +10,18 @@ import time
 
 import torch
 
-from data import RealBatches, load_package, tensor_hash
+from data import RealBatches, file_hash, load_package, tensor_hash
 from diffusion import sample_scenarios
 from evaluate import identified_artifact, write_evaluation
 from model import ModelConfig
 from train import TrainConfig, Trainer, WeatherScaler, synchronize
+
+
+def history_source_hashes():
+    root = Path(__file__).resolve().parent
+    return {name: file_hash(root / name) for name in (
+        "model.py", "diffusion.py", "train.py", "train_real.py", "data.py",
+        "history_data.py", "evaluate.py", "metrics.py")}
 
 
 def validation_panel(package, limit):
@@ -34,12 +41,18 @@ def validation_artifacts(trainer, package, run_config, weights="ema"):
     model = trainer.ema if weights == "ema" else trainer.model
     generator = torch.Generator(device=trainer.device).manual_seed(run_config["validation_seed"])
     nwp = trainer.weather_scaler.transform(values["nwp"].to(trainer.device))
+    history_sampling = {}
+    if model.config.history_group is not None:
+        history_sampling = {"history_power": values["history_power"].to(trainer.device),
+                            "initial_noise": torch.randn(len(metadata), run_config["scenarios"], 24, 1,
+                                                         generator=generator, device=trainer.device)}
     synchronize(trainer.device)
     started = time.perf_counter()
     trajectories, diagnostics = sample_scenarios(
         model, trainer.schedule, nwp, values["calendar"].to(trainer.device),
         scenarios=run_config["scenarios"], sampling_steps=run_config["sampling_steps"],
         chunk_size=run_config["chunk_size"], generator=generator,
+        **history_sampling,
     )
     synchronize(trainer.device)
     if run_config.get("record_sampling_cost", False):
@@ -47,6 +60,9 @@ def validation_artifacts(trainer, package, run_config, weights="ema"):
         diagnostics["generated_trajectories"] = len(metadata) * run_config["scenarios"]
     diagnostics.update({"weights": weights, "successful_updates": trainer.updates,
                         "validation_seed": run_config["validation_seed"]})
+    if model.config.history_group is not None:
+        diagnostics["history_group"] = model.config.history_group
+        diagnostics["initial_noise_sha256"] = tensor_hash(history_sampling["initial_noise"])
     manifest = package["manifest"]
     return (identified_artifact(trajectories, manifest, metadata),
             identified_artifact(values["y"], manifest, metadata), diagnostics)
@@ -70,13 +86,28 @@ def load_real_checkpoint(path, package, device, **expectations):
     )
     if metadata.get("data_kind") != "real":
         raise ValueError("This runner resumes real-data checkpoints only")
+    history_enabled = package["manifest"].get("schema") == "rolling_history_v1"
+    if history_enabled != (trainer.model.config.history_group is not None):
+        raise ValueError("Checkpoint history interface and data schema differ")
+    if history_enabled:
+        config = metadata["run_config"]
+        if (metadata.get("protocol_fingerprint") != package["manifest"]["protocol_fingerprint"]
+                or config.get("history_group") != trainer.model.config.history_group
+                or config.get("history_interface_version") != 1
+                or config.get("history_training_source_sha256") != history_source_hashes()):
+            raise ValueError("Checkpoint history group, interface or training source mismatch")
     batches = RealBatches(package, trainer.config.microbatch_size, trainer.config.seed)
     batches.load_state_dict(batch_state)
     return trainer, batches, metadata
 
 
 def run(args):
-    package = load_package(args.data)
+    history_group = getattr(args, "history_group", None)
+    if history_group is not None:
+        from history_data import load_history_package
+        package = load_history_package(args.data)
+    else:
+        package = load_package(args.data)
     manifest = package["manifest"]
     if args.resume:
         trainer, batches, checkpoint_metadata = load_real_checkpoint(
@@ -85,7 +116,8 @@ def run(args):
             expected_ema_start_update=args.ema_start_update,
             expected_attention_scope=getattr(args, "attention_scope", None),
             expected_supervision_mode=getattr(args, "supervision_mode", None),
-            expected_loss_weights=getattr(args, "loss_weights", None))
+            expected_loss_weights=getattr(args, "loss_weights", None),
+            expected_history_group=history_group)
         run_config = checkpoint_metadata["run_config"]
         best_score = checkpoint_metadata["best_validation_crps"]
         best_update = checkpoint_metadata["best_update"]
@@ -121,7 +153,9 @@ def run(args):
                              training_protocol_version=version, ema_start_update=start,
                              supervision_mode=supervision, loss_weights=weights)
         trainer = Trainer(ModelConfig(variant=args.variant or "base",
-                                      attention_scope=getattr(args, "attention_scope", None) or "full"),
+                                      attention_scope=getattr(args, "attention_scope", None) or "full",
+                                      history_group=history_group,
+                                      history_projection_seed=config.seed + 20000 if history_group else 20042),
                           config, scaler, args.device)
         batches = RealBatches(package, config.microbatch_size, config.seed)
         best_score, best_update = None, None
@@ -135,6 +169,11 @@ def run(args):
                                 "validation": 2026, "rand": 2027},
                 "initialization": "BASE canonical; common components and core 0 copied; independent extra cores",
             })
+        if history_group is not None:
+            run_config.update(history_group=history_group, history_interface_version=1,
+                              history_training_source_sha256=history_source_hashes())
+            run_config["rng_streams"]["history_projection"] = config.seed + 20000
+            run_config["initialization"] = "canonical BASE plus isolated history projection; matched H0/H1/H24 states"
     _, panel_metadata = validation_panel(package, run_config["validation_limit"])
     output = args.output
     output.mkdir(parents=True, exist_ok=False)
@@ -251,6 +290,8 @@ def main():
     parser.add_argument("--resume", type=Path)
     parser.add_argument("--variant", choices=("base", "loop", "untied"),
                         help="New run defaults to base; resume must match when specified")
+    parser.add_argument("--history-group", choices=("H0", "H1", "H24"),
+                        help="Required for history-package new runs and resumes; binds visibility to checkpoint")
     parser.add_argument("--attention-scope", choices=("full", "diagonal"),
                         help="New run defaults to full; resume inherits saved scope unless specified")
     parser.add_argument("--supervision-mode", choices=("final-only", "intermediate"),

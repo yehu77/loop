@@ -1,0 +1,22 @@
+{
+  "reference": "05d8eb3",
+  "device": "cuda",
+  "torch": "2.10.0+cu128",
+  "records": [
+    {
+      "variant": "base",
+      "updates": 5,
+      "loss_gradient_raw_ema_noise_rng_bitwise_equal": true
+    },
+    {
+      "variant": "loop",
+      "updates": 5,
+      "loss_gradient_raw_ema_noise_rng_bitwise_equal": true
+    },
+    {
+      "variant": "untied",
+      "updates": 5,
+      "loss_gradient_raw_ema_noise_rng_bitwise_equal": true
+    }
+  ]
+}

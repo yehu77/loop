@@ -1,0 +1,25 @@
+test_cache_mask_dtype_single_transform_and_each_block (test_history_interface.HistoryInterfaceTests) ... ok
+test_cuda_history_training_sampling_and_exact_resume (test_history_interface.HistoryInterfaceTests) ... ok
+test_h0_equals_future_only_reference_at_new_positions (test_history_interface.HistoryInterfaceTests) ... ok
+test_hidden_history_isolation_and_visible_positive_controls (test_history_interface.HistoryInterfaceTests) ... ok
+test_matching_initialization_rng_and_future_only_training (test_history_interface.HistoryInterfaceTests) ... ok
+test_real_entry_history_identity_validation_rng_and_resume (test_history_interface.HistoryInterfaceTests) ... validation update=0 raw_CRPS=0.326389 EMA_CRPS=None RAND_CRPS=0.000000
+validation update=1 raw_CRPS=0.326389 EMA_CRPS=None RAND_CRPS=0.000000
+base update=1 loss=1.048327
+validation update=2 raw_CRPS=0.326389 EMA_CRPS=0.3263888888888889 RAND_CRPS=0.000000
+base update=2 loss=1.637534
+validation update=3 raw_CRPS=0.326389 EMA_CRPS=0.3263888888888889 RAND_CRPS=0.000000
+base update=3 loss=1.387088
+Run: /tmp/tmpdo_vffmj/run ; selected update=2
+validation update=3 raw_CRPS=0.326389 EMA_CRPS=0.3263888888888889 RAND_CRPS=0.000000
+validation update=4 raw_CRPS=0.326389 EMA_CRPS=0.3263888888888889 RAND_CRPS=0.000000
+base update=4 loss=1.534180
+Run: /tmp/tmpdo_vffmj/resume ; selected update=2
+ok
+test_resume_before_at_after_ema_and_cross_group_rejection (test_history_interface.HistoryInterfaceTests) ... ok
+test_sampling_cache_row_order_and_chunk_alignment (test_history_interface.HistoryInterfaceTests) ... ok
+
+----------------------------------------------------------------------
+Ran 8 tests in 7.350s
+
+OK

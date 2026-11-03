@@ -14,7 +14,7 @@ from metrics import (energy_score, ensemble_crps, evaluate_scenarios,
 
 
 def identified_artifact(values, manifest, samples):
-    protocol = manifest["protocol"]
+    protocol = manifest["parent_protocol"] if manifest.get("schema") == "rolling_history_v1" else manifest["protocol"]
     return {"schema_version": 1, "values": values.detach().cpu(),
             "data_fingerprint": manifest["data_fingerprint"],
             "protocol_fingerprint": manifest["protocol_fingerprint"],
@@ -66,6 +66,9 @@ def align_artifacts(prediction, target):
         for field in ("zone_id", "issue_time", "valid_times", "split"):
             if prediction["samples"][predicted_row][field] != target["samples"][target_row][field]:
                 raise ValueError("Sample metadata mismatch: " + key + "/" + field)
+        for field in ("history_valid_times", "history_available_by"):
+            if prediction["samples"][predicted_row].get(field) != target["samples"][target_row].get(field):
+                raise ValueError("History metadata mismatch: " + key + "/" + field)
         order.append(predicted_row)
     return prediction["values"][order].cpu(), target["values"].cpu()
 

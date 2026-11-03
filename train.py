@@ -142,6 +142,11 @@ class SyntheticBatches:
 
 class Trainer:
     def __init__(self, model_config, train_config, weather_scaler, device="cpu"):
+        if model_config.history_group is not None and (
+                train_config.training_protocol_version != 2 or train_config.amp
+                or train_config.supervision_mode != "final-only"
+                or model_config.history_projection_seed != train_config.seed + 20000):
+            raise ValueError("History screening requires v2 FP32 final-only and matched history initialization seed")
         if train_config.supervision_mode == "intermediate" and (
                 model_config.variant not in ("loop", "untied") or model_config.rounds != 2
                 or model_config.attention_scope != "full"):
@@ -193,6 +198,8 @@ class Trainer:
             with torch.autocast(self.device.type, dtype=torch.float16, enabled=self.config.amp):
                 if self.config.supervision_mode == "intermediate":
                     first, predicted = self.model.forward_stages(x_t, nwp, calendar, t)
+                elif self.model.config.history_group is not None:
+                    predicted = self.model(x_t, nwp, calendar, t, history_power=batch["history_power"])
                 else:
                     predicted = self.model(x_t, nwp, calendar, t)
             if self.config.supervision_mode == "intermediate":
@@ -280,7 +287,7 @@ class Trainer:
     def load(cls, path, device="cpu", expected_data_fingerprint=None,
              expected_variant=None, expected_training_protocol_version=None,
              expected_ema_start_update=None, expected_attention_scope=None,
-             expected_supervision_mode=None, expected_loss_weights=None):
+             expected_supervision_mode=None, expected_loss_weights=None, expected_history_group=None):
         state = torch.load(path, map_location="cpu", weights_only=True)
         if state["format_version"] not in (1, 2):
             raise ValueError("Unsupported checkpoint format")
@@ -302,6 +309,8 @@ class Trainer:
         if expected_loss_weights is not None and config.loss_weights != tuple(expected_loss_weights):
             raise ValueError("Checkpoint loss weights mismatch")
         model_config = ModelConfig(**state["model_config"])
+        if expected_history_group is not None and model_config.history_group != expected_history_group:
+            raise ValueError("Checkpoint history group mismatch")
         if (expected_attention_scope is not None
                 and model_config.attention_scope != expected_attention_scope):
             raise ValueError("Checkpoint attention scope mismatch")

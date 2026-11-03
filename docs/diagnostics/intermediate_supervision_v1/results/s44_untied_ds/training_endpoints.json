@@ -1,0 +1,29 @@
+{
+  "note": "Full 3000-update history remains in local output; endpoint excerpts only.",
+  "first": {
+    "loss": 0.9785569682717323,
+    "grad_norm": 2.0954244136810303,
+    "did_update": true,
+    "updates": 1,
+    "skipped": 0,
+    "loss1": 0.9785569682717323,
+    "loss2": 0.9785569682717323,
+    "loss_total": 0.9785569682717323,
+    "training_seconds": 0.4089437150005324,
+    "attempts": 1,
+    "samples_consumed_total": 32
+  },
+  "last": {
+    "loss": 0.07399228104623035,
+    "grad_norm": 1.0731009244918823,
+    "did_update": true,
+    "updates": 3000,
+    "skipped": 0,
+    "loss1": 0.07590562099358067,
+    "loss2": 0.07207894322345965,
+    "loss_total": 0.07399228104623035,
+    "training_seconds": 0.15241118899939465,
+    "attempts": 3000,
+    "samples_consumed_total": 96000
+  }
+}

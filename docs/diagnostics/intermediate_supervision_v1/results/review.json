@@ -1,0 +1,21 @@
+{
+  "review_date": "2026-11-03",
+  "source_commit": "3f64459",
+  "completed_training_runs": 6,
+  "primary_and_best_panels": 30,
+  "daily_rows": 2130,
+  "protected_hashes_rechecked": 2139,
+  "checks": [
+    "All daily metric means reproduce panel scores within 1e-10",
+    "All paired seed effects and sample SD reproduce summary within 1e-12",
+    "All protected files unchanged",
+    "All 15 primary and best selections are update 3000",
+    "Comparison figure visually inspected"
+  ],
+  "boundaries": [
+    "No new training or test scoring in this review",
+    "Existing acceptance tests were not rerun for documentation-only archival",
+    "No intermediate-readout MSE diagnosis was performed"
+  ],
+  "local_report": "outputs/intermediate_supervision_v1_results"
+}

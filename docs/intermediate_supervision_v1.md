@@ -96,7 +96,7 @@ to `outputs/intermediate_supervision_v1_results`, including primary/best tables,
 paired daily effects, per-seed interactions, learning histories and a figure.
 No additional R03-style readout diagnostic is required or launched in this v1.
 
-## Status
+## Engineering acceptance and launch record
 
 Engineering acceptance is complete. Training and reporting sources were frozen
 in `cd57515`; the six-run queue has started with seed-42 LOOP-DS. Startup checks
@@ -143,3 +143,89 @@ The resumed update-1,999 evaluation is diagnostic and is excluded from the
 common best-selection nodes. The final report stitches the two LOOP segments;
 recorded training cost covers retained completed updates, not unknown work lost
 during interruption. No test scoring or extra training budget is added.
+
+## Completed R04 results (reviewed 2026-11-03)
+
+All six new runs completed 3,000 successful updates and passed the paired
+initialization, data/noise RNG, recipe, checkpoint and loss-accounting audits.
+The final queue/report completed at **2026-11-02 23:58:56 Asia/Shanghai**.
+Seed-44 LOOP used the recorded 1,999 + 1,001 continuation; its original
+interrupted segment has an unknown exit code, retained without alteration.
+All 15 models selected update 3,000 for the auxiliary best table, so its
+scores equal the primary table. No extra training or test scoring was started.
+
+### Fixed-endpoint means across three training seeds
+
+Scores below are means of the three seed-specific 71-day averages. Lower is
+better for the six scoring rules; coverage must be compared with its nominal
+level and width interpreted together with coverage.
+
+| Model | CRPS | ES | VS | 1h increment CRPS | 3h increment CRPS | Daily-mean CRPS |
+|---|---:|---:|---:|---:|---:|---:|
+| BASE | 0.078467 | 0.481974 | 14.784732 | 0.050915 | 0.087914 | 0.037564 |
+| LOOP | 0.077553 | 0.477935 | 14.608677 | 0.050697 | 0.087387 | 0.037587 |
+| LOOP-DS | 0.078200 | 0.481039 | 14.701380 | 0.050798 | 0.087919 | 0.037961 |
+| UNTIED | 0.077032 | 0.476240 | 14.531945 | 0.050908 | 0.087925 | 0.036859 |
+| UNTIED-DS | 0.077826 | 0.478968 | 14.501207 | 0.050839 | 0.087561 | 0.038306 |
+
+| Model | 90% point coverage | 90% width | Retained training updates (s) | Primary-panel sampling (s) |
+|---|---:|---:|---:|---:|
+| BASE | 89.28% | 0.438930 | 282.18 | 67.60 |
+| LOOP | 90.20% | 0.441130 | 421.56 | 107.19 |
+| LOOP-DS | 90.41% | 0.450437 | 446.04 | 104.55 |
+| UNTIED | 90.00% | 0.435382 | 438.54 | 106.65 |
+| UNTIED-DS | 90.49% | 0.449484 | 461.22 | 106.57 |
+
+Training seconds sum recorded completed-update durations, excluding validation,
+reporting and unrecorded work lost during interruption. They are not total run
+wall time. Sampling times are measured for the same 71 x 100-scenario panel;
+they are descriptive measurements across separate runs, not controlled latency
+benchmarks. DS retains final-only inference and adds no inference parameters.
+
+### Paired supervision effects
+
+Positive score deltas mean deterioration. Interaction is delta_LOOP minus
+delta_UNTIED; a negative interaction alone does not establish an absolute win.
+
+| Seed | LOOP-DS minus LOOP CRPS | UNTIED-DS minus UNTIED CRPS | Interaction |
+|---|---:|---:|---:|
+| 42 | -0.001962963 | +0.001084370 | -0.003047332 |
+| 43 | +0.002507702 | +0.000201498 | +0.002306204 |
+| 44 | +0.001397954 | +0.001096470 | +0.000301484 |
+| Mean | +0.000647565 | +0.000794113 | -0.000146548 |
+| Sample SD (n-1) | +0.002327880 | +0.000513255 | +0.002704743 |
+
+LOOP-DS worsened mean CRPS by **0.84%** relative to LOOP (one seed improved,
+two worsened); UNTIED-DS worsened it by **1.03%** (all three worsened). LOOP-DS
+also worsened the mean of each of the other five scoring rules. UNTIED-DS
+slightly improved VS and 1h/3h increment scores while worsening ES and
+daily-mean CRPS. Thus the results are mixed across targets, not universal
+deterioration. Both DS variants widened intervals; their mean 90% coverage
+moved slightly above the already near-nominal final-only coverage.
+
+The CRPS interaction is -0.000147 with sample SD 0.002705 and changes sign
+across seeds. This does **not** support a stable sharing-specific benefit.
+The fixed half/half intermediate-supervision recipe has not established a
+useful final-generation improvement. Freeze this result; do not automatically
+search weights, add rounds, or extend training. No intermediate-readout MSE
+experiment was run, so this report makes no claim that first-stage MSE improved.
+
+These remain development results on the repeatedly used 71 complete validation
+days. Three seeds are three training replicates, not 213 independent model
+experiments; the test set remains unscored.
+
+### Review and artifacts
+
+The automatic report independently re-scored all 30 saved primary/best panels
+and checked agreement with existing CRPS/ES/VS. On 2026-11-03, archival review
+rechecked **2,139 protected file hashes**, all 2,130 daily rows against panel
+means (1e-10), and paired effects/seed SD (1e-12); the plot was inspected.
+No implementation changed during this archival review and the earlier test
+suite was not rerun. Acceptance counts above remain the recorded prior runs.
+
+[Archived results, configurations, evidence and per-day differences](diagnostics/intermediate_supervision_v1/results/summary.json)
+include CSV tables, six validation histories, training endpoint excerpts and
+an archive SHA-256 manifest. Full training histories, per-lead score tensors,
+scenarios and checkpoints remain under local `outputs/`.
+
+![R04 paired fixed-endpoint comparison](diagnostics/intermediate_supervision_v1/results/comparison.png)

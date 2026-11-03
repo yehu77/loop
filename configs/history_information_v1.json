@@ -1,0 +1,17 @@
+{
+  "schema_version": 1,
+  "parent_data_fingerprint": "403ff1adc1df6b1bd6dd79b24f206f164daf3161f829bf7a232fddf90a9168a4",
+  "zone_id": 3,
+  "history_hours": 24,
+  "observation_delay_hours": 1,
+  "availability_status": "explicit_benchmark_assumption_not_verified_operational_latency",
+  "history_fields": ["TARGETVAR"],
+  "history_order": "oldest_to_latest",
+  "common_window_rule": "parent_valid_future_and_all_24_history_hours_valid",
+  "rolling_policy": "observed_power_before_each_issue_including_earlier_validation_days",
+  "history_missing_rule": "drop_common_window_no_imputation",
+  "power_transform": "2*y-1_using_capacity_fraction",
+  "weather_scaler": "refit_on_common_training_windows_only",
+  "groups": {"H0": [], "H1": [23], "H24": "all_24"},
+  "test_policy": "prepare_and_audit_only_no_scoring"
+}

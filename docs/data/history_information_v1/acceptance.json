@@ -1,0 +1,25 @@
+{
+  "base_commit": "af005c8",
+  "python": "3.10.20",
+  "torch": "2.10.0+cu128",
+  "test_device": "cpu_CUDA_VISIBLE_DEVICES_empty",
+  "tests_total": 133,
+  "tests_passed": 128,
+  "tests_skipped": 5,
+  "new_history_tests_passed": 10,
+  "data_package": "outputs/history_information_v1_20261103/data.pt",
+  "data_sha256": "ac82d414a9dbf73d949c271af37d50e682ef3f58b23f0aad45f73a8741d431a9",
+  "data_fingerprint": "c8c15ca4083ef53239219bdda5897ec6d51e85871082d0989bb6829bca9a41a9",
+  "replay_manifest_equal": true,
+  "future_tensors_exact_parent_subsets": true,
+  "old_parent_sha256_unchanged": true,
+  "r04_protected_files_unchanged": 2139,
+  "model_training_started": false,
+  "test_scoring": false,
+  "implementation_sha256": {
+    "history_data.py": "3748a072acc694dcca10cfd0ae9becd623986337a1de3b686a6b4b3b7f21190b",
+    "prepare_history.py": "d7bf2af5ee018a8da8f77658f97bb562e3ce1b34c4fd21abf1d72b66811b1bb0",
+    "tests/test_history_data.py": "78651379bb91844659780a5c6541620f14ea6c6a2e8de371c351992659dc14ee",
+    "configs/history_information_v1.json": "2d78ffa2df0cb9f1d71afbcd3e0ed8ee05a67dcd02af62fcb75b31a72493a9de"
+  }
+}

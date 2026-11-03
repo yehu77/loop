@@ -1,0 +1,11 @@
+{
+  "schema": "history_base_group_plan_v1",
+  "common_config": "configs/history_information_v1/common.json",
+  "common_config_sha256": "842a73c6649cad7a1c07e9c2d0586615fd6a619b2e90d5f265c318dcd775621d",
+  "history_group": "H1",
+  "visible_history_slots": [
+    23
+  ],
+  "output": "outputs/history_information_v1_s42_h1",
+  "status": "not_started_requires_new_history_training_interface"
+}

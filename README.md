@@ -219,3 +219,12 @@ LOOP-DS/UNTIED-DS runs, using `--supervision-mode intermediate --loss-weights 0.
 Old configs default to final-only; inference always reads the final state.
 `python -m diagnostics.run_intermediate_supervision` runs the bounded queue and
 then produces identity-checked four-cell scores and paired supervision effects.
+
+### Rolling history information: protocol and common windows
+
+[History protocol and acceptance](docs/history_information_v1.md) fixes a one-hour
+observation delay and H0/H1/H24 BASE plans on the same 545 training / 57 validation
+windows. `prepare_history.py` builds an identity-bound package from the original
+data and power CSVs. The 48-token model/training interface is **not implemented
+yet**; the three plans in `configs/history_information_v1/` are specifications,
+not supported `train_real.py` options. No history training or test scoring has run.

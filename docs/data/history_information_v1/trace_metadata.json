@@ -1,0 +1,561 @@
+{
+  "sample_id": "zone03_20120103T000000",
+  "issue_time": "2012-01-03T00:00:00",
+  "data_fingerprint": "c8c15ca4083ef53239219bdda5897ec6d51e85871082d0989bb6829bca9a41a9",
+  "history_rows": [
+    {
+      "slot": 0,
+      "valid_time": "2012-01-02T00:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 25
+      }
+    },
+    {
+      "slot": 1,
+      "valid_time": "2012-01-02T01:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 26
+      }
+    },
+    {
+      "slot": 2,
+      "valid_time": "2012-01-02T02:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 27
+      }
+    },
+    {
+      "slot": 3,
+      "valid_time": "2012-01-02T03:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 28
+      }
+    },
+    {
+      "slot": 4,
+      "valid_time": "2012-01-02T04:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 29
+      }
+    },
+    {
+      "slot": 5,
+      "valid_time": "2012-01-02T05:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 30
+      }
+    },
+    {
+      "slot": 6,
+      "valid_time": "2012-01-02T06:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 31
+      }
+    },
+    {
+      "slot": 7,
+      "valid_time": "2012-01-02T07:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 32
+      }
+    },
+    {
+      "slot": 8,
+      "valid_time": "2012-01-02T08:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 33
+      }
+    },
+    {
+      "slot": 9,
+      "valid_time": "2012-01-02T09:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 34
+      }
+    },
+    {
+      "slot": 10,
+      "valid_time": "2012-01-02T10:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 35
+      }
+    },
+    {
+      "slot": 11,
+      "valid_time": "2012-01-02T11:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 36
+      }
+    },
+    {
+      "slot": 12,
+      "valid_time": "2012-01-02T12:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 37
+      }
+    },
+    {
+      "slot": 13,
+      "valid_time": "2012-01-02T13:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 38
+      }
+    },
+    {
+      "slot": 14,
+      "valid_time": "2012-01-02T14:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 39
+      }
+    },
+    {
+      "slot": 15,
+      "valid_time": "2012-01-02T15:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 40
+      }
+    },
+    {
+      "slot": 16,
+      "valid_time": "2012-01-02T16:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 41
+      }
+    },
+    {
+      "slot": 17,
+      "valid_time": "2012-01-02T17:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 42
+      }
+    },
+    {
+      "slot": 18,
+      "valid_time": "2012-01-02T18:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 43
+      }
+    },
+    {
+      "slot": 19,
+      "valid_time": "2012-01-02T19:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 44
+      }
+    },
+    {
+      "slot": 20,
+      "valid_time": "2012-01-02T20:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 45
+      }
+    },
+    {
+      "slot": 21,
+      "valid_time": "2012-01-02T21:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 46
+      }
+    },
+    {
+      "slot": 22,
+      "valid_time": "2012-01-02T22:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 47
+      }
+    },
+    {
+      "slot": 23,
+      "valid_time": "2012-01-02T23:00:00",
+      "source": {
+        "file": "Train_W_Zone3.csv",
+        "line": 48
+      }
+    }
+  ],
+  "future_rows": [
+    {
+      "lead_hour": 1,
+      "valid_time": "2012-01-03T01:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T01:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 50
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 50
+        }
+      }
+    },
+    {
+      "lead_hour": 2,
+      "valid_time": "2012-01-03T02:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T02:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 51
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 51
+        }
+      }
+    },
+    {
+      "lead_hour": 3,
+      "valid_time": "2012-01-03T03:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T03:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 52
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 52
+        }
+      }
+    },
+    {
+      "lead_hour": 4,
+      "valid_time": "2012-01-03T04:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T04:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 53
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 53
+        }
+      }
+    },
+    {
+      "lead_hour": 5,
+      "valid_time": "2012-01-03T05:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T05:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 54
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 54
+        }
+      }
+    },
+    {
+      "lead_hour": 6,
+      "valid_time": "2012-01-03T06:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T06:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 55
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 55
+        }
+      }
+    },
+    {
+      "lead_hour": 7,
+      "valid_time": "2012-01-03T07:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T07:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 56
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 56
+        }
+      }
+    },
+    {
+      "lead_hour": 8,
+      "valid_time": "2012-01-03T08:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T08:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 57
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 57
+        }
+      }
+    },
+    {
+      "lead_hour": 9,
+      "valid_time": "2012-01-03T09:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T09:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 58
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 58
+        }
+      }
+    },
+    {
+      "lead_hour": 10,
+      "valid_time": "2012-01-03T10:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T10:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 59
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 59
+        }
+      }
+    },
+    {
+      "lead_hour": 11,
+      "valid_time": "2012-01-03T11:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T11:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 60
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 60
+        }
+      }
+    },
+    {
+      "lead_hour": 12,
+      "valid_time": "2012-01-03T12:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T12:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 61
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 61
+        }
+      }
+    },
+    {
+      "lead_hour": 13,
+      "valid_time": "2012-01-03T13:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T13:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 62
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 62
+        }
+      }
+    },
+    {
+      "lead_hour": 14,
+      "valid_time": "2012-01-03T14:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T14:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 63
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 63
+        }
+      }
+    },
+    {
+      "lead_hour": 15,
+      "valid_time": "2012-01-03T15:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T15:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 64
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 64
+        }
+      }
+    },
+    {
+      "lead_hour": 16,
+      "valid_time": "2012-01-03T16:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T16:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 65
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 65
+        }
+      }
+    },
+    {
+      "lead_hour": 17,
+      "valid_time": "2012-01-03T17:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T17:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 66
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 66
+        }
+      }
+    },
+    {
+      "lead_hour": 18,
+      "valid_time": "2012-01-03T18:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T18:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 67
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 67
+        }
+      }
+    },
+    {
+      "lead_hour": 19,
+      "valid_time": "2012-01-03T19:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T19:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 68
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 68
+        }
+      }
+    },
+    {
+      "lead_hour": 20,
+      "valid_time": "2012-01-03T20:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T20:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 69
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 69
+        }
+      }
+    },
+    {
+      "lead_hour": 21,
+      "valid_time": "2012-01-03T21:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T21:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 70
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 70
+        }
+      }
+    },
+    {
+      "lead_hour": 22,
+      "valid_time": "2012-01-03T22:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T22:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 71
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 71
+        }
+      }
+    },
+    {
+      "lead_hour": 23,
+      "valid_time": "2012-01-03T23:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-03T23:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 72
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 72
+        }
+      }
+    },
+    {
+      "lead_hour": 24,
+      "valid_time": "2012-01-04T00:00:00",
+      "source_rows": {
+        "valid_time": "2012-01-04T00:00:00",
+        "target": {
+          "file": "Train_W_Zone3.csv",
+          "line": 73
+        },
+        "nwp": {
+          "file": "Train_W_Zone3.csv",
+          "line": 73
+        }
+      }
+    }
+  ]
+}

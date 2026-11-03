@@ -1,0 +1,9 @@
+{
+  "acceptance.json": "d467720586dfcbdc1c9f09df572b796609ef6e25e694e6d81db2aac5ad871c83",
+  "cpu_tests.log": "43da57e6dad7ec5a80ed3147a3598e7c90d10324e79b7ef7d0801c16e4400a22",
+  "data_manifest.json": "0cee62944c7bcce6ba40cb926caf587d8df5fb16734131311e06a99ae8d7cc8f",
+  "dropped_future_windows.json": "7086d6a6ce0cae15228f874fe5ee5ffa0441052ef359eadda7e36a8da5ccb3ea",
+  "dropped_history_windows.json": "0ac32651d938ce3955c8ce1cdb79e6476a5f3ee6ec38cc2949d4e79a56934902",
+  "sample_index.csv": "de05b568d0b67e43bec5801f611ad37eadb4981a5f017beb61f59bcb35a27c3c",
+  "trace_metadata.json": "5fcca6a9deb5ae29d9ea335e82dfc7a2bb4e79e7069c8f7ab9ae73e0c84063e1"
+}

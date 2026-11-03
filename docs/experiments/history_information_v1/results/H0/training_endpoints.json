@@ -1,0 +1,23 @@
+{
+  "local_full_history": "outputs/history_information_v1_results/H0/history.json",
+  "first": {
+    "loss": 1.042536698281765,
+    "grad_norm": 2.4880146980285645,
+    "did_update": true,
+    "updates": 1,
+    "skipped": 0,
+    "training_seconds": 0.33362114999908954,
+    "attempts": 1,
+    "samples_consumed_total": 32
+  },
+  "last": {
+    "loss": 0.09441423357930034,
+    "grad_norm": 1.7004300355911255,
+    "did_update": true,
+    "updates": 3000,
+    "skipped": 0,
+    "training_seconds": 0.09401416999753565,
+    "attempts": 3000,
+    "samples_consumed_total": 96000
+  }
+}

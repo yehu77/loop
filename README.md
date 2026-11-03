@@ -231,3 +231,8 @@ now support `train_real.py --history-group H0|H1|H24` with this package.
 and produces paired whole-trajectory and lead-group reports. The original group
 plans remain archived; `configs/history_information_v1/execution.json` binds the
 implemented sources. The test set remains unscored.
+
+All three seed-42 runs have completed. The [result report](docs/history_base_screening_v1.md)
+records small mean CRPS improvements versus H0 for H1/H24, concentrated at short
+leads; H24 does not outperform H1 overall and has lower interval coverage. These
+are development results on 57 common validation days, not evidence of loop benefit.

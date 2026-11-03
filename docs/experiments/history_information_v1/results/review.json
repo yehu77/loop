@@ -1,0 +1,25 @@
+{
+  "review_date": "2026-11-04",
+  "frozen_training_commit": "6c6f4b6",
+  "launch_record_commit": "337f728",
+  "completed_groups": [
+    "H0",
+    "H1",
+    "H24"
+  ],
+  "updates_each": 3000,
+  "training_seed": 42,
+  "validation_days": 57,
+  "primary_and_best_groups": 6,
+  "rand_groups": 3,
+  "daily_rows": 513,
+  "lead_daily_rows": 1539,
+  "protected_artifact_hashes_rechecked": 2581,
+  "arithmetic_checks": "daily/panel and 6/6/12 weighted lead means at 1e-10; paired differences at 1e-12",
+  "test_scoring": false,
+  "additional_training": false,
+  "tests_rerun_in_archival_review": false,
+  "local_report": "outputs/history_information_v1_results",
+  "plot_source_sha256": "5ea13e4bec13b7eec23c8482e2fdbb289e060e970e784d3f84cb746a504370b3",
+  "comparison_figure_visually_checked": true
+}

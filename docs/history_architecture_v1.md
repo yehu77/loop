@@ -124,3 +124,10 @@ independent seeds are warranted; no additional training is queued.
 
 Interface acceptance is complete. Formal queue launch and completion evidence
 will be appended without modifying the frozen sources or previous reports.
+
+The four-job queue was launched from implementation freeze `1bb6837` on the
+local RTX 2060. The first LOOP-H0 config matches every frozen training/evaluation
+field, all 57 validation IDs and saved BASE initial tensors.
+[Launch snapshot](experiments/history_architecture_v1/launch.json) records the
+process identity. This snapshot is not a completion claim; live status remains
+local and the final six-cell report is pending the four runs.

@@ -1,0 +1,34 @@
+{
+  "implementation_commit": "1bb6837cad069a0a72ff50669d2fbed23549ac0a",
+  "snapshot": {
+    "status": "running",
+    "pid": 536973,
+    "started_unix": 1793799754.4403238,
+    "completed": [],
+    "active": {
+      "variant": "loop",
+      "history_group": "H0",
+      "pid": 537083,
+      "output": "outputs/history_architecture_v1_s42_loop_h0"
+    },
+    "plan_sha256": "1fbcc4ae642f4d05a368f2718d8e394c145eef853896da12e3f848a9c151c294",
+    "reused_base": [
+      "H0",
+      "H24"
+    ]
+  },
+  "config_verified": true,
+  "initial_loop_h0_matches_saved_base": true,
+  "training_source_sha256": {
+    "model.py": "10580db37cbfca3024a1b12d08413383052a0af14a63b9f77806ecbc54fe57d2",
+    "diffusion.py": "242cf4c65bfe46c579a080d4e39aedd4e6f38bee634c18fd7e1180b0e59a012f",
+    "train.py": "e0978e26e03e4913325dc7499c2626ed099dc828163359236d06ff7d7161dc40",
+    "train_real.py": "d5486eee1573c44285eea08cc804082608742846be990400506f361ea89ef4fe",
+    "data.py": "70b53a721ecb59b93e2450a241b712530a1813e343f1a4b0d88b593d88dc3557",
+    "history_data.py": "3748a072acc694dcca10cfd0ae9becd623986337a1de3b686a6b4b3b7f21190b",
+    "evaluate.py": "f3160c970c65fb4978e75fb83ad1b906446090eb753226132994ff1ef6e3da30",
+    "metrics.py": "254c106f7d007eb9859ddfd59b6ef1a581d49ccbccaf4b449e6fb296c6dbad26"
+  },
+  "test_scoring": false,
+  "note": "Launch snapshot only. Live status is local outputs/history_architecture_v1_queue.json; no completed formal results at this snapshot."
+}

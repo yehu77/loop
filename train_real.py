@@ -194,6 +194,8 @@ def run(args):
         shutil.copyfile(previous_best, output / "checkpoint_best.pt")
     rand_report = write_evaluation(output / "rand", *rand_artifacts(package, run_config))
     validation_history, training_history = [], []
+    if history_group is not None and trainer.device.type == "cuda":
+        torch.cuda.reset_peak_memory_stats(trainer.device)
 
     def metadata():
         return {"data_kind": "real", "data_fingerprint": manifest["data_fingerprint"],
@@ -268,6 +270,10 @@ def run(args):
             "timing_scope": "synchronized train_update only; validation, checkpoint IO excluded",
             "primary_update": trainer.updates if trainer.ema_initialized else None,
             "auxiliary_best_update": best_update,
+            **({"cuda_peak_allocated_bytes": torch.cuda.max_memory_allocated(trainer.device),
+                "cuda_peak_reserved_bytes": torch.cuda.max_memory_reserved(trainer.device),
+                "cuda_peak_scope": "this segment: training plus raw/EMA validation, before best reload"}
+               if history_group is not None and trainer.device.type == "cuda" else {}),
         }, indent=2) + "\n")
     if best_score is None:
         print("Run saved; EMA not yet eligible for best selection", flush=True)

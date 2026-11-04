@@ -1,0 +1,14 @@
+[
+  {
+    "group": "H0",
+    "audit_passed": true,
+    "primary_and_best_rescoring_exact": true,
+    "checkpoint_sha256": "60cd2099c864a4946edada2d9f940949d71c3c4311856579632791cdf2422140"
+  },
+  {
+    "group": "H24",
+    "audit_passed": true,
+    "primary_and_best_rescoring_exact": true,
+    "checkpoint_sha256": "dfd9debbc58617a34e16ec0fef9e924dc40893e377d28e75a204522b3508d716"
+  }
+]

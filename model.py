@@ -28,8 +28,9 @@ class ModelConfig:
         if self.attention_scope not in ("full", "diagonal"):
             raise ValueError("attention_scope must be full or diagonal")
         if self.history_group is not None and (self.history_group not in ("H0", "H1", "H24")
-                or self.variant != "base" or self.attention_scope != "full" or self.horizon != 24):
-            raise ValueError("History screening requires H0/H1/H24, BASE, full attention and H=24")
+                or self.attention_scope != "full" or self.horizon != 24
+                or (self.variant != "base" and self.rounds != 2)):
+            raise ValueError("History requires H0/H1/H24, full attention, H=24 and fixed R2 for LOOP/UNTIED")
         dimensions = (self.horizon, self.nwp_features, self.hidden_dim, self.heads,
                       self.ffn_dim, self.blocks_per_core, self.rounds)
         if any(not isinstance(value, int) or value < 1 for value in dimensions):
@@ -207,8 +208,10 @@ class ConditionalLoopDiT(nn.Module):
             raise ValueError("rounds must be a positive integer")
         if self.config.variant == "untied" and rounds != len(self.cores):
             raise ValueError("untied model must execute all its independent cores")
-        if history_enabled and (rounds != 1 or return_stages):
-            raise ValueError("History screening is a single BASE Core with final-only readout")
+        if history_enabled and return_stages:
+            raise ValueError("History interface supports final-only readout")
+        if history_enabled and rounds != default_rounds:
+            raise ValueError("History interface uses the fixed architecture execution count")
         evidence = self.input_projection(torch.cat((x_t, future), dim=-1))
         evidence = evidence + self.position_encoding
         if history_enabled:
@@ -230,6 +233,8 @@ class ConditionalLoopDiT(nn.Module):
 
     def forward_stages(self, x_t, nwp, calendar, t):
         """Two shared-head readouts from one uninterrupted two-Core pass."""
+        if self.config.history_group is not None:
+            raise ValueError("History interface supports final-only readout")
         if self.config.variant not in ("loop", "untied") or self.config.rounds != 2:
             raise ValueError("Intermediate supervision requires two Core executions")
         condition = self.encode_condition(nwp, calendar)

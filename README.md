@@ -236,3 +236,13 @@ All three seed-42 runs have completed. The [result report](docs/history_base_scr
 records small mean CRPS improvements versus H0 for H1/H24, concentrated at short
 leads; H24 does not outperform H1 overall and has lower interval coverage. These
 are development results on 57 common validation days, not evidence of loop benefit.
+
+### History × architecture interaction
+
+[The bounded four-run protocol](docs/history_architecture_v1.md) extends the
+history interface to fixed two-round LOOP and UNTIED, retaining final-only
+supervision. BASE-H0/H24 artifacts are reused read-only. Run
+`python -m diagnostics.run_history_architecture` only with the frozen configuration
+and fresh output paths; it executes four jobs, then builds six-cell and history
+interaction reports. The interface has passed CPU/CUDA acceptance; formal
+results are tracked separately in the protocol report.

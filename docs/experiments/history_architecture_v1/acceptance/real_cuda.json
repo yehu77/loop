@@ -1,0 +1,78 @@
+{
+  "device": "cuda",
+  "torch": "2.10.0+cu128",
+  "data_sha256": "ac82d414a9dbf73d949c271af37d50e682ef3f58b23f0aad45f73a8741d431a9",
+  "records": [
+    {
+      "variant": "loop",
+      "history_group": "H0",
+      "continuous_updates": 8,
+      "segments": [
+        6,
+        2
+      ],
+      "raw_ema_and_rng_exact": true,
+      "wrong_source_rejected": true,
+      "scenario_shape": [
+        2,
+        4,
+        24,
+        1
+      ]
+    },
+    {
+      "variant": "untied",
+      "history_group": "H0",
+      "continuous_updates": 8,
+      "segments": [
+        6,
+        2
+      ],
+      "raw_ema_and_rng_exact": true,
+      "wrong_source_rejected": true,
+      "scenario_shape": [
+        2,
+        4,
+        24,
+        1
+      ]
+    },
+    {
+      "variant": "loop",
+      "history_group": "H24",
+      "continuous_updates": 8,
+      "segments": [
+        6,
+        2
+      ],
+      "raw_ema_and_rng_exact": true,
+      "wrong_source_rejected": true,
+      "scenario_shape": [
+        2,
+        4,
+        24,
+        1
+      ]
+    },
+    {
+      "variant": "untied",
+      "history_group": "H24",
+      "continuous_updates": 8,
+      "segments": [
+        6,
+        2
+      ],
+      "raw_ema_and_rng_exact": true,
+      "wrong_source_rejected": true,
+      "scenario_shape": [
+        2,
+        4,
+        24,
+        1
+      ]
+    }
+  ],
+  "shared_initialization_matches_saved_base": true,
+  "matched_data_and_noise": true,
+  "formal_experiment": false
+}

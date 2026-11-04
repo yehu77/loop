@@ -1,0 +1,10 @@
+test_cuda_four_combinations_structure_isolation_sampling_and_resume (test_history_architecture.HistoryArchitectureTests) ... ok
+test_four_combinations_resume_and_wrong_identity_rejection (test_history_architecture.HistoryArchitectureTests) ... ok
+test_history_intermediate_supervision_and_variable_depth_stay_disabled (test_history_architecture.HistoryArchitectureTests) ... ok
+test_matched_common_parameters_and_independent_extra_core (test_history_architecture.HistoryArchitectureTests) ... ok
+test_two_core_execution_masks_and_active_condition_paths (test_history_architecture.HistoryArchitectureTests) ... ok
+
+----------------------------------------------------------------------
+Ran 5 tests in 11.305s
+
+OK

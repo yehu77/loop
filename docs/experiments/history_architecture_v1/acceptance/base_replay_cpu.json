@@ -1,0 +1,19 @@
+{
+  "reference": "699980c",
+  "device": "cpu",
+  "torch": "2.10.0+cu128",
+  "records": [
+    {
+      "group": "H0",
+      "updates": 5,
+      "initial_raw_ema_gradients_noise_rng_exact": true,
+      "fixed_noise_sampling_exact": true
+    },
+    {
+      "group": "H24",
+      "updates": 5,
+      "initial_raw_ema_gradients_noise_rng_exact": true,
+      "fixed_noise_sampling_exact": true
+    }
+  ]
+}

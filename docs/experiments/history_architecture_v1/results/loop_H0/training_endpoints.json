@@ -1,0 +1,23 @@
+{
+  "records": 3000,
+  "first": {
+    "loss": 1.042536698281765,
+    "grad_norm": 2.4880146980285645,
+    "did_update": true,
+    "updates": 1,
+    "skipped": 0,
+    "training_seconds": 0.40067951497621834,
+    "attempts": 1,
+    "samples_consumed_total": 32
+  },
+  "last": {
+    "loss": 0.09344852523645386,
+    "grad_norm": 1.578468918800354,
+    "did_update": true,
+    "updates": 3000,
+    "skipped": 0,
+    "training_seconds": 0.14691492400015704,
+    "attempts": 3000,
+    "samples_consumed_total": 96000
+  }
+}

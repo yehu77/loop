@@ -246,3 +246,9 @@ supervision. BASE-H0/H24 artifacts are reused read-only. Run
 and fresh output paths; it executes four jobs, then builds six-cell and history
 interaction reports. The interface has passed CPU/CUDA acceptance; formal
 results are tracked separately in the protocol report.
+
+All four history × architecture runs are complete and independently re-scored.
+The [six-cell result report](docs/history_architecture_v1.md#completed-experiment-and-review-2026-11-10)
+finds no clear shared-loop quality–cost advantage: LOOP-H24 remains worse in
+CRPS than BASE-H24 and UNTIED-H24. The bounded experiment is archived; no
+additional runs or test-set scoring were launched.

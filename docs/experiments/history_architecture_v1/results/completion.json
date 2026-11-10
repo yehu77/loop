@@ -1,0 +1,33 @@
+{
+  "status": "report_complete_pending_review",
+  "pid": 536973,
+  "started_unix": 1793799754.4403238,
+  "completed": [
+    {
+      "variant": "loop",
+      "history_group": "H0"
+    },
+    {
+      "variant": "untied",
+      "history_group": "H0"
+    },
+    {
+      "variant": "loop",
+      "history_group": "H24"
+    },
+    {
+      "variant": "untied",
+      "history_group": "H24"
+    }
+  ],
+  "active": null,
+  "plan_sha256": "1fbcc4ae642f4d05a368f2718d8e394c145eef853896da12e3f848a9c151c294",
+  "reused_base": [
+    "H0",
+    "H24"
+  ],
+  "training_ended_unix": 1793811109.4108503,
+  "ended_unix": 1793811120.8342645,
+  "report_output": "outputs/history_architecture_v1_results",
+  "report_rows": 12
+}

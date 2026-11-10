@@ -1,0 +1,221 @@
+[
+  {
+    "updates": 0,
+    "ema_initialized": false,
+    "ema_num_averaged_updates": 0,
+    "raw": {
+      "crps": 0.25122959192230715,
+      "energy_score": 1.1472064254553185,
+      "variogram_score": 33.96475414222894,
+      "boundary_fraction": 0.9948318302631378,
+      "sampling_seconds": 61.145248102999176
+    }
+  },
+  {
+    "updates": 250,
+    "ema_initialized": false,
+    "ema_num_averaged_updates": 0,
+    "raw": {
+      "crps": 0.11300422398290476,
+      "energy_score": 0.6798954074610234,
+      "variogram_score": 22.104910639118533,
+      "boundary_fraction": 0.09769736416637897,
+      "sampling_seconds": 57.28798116199323
+    }
+  },
+  {
+    "updates": 500,
+    "ema_initialized": false,
+    "ema_num_averaged_updates": 0,
+    "raw": {
+      "crps": 0.12581910891915485,
+      "energy_score": 0.7337958055315281,
+      "variogram_score": 19.43611877441071,
+      "boundary_fraction": 0.073764618486166,
+      "sampling_seconds": 56.873982017001254
+    }
+  },
+  {
+    "updates": 750,
+    "ema_initialized": false,
+    "ema_num_averaged_updates": 0,
+    "raw": {
+      "crps": 0.1131949350018995,
+      "energy_score": 0.6699387698795732,
+      "variogram_score": 18.425698775675542,
+      "boundary_fraction": 0.06996344774961472,
+      "sampling_seconds": 57.086243045996525
+    }
+  },
+  {
+    "updates": 1000,
+    "ema_initialized": true,
+    "ema_num_averaged_updates": 0,
+    "raw": {
+      "crps": 0.08084080507878812,
+      "energy_score": 0.49511793219274897,
+      "variogram_score": 16.119449532577153,
+      "boundary_fraction": 0.058691518381237984,
+      "sampling_seconds": 57.40497118300118
+    },
+    "ema": {
+      "crps": 0.08084080507878812,
+      "energy_score": 0.49511793219274897,
+      "variogram_score": 16.119449532577153,
+      "boundary_fraction": 0.058691518381237984,
+      "sampling_seconds": 57.18507944799785
+    }
+  },
+  {
+    "updates": 1250,
+    "ema_initialized": true,
+    "ema_num_averaged_updates": 250,
+    "raw": {
+      "crps": 0.08046585643551601,
+      "energy_score": 0.4915200557460304,
+      "variogram_score": 15.318318915398365,
+      "boundary_fraction": 0.0454824548214674,
+      "sampling_seconds": 58.46271348700975
+    },
+    "ema": {
+      "crps": 0.08035741057477949,
+      "energy_score": 0.4920223918997003,
+      "variogram_score": 15.947592882265731,
+      "boundary_fraction": 0.056769004091620445,
+      "sampling_seconds": 58.76020001398865
+    }
+  },
+  {
+    "updates": 1500,
+    "ema_initialized": true,
+    "ema_num_averaged_updates": 500,
+    "raw": {
+      "crps": 0.10559257229564556,
+      "energy_score": 0.6259416037049967,
+      "variogram_score": 17.03545120071574,
+      "boundary_fraction": 0.025964911561459303,
+      "sampling_seconds": 57.361181519998354
+    },
+    "ema": {
+      "crps": 0.07980369997664691,
+      "energy_score": 0.4888504220693734,
+      "variogram_score": 15.755023988111505,
+      "boundary_fraction": 0.053757308050990105,
+      "sampling_seconds": 57.05543912900612
+    }
+  },
+  {
+    "updates": 1750,
+    "ema_initialized": true,
+    "ema_num_averaged_updates": 750,
+    "raw": {
+      "crps": 0.08564307142506719,
+      "energy_score": 0.5194031412585103,
+      "variogram_score": 14.954963115627537,
+      "boundary_fraction": 0.05084064230322838,
+      "sampling_seconds": 57.28133210999658
+    },
+    "ema": {
+      "crps": 0.07904628128886938,
+      "energy_score": 0.4846563030558699,
+      "variogram_score": 15.544289362340159,
+      "boundary_fraction": 0.05130116641521454,
+      "sampling_seconds": 57.15751836699201
+    }
+  },
+  {
+    "updates": 2000,
+    "ema_initialized": true,
+    "ema_num_averaged_updates": 1000,
+    "raw": {
+      "crps": 0.08338400970939647,
+      "energy_score": 0.5044707877447057,
+      "variogram_score": 15.614969563312473,
+      "boundary_fraction": 0.03209795244038105,
+      "sampling_seconds": 57.71482636099972
+    },
+    "ema": {
+      "crps": 0.07805296493365545,
+      "energy_score": 0.47927648571288917,
+      "variogram_score": 15.27342494259635,
+      "boundary_fraction": 0.050438594073057175,
+      "sampling_seconds": 57.67139617999783
+    }
+  },
+  {
+    "updates": 2250,
+    "ema_initialized": true,
+    "ema_num_averaged_updates": 1250,
+    "raw": {
+      "crps": 0.09220765652489533,
+      "energy_score": 0.5567047003305642,
+      "variogram_score": 15.958897373753073,
+      "boundary_fraction": 0.06040935544297099,
+      "sampling_seconds": 57.440095508995
+    },
+    "ema": {
+      "crps": 0.07712033397553035,
+      "energy_score": 0.47434701830739034,
+      "variogram_score": 15.052198482484847,
+      "boundary_fraction": 0.04956871084868908,
+      "sampling_seconds": 57.54578952000884
+    }
+  },
+  {
+    "updates": 2500,
+    "ema_initialized": true,
+    "ema_num_averaged_updates": 1500,
+    "raw": {
+      "crps": 0.07835690882496445,
+      "energy_score": 0.4819369410066564,
+      "variogram_score": 15.411019002696497,
+      "boundary_fraction": 0.027061403263360262,
+      "sampling_seconds": 58.77368054300314
+    },
+    "ema": {
+      "crps": 0.0763000480317079,
+      "energy_score": 0.4700287034370219,
+      "variogram_score": 14.859810240550273,
+      "boundary_fraction": 0.04800438694655895,
+      "sampling_seconds": 57.28130729800614
+    }
+  },
+  {
+    "updates": 2750,
+    "ema_initialized": true,
+    "ema_num_averaged_updates": 1750,
+    "raw": {
+      "crps": 0.09401216517218722,
+      "energy_score": 0.5601796027322343,
+      "variogram_score": 16.59028499469453,
+      "boundary_fraction": 0.01761695882305503,
+      "sampling_seconds": 57.735255360996234
+    },
+    "ema": {
+      "crps": 0.07550874420590208,
+      "energy_score": 0.4657916650516708,
+      "variogram_score": 14.676506142603941,
+      "boundary_fraction": 0.04606725089251995,
+      "sampling_seconds": 57.7352867419977
+    }
+  },
+  {
+    "updates": 3000,
+    "ema_initialized": true,
+    "ema_num_averaged_updates": 2000,
+    "raw": {
+      "crps": 0.080807079006562,
+      "energy_score": 0.49732070242320137,
+      "variogram_score": 14.985485117375344,
+      "boundary_fraction": 0.06196637451648712,
+      "sampling_seconds": 58.0492295580043
+    },
+    "ema": {
+      "crps": 0.07491883920396145,
+      "energy_score": 0.4627513444570487,
+      "variogram_score": 14.51620177282319,
+      "boundary_fraction": 0.04468567110598087,
+      "sampling_seconds": 57.96649214999343
+    }
+  }
+]

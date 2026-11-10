@@ -1,0 +1,86 @@
+{
+  "independent_rescore_matches": true,
+  "frozen_sources_match": true,
+  "protected_files": 3169,
+  "new_training_performed": false,
+  "test_scoring": false,
+  "daily_crps_lower_counts": [
+    {
+      "kind": "same_input",
+      "comparison": "loop-base",
+      "condition": "H0",
+      "lower": 23,
+      "days": 57
+    },
+    {
+      "kind": "same_input",
+      "comparison": "untied-base",
+      "condition": "H0",
+      "lower": 31,
+      "days": 57
+    },
+    {
+      "kind": "same_input",
+      "comparison": "loop-untied",
+      "condition": "H0",
+      "lower": 19,
+      "days": 57
+    },
+    {
+      "kind": "same_input",
+      "comparison": "loop-base",
+      "condition": "H24",
+      "lower": 25,
+      "days": 57
+    },
+    {
+      "kind": "same_input",
+      "comparison": "untied-base",
+      "condition": "H24",
+      "lower": 26,
+      "days": 57
+    },
+    {
+      "kind": "same_input",
+      "comparison": "loop-untied",
+      "condition": "H24",
+      "lower": 28,
+      "days": 57
+    },
+    {
+      "kind": "history_effect",
+      "comparison": "base",
+      "condition": "H24-H0",
+      "lower": 31,
+      "days": 57
+    },
+    {
+      "kind": "history_effect",
+      "comparison": "loop",
+      "condition": "H24-H0",
+      "lower": 30,
+      "days": 57
+    },
+    {
+      "kind": "history_effect",
+      "comparison": "untied",
+      "condition": "H24-H0",
+      "lower": 24,
+      "days": 57
+    },
+    {
+      "kind": "interaction",
+      "comparison": "loop-base",
+      "condition": "history_effect_difference",
+      "lower": 28,
+      "days": 57
+    },
+    {
+      "kind": "interaction",
+      "comparison": "loop-untied",
+      "condition": "history_effect_difference",
+      "lower": 32,
+      "days": 57
+    }
+  ]
+}

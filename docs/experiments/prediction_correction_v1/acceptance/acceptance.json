@@ -1,0 +1,14 @@
+{
+  "device": "cuda",
+  "torch": "2.10.0+cu128",
+  "normal_resume_6_plus_2_equals_8_all_state": true,
+  "base_parameters_buffers_unchanged": true,
+  "k0_direct_exact": true,
+  "k0_archived_cuda_exact": true,
+  "replay_days": 57,
+  "full_initial_noise_sha256": "14b6848bbabdb714271628c54ef167b65cb489eefb02bd4e23de49a62ef98070",
+  "temporary_ema_start": 3,
+  "base_sha256": "60cd2099c864a4946edada2d9f940949d71c3c4311856579632791cdf2422140",
+  "formal_training": false,
+  "test_scoring": false
+}

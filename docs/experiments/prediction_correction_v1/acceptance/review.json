@@ -1,0 +1,35 @@
+{
+  "python": "3.10.20",
+  "torch": "2.10.0+cu128",
+  "device": "RTX 2060",
+  "cpu": {
+    "total": 157,
+    "passed": 149,
+    "skipped": 8
+  },
+  "cuda_specialized": {
+    "total": 7,
+    "passed": 7,
+    "skipped": 0
+  },
+  "real_cuda_acceptance": "full-panel K0 bitwise replay and all-state 6+2 resume passed",
+  "small_panel_attempts": "2-day and 4-day archived bitwise replay failed; wrapper/direct matched; full encoder and sampling batch shapes resolve discrepancy",
+  "config_sha256": "43a7d6a845c7e59129c7951194cc32a273ac17afb970fd47c699a0c77d379ed4",
+  "source_sha256": {
+    "correction.py": "a89b025359930ec7e5e7d41c14132e2aa0fec41ddea60c22a8fef400d22fd75f",
+    "train_correction.py": "53f206b2a7a6f43757197227efd7e9a3aabfd79bffed3ad85dc6ab9bd15a146d",
+    "diagnostics/check_prediction_correction.py": "ae269adaa5ff0541dd04094c1104dd5b0da20885602c0ac7ade249588f28887d",
+    "diagnostics/evaluate_prediction_correction.py": "fa75a7f1973e69044147919c1c8872edcf2325339779d2601f1cb6a6b8826d77",
+    "tests/test_prediction_correction.py": "340d8d859397c3279a08614abc6a2d5f42627d42c706b675bc7be96c2a7c778d",
+    "model.py": "10580db37cbfca3024a1b12d08413383052a0af14a63b9f77806ecbc54fe57d2",
+    "diffusion.py": "242cf4c65bfe46c579a080d4e39aedd4e6f38bee634c18fd7e1180b0e59a012f",
+    "train.py": "e0978e26e03e4913325dc7499c2626ed099dc828163359236d06ff7d7161dc40",
+    "data.py": "70b53a721ecb59b93e2450a241b712530a1813e343f1a4b0d88b593d88dc3557",
+    "history_data.py": "3748a072acc694dcca10cfd0ae9becd623986337a1de3b686a6b4b3b7f21190b",
+    "evaluate.py": "f3160c970c65fb4978e75fb83ad1b906446090eb753226132994ff1ef6e3da30",
+    "metrics.py": "254c106f7d007eb9859ddfd59b6ef1a581d49ccbccaf4b449e6fb296c6dbad26",
+    "diagnostics/temporal_dependence.py": "f2f71c51dc6ec66bc33fcd2ca51d40a2cb14cec48587dd511d460a6a9fe76968"
+  },
+  "formal_training_started": false,
+  "test_scoring": false
+}

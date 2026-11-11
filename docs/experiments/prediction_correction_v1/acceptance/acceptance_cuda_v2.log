@@ -1,0 +1,12 @@
+Traceback (most recent call last):
+  File "/home/u86177/miniconda3/envs/code_rl_clean/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+    return _run_code(code, main_globals, None,
+  File "/home/u86177/miniconda3/envs/code_rl_clean/lib/python3.10/runpy.py", line 86, in _run_code
+    exec(code, run_globals)
+  File "/home/u86177/work/loop/diagnostics/check_prediction_correction.py", line 69, in <module>
+    run(p.parse_args())
+  File "/home/u86177/work/loop/diagnostics/check_prediction_correction.py", line 50, in run
+    require(torch.equal(replay.cpu(),old),'K0 CUDA archived scenario replay mismatch')
+  File "/home/u86177/work/loop/correction.py", line 15, in require
+    raise ValueError(message)
+ValueError: K0 CUDA archived scenario replay mismatch

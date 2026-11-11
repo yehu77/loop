@@ -1,0 +1,12 @@
+test_boundary_timesteps_gradient_and_learning_freeze (tests.test_prediction_correction.CorrectionTests) ... ok
+test_cache_direct_chunk_and_reorder (tests.test_prediction_correction.CorrectionTests) ... ok
+test_cuda_resume (tests.test_prediction_correction.CorrectionTests) ... ok
+test_feedback_formula_and_no_internal_clipping (tests.test_prediction_correction.CorrectionTests) ... ok
+test_inference_loader_identity_and_json_tuple_compatibility (tests.test_prediction_correction.CorrectionTests) ... ok
+test_resume_and_identity (tests.test_prediction_correction.CorrectionTests) ... ok
+test_zero_correction_and_k0_sampling (tests.test_prediction_correction.CorrectionTests) ... ok
+
+----------------------------------------------------------------------
+Ran 7 tests in 6.050s
+
+OK

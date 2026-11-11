@@ -252,3 +252,11 @@ The [six-cell result report](docs/history_architecture_v1.md#completed-experimen
 finds no clear shared-loop quality–cost advantage: LOOP-H24 remains worse in
 CRPS than BASE-H24 and UNTIED-H24. The bounded experiment is archived; no
 additional runs or test-set scoring were launched.
+
+### Prediction-space correction
+
+[The correction protocol](docs/prediction_correction_v1.md) freezes BASE-H0 EMA,
+trains one independent C with a single correction per denoising call, and evaluates
+the same final C EMA at K0/K1/K2. `train_correction.py` owns only C's optimizer,
+EMA and clock. CPU/CUDA acceptance and full-panel K0 replay passed; the new
+experiment is limited to one training run and three fixed evaluations.

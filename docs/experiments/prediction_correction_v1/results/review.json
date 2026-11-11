@@ -1,0 +1,38 @@
+{
+  "independent_saved_scenario_and_per_day_rescore_exact": true,
+  "independent_transformed_scores_exact": true,
+  "normal_updates": 3000,
+  "attempts": 3000,
+  "skipped": 0,
+  "ema_copy_1000_exact": true,
+  "ema_averages": 2000,
+  "base_sha256": "60cd2099c864a4946edada2d9f940949d71c3c4311856579632791cdf2422140",
+  "C_checkpoint_sha256": "d77d2c3e4f9a386f66a81a0c19d3e6b2b319200e6f535df88a0ff42c8d382156",
+  "config_sha256": "43a7d6a845c7e59129c7951194cc32a273ac17afb970fd47c699a0c77d379ed4",
+  "protected_history_files": 3169,
+  "development_gate_passed": false,
+  "paired_daily_counts": [
+    {
+      "comparison": "K1-K0",
+      "crps_lower_days": 24,
+      "es_lower_days": 25,
+      "days": 57
+    },
+    {
+      "comparison": "K2-K0",
+      "crps_lower_days": 24,
+      "es_lower_days": 25,
+      "days": 57
+    },
+    {
+      "comparison": "K2-K1",
+      "crps_lower_days": 24,
+      "es_lower_days": 25,
+      "days": 57
+    }
+  ],
+  "new_training_runs": 1,
+  "test_scoring": false,
+  "new_gpu_training_during_review": false,
+  "cost_matching_performed": false
+}

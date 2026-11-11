@@ -1,0 +1,23 @@
+{
+  "config.json": "43a7d6a845c7e59129c7951194cc32a273ac17afb970fd47c699a0c77d379ed4",
+  "scores.csv": "f9a1062cc9f758db72eec80b67c8e81f3f3c6d3599e96a4d7870d0c10b20f9c1",
+  "paired_daily.csv": "81643dd12f8b062d184278c96b144363401839651c9328151fd5754447ce8620",
+  "summary.json": "1d84c3cbc7e4957d03f393649d76fced07363ee95ff2b5f5441a05d4e9175203",
+  "transformed_scores_per_day.pt": "0363d2c96586f4318dac7e69903566ee36dba5be06a716b4fa8980cb2e30c0ba",
+  "scores_per_day.csv": "6b34e0b689ea3b2c8b6bef9fa5a35527deba0b3a3d317a163e8cfc43f1c925f3",
+  "K2/scores_per_window.pt": "2c14f7adba856c85c480cefbf6e742a7c0af568bc4cd49e3a1dddbca901c38d3",
+  "K2/scenarios.pt": "7b1cacc52bcc52cbb1b135b0f1c58bac90e793ddfa27f68da132b84d8adb95ac",
+  "K2/sample_metadata.json": "e0d1f34eac420169578719ff3172fc0c9b4ba465cb63b9914e534f42619366be",
+  "K2/metrics.json": "4dca8e74a566b66cfe29d8614b0bfed5facd594ea6d8fa4feacdaebac661d73b",
+  "K2/targets.pt": "5e6c9025825717b51ba11d2effa3c0ee3964ae06d18cc2ae5abdfc679839de60",
+  "K0/scores_per_window.pt": "03426e12b924efc27874f21b2f1c9c2717523a323523a04782a56b3a34a14d5e",
+  "K0/scenarios.pt": "1620ff11bf9c51a522552a07e7deb3b2fde774bf1e0286349fad311261a6a19b",
+  "K0/sample_metadata.json": "e0d1f34eac420169578719ff3172fc0c9b4ba465cb63b9914e534f42619366be",
+  "K0/metrics.json": "663f27d15bff3636a7a3287bc199f6813afc8d1f2a8b4cc5a173e139e8ae24bf",
+  "K0/targets.pt": "5e6c9025825717b51ba11d2effa3c0ee3964ae06d18cc2ae5abdfc679839de60",
+  "K1/scores_per_window.pt": "2af644e0f2c0afc94d7ebd05d0207dbd1063c9c5d247f8877ddde1fa0686eeff",
+  "K1/scenarios.pt": "939cb61366ddb4aefbbc5e0c1481e1539774ca107c9f13fb0370df09e357eb09",
+  "K1/sample_metadata.json": "e0d1f34eac420169578719ff3172fc0c9b4ba465cb63b9914e534f42619366be",
+  "K1/metrics.json": "5ec2ba5335009ed8378f8390ded501c4a194b862852e6666054e09a2165d3084",
+  "K1/targets.pt": "5e6c9025825717b51ba11d2effa3c0ee3964ae06d18cc2ae5abdfc679839de60"
+}

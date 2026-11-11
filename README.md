@@ -260,3 +260,9 @@ trains one independent C with a single correction per denoising call, and evalua
 the same final C EMA at K0/K1/K2. `train_correction.py` owns only C's optimizer,
 EMA and clock. CPU/CUDA acceptance and full-panel K0 replay passed; the new
 experiment is limited to one training run and three fixed evaluations.
+
+The correction run and K0/K1/K2 evaluation are now complete. Independent disk
+re-scoring and full-panel K0 replay passed. Neither K1 nor K2 improved the primary
+scores; K2 cost about 2.37× K0 in the observed sampling runs. The predeclared
+development gate failed, so this prototype is archived without extra training
+or cost-matched sampling. See the [full result table](docs/prediction_correction_v1.md#completed-fixed-endpoint-experiment).

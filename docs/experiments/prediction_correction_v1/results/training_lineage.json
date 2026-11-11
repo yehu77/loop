@@ -1,0 +1,12 @@
+{
+  "commit": "cd814f601605eeff04be8a82f12d2d8be6c29bdd",
+  "resume_from": null,
+  "resume_sha256": null,
+  "resumed_updates": 0,
+  "started_unix": 1794361721.3879201,
+  "completed": true,
+  "ended_unix": 1794362092.5323775,
+  "successful_updates": 3000,
+  "checkpoint_sha256": "d77d2c3e4f9a386f66a81a0c19d3e6b2b319200e6f535df88a0ff42c8d382156",
+  "frozen_base_unchanged": true
+}

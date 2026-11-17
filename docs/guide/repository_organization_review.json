@@ -1,0 +1,49 @@
+{
+  "reviewed_base": "e8e7339",
+  "date": "2026-11-18",
+  "scope": "navigation, contributor docs and convenience commands; no experiment implementation migration",
+  "existing_tracked_changes": [
+    "README.md"
+  ],
+  "unchanged_historical_protected_files": 3169,
+  "unchanged_latest_frozen_sources": 13,
+  "unchanged_correction_archive_files": 20,
+  "agents_md_unchanged": true,
+  "new_document_local_links_checked": 124,
+  "catalog_entries": 10,
+  "unknown_id_rejected": true,
+  "catalog_generation_exact": true,
+  "new_formal_training": false,
+  "new_gpu_tests": false,
+  "test_scoring": false,
+  "python": "3.10.20",
+  "torch": "2.10.0+cu128",
+  "cpu_tests": {
+    "total": 157,
+    "passed": 149,
+    "skipped": 8
+  },
+  "cpu_smoke": {
+    "variants": [
+      "base",
+      "loop",
+      "untied"
+    ],
+    "updates_each": 3,
+    "scenarios": 4,
+    "sampling_steps": 4,
+    "passed": true
+  },
+  "readme_lines_before": 268,
+  "readme_lines_after": 66,
+  "validation_commands": [
+    "make check PYTHON=python3",
+    "make experiment ID=prediction-correction PYTHON=python3",
+    "make test PYTHON=/home/u86177/miniconda3/envs/code_rl_clean/bin/python",
+    "make smoke PYTHON=/home/u86177/miniconda3/envs/code_rl_clean/bin/python"
+  ],
+  "local_logs": {
+    "outputs/maintenance/organization_20261118/tests.log": "6c29e235a9d8e7f5c9fa123bc0da7eef237840227055a77263d695542ad9f253",
+    "outputs/maintenance/organization_20261118/smoke.log": "cdf35afe906b0366480543ee7b8f1d9f9a3054f7241ab2ec9b8cad992a9c70af"
+  }
+}

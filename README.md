@@ -1,268 +1,66 @@
 # 单风场条件循环 DiT
 
-研究目标是在每次扩散去噪调用内部复用 Transformer 核心，生成单风场完整未来功率轨迹。已实现 v1 三个对照模型、扩散训练、EMA、断点恢复与 DDIM 采样；已完成合成检查、固定 Zone 3 的真实数据连接验收，以及统一 v2 配方下 seed 42 的三模型筛查，跨种子验证仍待开展。
+研究项目：根据 NWP 和日历生成单风场未来 24 小时的完整功率轨迹，比较浅层、共享循环和非共享加深的扩散去噪器。
 
-## 真实数据准备与 BASE-2 接口检查
+**当前状态：已有实验均已归档，没有自动追加训练。** 三种子架构对照、R01–R04、历史输入对照和预测校正器均已完成。现有证据没有建立明确、稳定的共享循环质量—成本优势；测试集保持未评分。具体判断以每个实验的冻结协议和报告为准。
 
-配置见 `configs/data_v1.json`，完整协议和来源边界见 [data_protocol.md](docs/data_protocol.md)。按“训练候选区间完整率 100%、最小编号”规则选择 Zone 3。按发布时间划分后，训练／验证／测试分别保留 547／71／90 个完整 24 小时窗口，NWP 标准化只拟合训练集。
+## 从这里开始
 
-```bash
-conda activate code_rl_clean
-python prepare_data.py --source /home/u86177/work/multi_scaleCADM/Data \
-  --output outputs/data_v1_new
-python train_real.py --data outputs/data_v1_new/data.pt --device cuda \
-  --updates 20 --validation-limit 4 --scenarios 16 --sampling-steps 10 \
-  --output outputs/real_base_check
-```
+| 你要做什么 | 入口 |
+|---|---|
+| 查看实验进度、结论、配置与结果 | [实验目录](docs/experiments/README.md) |
+| 跑通代码、检查环境和测试 | [快速上手](docs/guide/quickstart.md) |
+| 找到模型、数据、训练与评价代码 | [代码地图](docs/guide/code-map.md) |
+| 重评场景、理解断点和冻结版本 | [复现说明](docs/guide/reproduction.md) |
+| 查找全部协议与历史验收 | [文档首页](docs/README.md) |
+| 修改代码、提交实验记录 | [贡献说明](CONTRIBUTING.md) |
 
-这些命令是短接口验收：仅用最早 4 个有效验证日，不读取测试集评分。上述 v1 接口命令复用 `Trainer`，默认运行 BASE-2；固定按 EMA 验证 CRPS 选择检查点，raw 与训练集 RAND 只作诊断。场景和目标携带独立样本身份，使用 `evaluate.py` 核对并保存逐窗口分数；原 `metrics.py` 的低层公式保持不变。
+## 常用命令
 
-各输出目录必须不存在，避免覆盖数据版本和运行证据。原始 CSV、数据包及检查点均不提交；版本管理保留配置、处理代码、无原始数值的样本清单和丢弃记录。本轮实测见 [真实数据接口验收](docs/real_data_acceptance.md)。
-
-## v1 架构
-
-```text
-NWP + 日历 → 逐小时 MLP → C
-带噪功率 xt + C → 投影 + 固定位置编码 → E
-扩散步 t → 正弦编码 + MLP → τ
-
-h = E
-每次 Core 执行：
-    h = Adapter(h, E)
-    h = AdaLN Block 1(h, τ)
-    h = AdaLN Block 2(h, τ)
-最后一次执行后：h + τ → 噪声输出头
-```
-
-| 命令中的名称 | 模型 | Core 执行方式 | 默认参数量 |
-| --- | --- | --- | ---: |
-| `base` | BASE-2 | 一个 Core 执行一次 | 208,065 |
-| `loop` | LOOP-2×2 | 同一个 Core 执行两次 | 208,065 |
-| `untied` | UNTIED-4 | 两个独立 Core 各执行一次 | 365,697 |
-
-默认 `H=24, F=4, d=64, heads=4, FFN=256`。每个小时一个 token；使用非因果注意力、无仿射 LayerNorm 和完整反向传播。Adapter 初始为 `[I, 0]`，AdaLN 调制层与最终输出线性层零初始化。循环内不改变 `E`、扩散时间或带噪输入，不创建新模块、不截断梯度。`untied` 的每个 Core 同样读取 `E`。
-
-## 运行合成数据检查
-
-在仓库根目录使用已验证的环境：
+在仓库根目录使用已有环境：
 
 ```bash
 conda activate code_rl_clean
-python train.py --variant all --device cuda
-# 单独检查循环模型的 FP16 混合精度训练
-python train.py --variant loop --device cuda --amp
-# 无 GPU 时的小规模 CPU 检查
+make help
+make catalog                    # 实验目录；只读，不启动训练
+make experiment ID=prediction-correction
+make check                      # 检查导航引用及目录同步；无需 PyTorch
+make test                       # CPU 回归测试
+make smoke                      # 三模型 CPU 合成检查，结果写入新目录
+```
+
+没有 `make` 时可直接执行：
+
+```bash
+python tools/catalog.py list
+python -m unittest discover -s tests -v
 python train.py --variant all --device cpu --updates 3 --scenarios 4 --sampling-steps 4
 ```
 
-默认每个模型执行 6 次优化器更新尝试，微批次 4、累积 8 次，有效批次 32。使用 AdamW（学习率 `1e-4`、矩阵权重衰减 `1e-4`、偏置不衰减）、梯度裁剪 1、EMA 0.999。仅预测噪声，损失为 FP32 MSE。AMP 溢出时同时跳过参数与 EMA 更新。
+模型代码使用 Python 3.10+、PyTorch 2.10。已有环境无需重装；合成检查只验证运行路径，不代表真实预测效果。详细参数、GPU 检查和数据准备见[快速上手](docs/guide/quickstart.md)。
 
-扩散采用 1000 步线性 beta（`1e-4 → 0.02`），每条轨迹共享一个随机噪声级。EMA 模型默认对两个保留的合成条件分别生成 100 条轨迹，执行 50 步 FP32 DDIM（`eta=0`），场景分批大小为 16。仅裁剪干净预测，并重算一致噪声方向；报告每个采样步裁剪前越界率及最终零／满功率占比。
+## 仓库布局
 
-合成数据共 128 个窗口，前 96 个用于训练和 NWP 标准化统计量。日历使用小时与年内进度的正余弦，功率已在 `[0,1]` 内，进入扩散时映射到 `[-1,1]`。这些人工输入仅用于检查程序，不用于评估风电预测质量。
-
-每次运行默认生成独立的 `outputs/synthetic/<时间戳>/<模型>/`：
-
-- `checkpoint.pt`：模型、EMA、优化器、AMP、标准化统计量、数据顺序／位置及随机数状态。
-- `scenarios.pt`：`[2, M, 24, 1]` 功率轨迹。
-- `report.json`：损失、成功／跳过更新次数、参数量、采样诊断、耗时与显存。
-
-恢复时指定检查点路径；`--updates` 表示追加的更新尝试数：
-
-```bash
-python train.py --device cuda --resume outputs/synthetic/<时间戳>/loop/checkpoint.pt --updates 2
+```text
+model.py / diffusion.py          模型与扩散过程
+train.py / train_real.py         合成检查与真实数据训练
+correction.py / train_correction.py  独立校正器原型
+(data / history_data / metrics / evaluate).py  数据与评价
+configs/                        已冻结的数据及实验配置
+diagnostics/                   专项验收、实验队列与汇总
+tools/                         仓库导航工具，不参与训练
+tests/                         unittest 回归测试
+docs/guide/                    当前使用说明
+docs/experiments/README.md      全部实验的统一入口
+docs/{pilots,diagnostics,experiments}/  原始归档证据
+outputs/                       本地产物，不提交 Git
 ```
 
-恢复采用检查点中的模型、训练配置及合成数据配置；命令行的 `--amp`、`--seed`、微批次和累积配置不会覆盖它们。精确恢复要求相同 CPU／CUDA 设备类型。失败时的 `failure.pt` 是诊断快照，不能保证从部分累积步骤精确恢复。
+旧源码和实验目录被检查点及哈希清单引用，因此保留原路径；新导航集中呈现它们。[整理原则与参考项目](docs/guide/organization.md)说明了这一取舍。
 
-## 本机已验证环境
+## 数据与比较边界
 
-2026-10-09 在 WSL2 的 `code_rl_clean` Conda 环境中通过实际 GPU 基础检查：Python 3.10.20、PyTorch 2.10.0+cu128、RTX 2060（6GB）、驱动 616.92。基础报告状态为 `CUDA_BASIC_OK`。模型代码使用 Python 3.10+ 和 PyTorch 2.10；独立环境检查脚本仍支持 Python 3.8+。
-
-在本机 WSL 终端进入仓库后运行：
-
-```bash
-conda activate code_rl_clean
-python check_wind_env.py
-```
-
-也可直接指定已验证的解释器，无需激活环境：
-
-```bash
-/home/u86177/miniconda3/envs/code_rl_clean/bin/python check_wind_env.py
-```
-
-默认 `base` 环境没有 PyTorch；`code_rl` 也安装了相同版本的 PyTorch，但本次实际 GPU 计算使用的是 `code_rl_clean`。无需重复安装依赖。受限执行沙箱可能无法访问 GPU，本次 GPU 验证在获准的沙箱外执行环境完成。
-
-## 环境检查
-
-使用实际准备训练的 Python 环境执行。脚本要求 Python 3.8+，报告生成仅依赖标准库；不安装软件、不下载数据。
-
-```bash
-# WSL / Linux
-python3 check_wind_env.py
-```
-
-```powershell
-# Windows PowerShell
-python check_wind_env.py
-```
-
-报告写入当前目录下的 `outputs/environment/env_report_*.json`，包含系统、WSL、解释器、系统可见内存、磁盘、NVIDIA 驱动和 PyTorch 信息。PyTorch 检测使用独立子进程，默认 45 秒超时；存在可用 CUDA 时执行一次小型 FP32 前向、反向和 AdamW 更新，并核实参数发生变化。
-
-| 状态 | 含义 |
-| --- | --- |
-| `CUDA_BASIC_OK` | 小型 GPU 计算通过；完整模型显存与 AMP 仍待验证 |
-| `TORCH_NOT_INSTALLED` | 当前解释器缺少 PyTorch |
-| `CUDA_UNAVAILABLE` | PyTorch 可导入，但 CUDA 不可用 |
-| `NEEDS_REVIEW` | 导入、设备、超时或实际计算失败，查看报告错误字段 |
-
-退出码 0 表示报告成功保存，不代表 GPU 验收通过。`nvidia-smi` 的错误独立保留，顶层状态来自 PyTorch 检查。可通过 `--device 1` 选择当前环境可见的另一块 GPU，通过 `--timeout 60` 调整检测超时。
-
-报告只描述执行脚本的环境。WSL、Windows、远程会话和容器可能具有不同的 GPU 权限与 Python 软件包；不要仅凭一个受限会话的结果判断主机硬件故障。
-
-## 文件与验证
-
-- `check_wind_env.py`：可单独复制到训练电脑的检查脚本。
-- `model.py`：三个模型的全部网络组件与初始化。
-- `diffusion.py`：前向加噪、DDIM 与采样诊断。
-- `train.py`：训练更新、合成数据、标准化、EMA 与断点。
-- `data.py`、`prepare_data.py`：真实 CSV 对齐、窗口身份、切分、数据包和原始行追溯。
-- `train_real.py`、`evaluate.py`：复用 Trainer 的真实训练入口（v2 支持三种架构），以及带身份校验的评分。
-- `summarize_runs.py`：按运行清单核对身份、续训分段和冻结协议，独立重评并汇总种子内配对差值。
-- `diagnose_ema.py`：固定 1,000→3,000 步的离线 EMA 历史诊断，不更新训练器或 best。
-- `tests/`：标准库 `unittest` 错误分支测试。
-- `outputs/`：本机生成的报告与模型产物，不提交版本管理。
-
-```bash
-python -m unittest discover -s tests -v
-python -m py_compile model.py diffusion.py train.py check_wind_env.py data.py prepare_data.py evaluate.py train_real.py
-```
-
-Python 使用四空格缩进、`snake_case` 函数名。`pyproject.toml` 提供可选 Ruff 配置；已安装 Ruff 的开发环境可运行 `ruff check .` 和 `ruff format .`。运行模型不依赖 Ruff。
-
-## 验收边界与后续工作
-
-独立概率评价器已在 `metrics.py` 中实现 CRPS、整条轨迹 ES／VS、点覆盖率和区间宽度，输入分别为 `[B,M,H,1]` 场景与 `[B,H,1]` 实测值。计算定义、权重和 CLI 见 [评价口径](docs/metrics.md)。[候选数据审计](docs/data_audit.md) 保留 2026-10-12 的历史记录；此后确定的 zone、时间切分和可重放数据包见 [真实数据协议](docs/data_protocol.md)。
-
-2026-10-09 的原始验收记录包含 27 项通过的测试，以及 RTX 2060 上三个模型的 FP32／FP16 短训练、采样与 GPU AMP 断点续训，详见 [实测验收记录](docs/acceptance.md)。2026-10-12 本轮 CPU 回归检查为 42 项通过、1 项 CUDA 专用测试跳过，没有重跑 GPU 验收。
-
-测试覆盖参数量、共享梯度累加、循环早期梯度路径、同权重一轮等价、非因果注意力、多次更新后的上游梯度、断点重放及 DDIM 公式。CUDA 可用时还检查 AMP 溢出不更新 EMA；受限沙箱中该项自动跳过。
-
-报告中的训练耗时含首次更新初始化开销，峰值显存是 PyTorch 的 allocated memory，包含当时存活的模型、EMA 和优化器，不是整卡占用。它们用于确认可运行，不能据此给三个架构作速度排名。少量更新后的场景不代表已学会条件分布。
-
-2026-10-18 已完成 BASE-2 的 [1,000 步 pilot](docs/base_pilot_v1_s42.md)，随后按原配置[续训至 3,000 步并完成一次离线 EMA 历史诊断](docs/base_pilot_to3000_ema.md)。延长训练缓解了原 EMA 滞后，固定重启历史的诊断副本进一步改善了评分与校准；它没有替换原规则选中的检查点。这些 v1 记录保持原协议；后续 v2 对照见下文。本地副本与官方源数据的来源核验仍待补齐；当前以明确记录的竞赛时钟假设运行。正式多种子结论仍待验证。
-
-CUDA 可用性接口依据 [PyTorch 官方文档](https://docs.pytorch.org/docs/2.9/generated/torch.cuda.is_available.html)。
-AMP 累积、反缩放与梯度裁剪顺序依据 [PyTorch 2.10 官方示例](https://docs.pytorch.org/docs/2.10/notes/amp_examples.html)。
-
-## 训练协议 v2
-
-[冻结协议](docs/training_protocol_v2.md)规定三种架构从头训练 3,000 次成功更新，
-第 1,000 步完整复制 raw 到 EMA，从第 1,001 步开始平均。
-真实入口支持 `--variant base|loop|untied --training-protocol-version 2`；
-默认仍为 v1，旧断点保持原语义。BASE/LOOP 初始化匹配，UNTIED 的公共部分及首个 Core
-匹配，额外 Core 使用独立随机流。主结果是固定终点 EMA，辅助 best 保存在 `selected/`。
-测试集不参与评价或选择。
-
-已完成 [v2 单种子架构对照](docs/architecture_v2_s42.md)：三模型各保留 3,000 次成功更新，
-主表采用终点延迟 EMA，辅助 best 也均选中 3,000 步。CRPS 为 BASE 0.076405、
-LOOP 0.077436、UNTIED 0.074488；本轮未观察到 LOOP 优于 BASE。
-UNTIED 在第 2,499 步检查点后恢复完成，分段证据和成本边界均记录在报告中。
-测试集未评分，结果仅为 seed 42、71 个完整验证日上的机制筛查。
-
-随后按原配方完成 seed 43、44 共六次训练，见 [v2 三种子稳健性检查](docs/architecture_v2_three_seeds.md)。
-LOOP−BASE 的三种子平均 CRPS 差值为 −0.000915，样本标准差 0.002177，
-其中两次改善、一次变差；LOOP 的平均采样耗时约为 BASE 的 1.59 倍。
-UNTIED 的 CRPS、ES、VS 在三个种子中均优于 BASE。当前冻结两轮全共享方案的结果，
-不将其确立为默认主方法，也不追加轮数、种子或调参；测试集继续未评分。
-固定终点与辅助 best、逐日分数、完整曲线和运行链路均保留。
-
-## R01：时间配对的只读诊断
-
-[时间配对诊断报告](docs/temporal_dependence_v1.md)使用上述九组固定终点的已有场景，
-对每个日、每个小时独立打乱成员编号，固定五个排列种子并在模型间复用。
-小时边际评分完全不变，但 ES、VS、1h/3h 增量 CRPS 和日均功率 CRPS 的
-全验证集均值均变差。这说明已有时间配对有评分价值，不能据此宣称 LOOP 特有优势。
-逐日差异、全部五次结果及共同排列不变性检查均保留；未启动 R02–R06。
-
-```bash
-python -m diagnostics.temporal_dependence \
-  --config configs/diagnostics/temporal_dependence_v1.json \
-  --output outputs/temporal_dependence_v1_recheck
-```
-
-入口拒绝覆盖输出或修改源运行，只读取保存的验证场景，不训练、不重新采样或评分测试集。
-
-### R02: LOCAL-2 temporal-interaction ablation
-
-[Protocol and evidence](docs/local_attention_v1.md): BASE-2 with
-`--attention-scope diagonal`, trained from matched initialization under v2.
-Legacy model configs default to `full`; resume inherits the saved scope unless
-explicitly checked by the flag. Three frozen seeds only; existing v2 results
-remain unchanged. Run `python -m diagnostics.run_local_reference` from the root
-in the validated CUDA environment; existing outputs are never overwritten.
-
-### R03: first-state usage diagnostic
-
-[Protocol and results](docs/loop_state_usage_v1.md) describe a read-only forward
-study of the nine original v2 EMA endpoints. Run
-`python -m diagnostics.loop_state_usage --output outputs/loop_state_usage_v1`.
-It keeps five noise levels and three state interventions fixed, checks normal
-forward/reset identities, and reports denoising MSE separately by noise level.
-It does not train models or sample complete trajectories.
-
-### R04: shared-head intermediate supervision
-
-[Protocol and acceptance](docs/intermediate_supervision_v1.md): six frozen v2
-LOOP-DS/UNTIED-DS runs, using `--supervision-mode intermediate --loss-weights 0.5 0.5`.
-Old configs default to final-only; inference always reads the final state.
-`python -m diagnostics.run_intermediate_supervision` runs the bounded queue and
-then produces identity-checked four-cell scores and paired supervision effects.
-
-### Rolling history information: protocol and common windows
-
-[History protocol and acceptance](docs/history_information_v1.md) fixes a one-hour
-observation delay and H0/H1/H24 BASE plans on the same 545 training / 57 validation
-windows. `prepare_history.py` builds an identity-bound package from the original
-data and power CSVs. The [48-token interface and acceptance](docs/history_base_screening_v1.md)
-now support `train_real.py --history-group H0|H1|H24` with this package.
-`python -m diagnostics.run_history_information` runs the three frozen BASE jobs
-and produces paired whole-trajectory and lead-group reports. The original group
-plans remain archived; `configs/history_information_v1/execution.json` binds the
-implemented sources. The test set remains unscored.
-
-All three seed-42 runs have completed. The [result report](docs/history_base_screening_v1.md)
-records small mean CRPS improvements versus H0 for H1/H24, concentrated at short
-leads; H24 does not outperform H1 overall and has lower interval coverage. These
-are development results on 57 common validation days, not evidence of loop benefit.
-
-### History × architecture interaction
-
-[The bounded four-run protocol](docs/history_architecture_v1.md) extends the
-history interface to fixed two-round LOOP and UNTIED, retaining final-only
-supervision. BASE-H0/H24 artifacts are reused read-only. Run
-`python -m diagnostics.run_history_architecture` only with the frozen configuration
-and fresh output paths; it executes four jobs, then builds six-cell and history
-interaction reports. The interface has passed CPU/CUDA acceptance; formal
-results are tracked separately in the protocol report.
-
-All four history × architecture runs are complete and independently re-scored.
-The [six-cell result report](docs/history_architecture_v1.md#completed-experiment-and-review-2026-11-10)
-finds no clear shared-loop quality–cost advantage: LOOP-H24 remains worse in
-CRPS than BASE-H24 and UNTIED-H24. The bounded experiment is archived; no
-additional runs or test-set scoring were launched.
-
-### Prediction-space correction
-
-[The correction protocol](docs/prediction_correction_v1.md) freezes BASE-H0 EMA,
-trains one independent C with a single correction per denoising call, and evaluates
-the same final C EMA at K0/K1/K2. `train_correction.py` owns only C's optimizer,
-EMA and clock. CPU/CUDA acceptance and full-panel K0 replay passed; the new
-experiment is limited to one training run and three fixed evaluations.
-
-The correction run and K0/K1/K2 evaluation are now complete. Independent disk
-re-scoring and full-panel K0 replay passed. Neither K1 nor K2 improved the primary
-scores; K2 cost about 2.37× K0 in the observed sampling runs. The predeclared
-development gate failed, so this prototype is archived without extra training
-or cost-matched sampling. See the [full result table](docs/prediction_correction_v1.md#completed-fixed-endpoint-experiment).
+- 原始协议：Zone 3，547 / 71 / 90 个训练／验证／测试窗口。
+- 共同历史协议：545 / 57 / 89；采用明确记录的 1 小时观测延迟假设。
+- 两套验证日期不同，不能直接拼成同条件排行榜。原始来源与实际 NWP 可用时间的证据边界见[数据协议](docs/data_protocol.md)。
+- 数据、检查点和大张量保留在本地；GitHub 保存代码、配置、报告和审计清单。克隆仓库不会自动取得本机数据或检查点。

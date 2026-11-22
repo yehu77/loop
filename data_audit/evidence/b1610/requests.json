@@ -1,0 +1,50 @@
+{
+  "2019-01-15": {
+    "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2019-01-15&settlementDateTo=2019-01-16&bmUnit=E_BRYBW-1",
+    "bytes": 2,
+    "records": 0,
+    "sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+  },
+  "2019-03-31": {
+    "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2019-03-31&settlementDateTo=2019-04-01&bmUnit=E_BRYBW-1",
+    "bytes": 12245,
+    "records": 49,
+    "sha256": "9f426077b39789d2c52eb552a00fde35e2dd10f25131d1e2c875b205cf2e9e04"
+  },
+  "2019-08-25": {
+    "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2019-08-25&settlementDateTo=2019-08-26&bmUnit=E_BRYBW-1",
+    "bytes": 12255,
+    "records": 49,
+    "sha256": "56071f346e12da287643c868b1c6aaac1e7a4ccd25c397b58829b1b19ab3f92b"
+  },
+  "2019-10-27": {
+    "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2019-10-27&settlementDateTo=2019-10-28&bmUnit=E_BRYBW-1",
+    "bytes": 12257,
+    "records": 49,
+    "sha256": "8e65859e36e23bb3c195ee1d35d79e7ba4e3b22fc9b1800438adec85fa14ec77"
+  },
+  "2020-01-15": {
+    "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2020-01-15&settlementDateTo=2020-01-16&bmUnit=E_BRYBW-1",
+    "bytes": 12290,
+    "records": 49,
+    "sha256": "84438dcd80e608abc74cc59ad6addc2bfae7fe4fad9102d6c76cb2faaa9d8f7c"
+  },
+  "2020-03-29": {
+    "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2020-03-29&settlementDateTo=2020-03-30&bmUnit=E_BRYBW-1",
+    "bytes": 12248,
+    "records": 49,
+    "sha256": "52eca5cdaa2ed4398301c89c7cba0402468815b6f2ad545d8b041d9b14c8c89f"
+  },
+  "2020-10-25": {
+    "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2020-10-25&settlementDateTo=2020-10-26&bmUnit=E_BRYBW-1",
+    "bytes": 12260,
+    "records": 49,
+    "sha256": "9c72e02850bbb0f11f44939bfdc406a2c232dea82843e5fcb20b24f5a71a77af"
+  },
+  "2023-07-01": {
+    "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2023-07-01&settlementDateTo=2023-07-02&bmUnit=E_BRYBW-1",
+    "bytes": 12259,
+    "records": 49,
+    "sha256": "c72b53d46dd8db0ccc6780c7a7b6ef9de12974a35688bb6e21c7016130972658"
+  }
+}

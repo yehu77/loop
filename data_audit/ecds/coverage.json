@@ -1,0 +1,223 @@
+{
+  "dataset": "tigge-forecasts",
+  "api": "https://ecds.ecmwf.int/api",
+  "dataset_train_ready": false,
+  "days": [
+    {
+      "day": "2019-08-24",
+      "status": "blocked",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false,
+      "reference_comparison": "not_run",
+      "reason": "credentials_not_configured"
+    },
+    {
+      "day": "2019-08-25",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-08-26",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-08-27",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-08-28",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-08-29",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-08-30",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-08-31",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-01",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-02",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-03",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-04",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-05",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-06",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-07",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-08",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-09",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-10",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-11",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-12",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-13",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-14",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-15",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-16",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-17",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-18",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-19",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-20",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-21",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    },
+    {
+      "day": "2019-09-22",
+      "status": "not_attempted",
+      "grib_bytes": 0,
+      "downloaded_body_bytes_this_run": 0,
+      "request_submitted_this_run": false
+    }
+  ],
+  "actual_available_time": null,
+  "operational_availability_verified": false,
+  "downloaded_body_bytes_this_run": 0,
+  "accepted_windows": 0
+}

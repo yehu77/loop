@@ -1,0 +1,10 @@
+{
+  "name": "ens_only_offline_v1",
+  "access_assumption": "operational_ens_delivered_by_noon_utc",
+  "cycle_hour_utc": 0,
+  "issue_hour_utc": 12,
+  "farm": "E_BRYBW-1",
+  "reference_site": {"repd_id": 4261, "latitude": 57.446611, "longitude": -3.475393},
+  "grid_use": "nearby_native_points",
+  "split_manifest": null
+}

@@ -1,0 +1,1024 @@
+{
+  "protocol_sha256": "4bb23fb450202942da1987d78297221c8ce93cf896dac06e06becf19a2cef8c9",
+  "samples": [
+    {
+      "protocol": "ens_only_offline_v1",
+      "farm": "E_BRYBW-1",
+      "initialization": "2019-08-24T00:00:00+00:00",
+      "issue_time": "2019-08-24T12:00:00+00:00",
+      "target_start": "2019-08-25T00:00:00+00:00",
+      "target_end": "2019-08-26T00:00:00+00:00",
+      "actual_available_time": null,
+      "access_assumption": "operational_ens_delivered_by_noon_utc",
+      "operational_availability_verified": false,
+      "weather_knots": [
+        {
+          "valid_time": "2019-08-25T00:00:00+00:00",
+          "initialization_lead_h": 24,
+          "issue_lead_h": 12
+        },
+        {
+          "valid_time": "2019-08-25T06:00:00+00:00",
+          "initialization_lead_h": 30,
+          "issue_lead_h": 18
+        },
+        {
+          "valid_time": "2019-08-25T12:00:00+00:00",
+          "initialization_lead_h": 36,
+          "issue_lead_h": 24
+        },
+        {
+          "valid_time": "2019-08-25T18:00:00+00:00",
+          "initialization_lead_h": 42,
+          "issue_lead_h": 30
+        },
+        {
+          "valid_time": "2019-08-26T00:00:00+00:00",
+          "initialization_lead_h": 48,
+          "issue_lead_h": 36
+        }
+      ],
+      "power_target_complete": true,
+      "ens_panel_complete": true,
+      "time_relations_pass": true,
+      "offline_sample_pass": true,
+      "errors": {},
+      "target_MW": [
+        {
+          "start": "2019-08-25T00:00:00+00:00",
+          "end": "2019-08-25T01:00:00+00:00",
+          "MW": 5.247999999999999,
+          "quality": "complete",
+          "response_indices": [
+            0,
+            1
+          ],
+          "start_lead_from_initialization_h": 24,
+          "start_lead_from_issue_h": 12
+        },
+        {
+          "start": "2019-08-25T01:00:00+00:00",
+          "end": "2019-08-25T02:00:00+00:00",
+          "MW": 3.258,
+          "quality": "complete",
+          "response_indices": [
+            2,
+            3
+          ],
+          "start_lead_from_initialization_h": 25,
+          "start_lead_from_issue_h": 13
+        },
+        {
+          "start": "2019-08-25T02:00:00+00:00",
+          "end": "2019-08-25T03:00:00+00:00",
+          "MW": 0.629,
+          "quality": "complete",
+          "response_indices": [
+            4,
+            5
+          ],
+          "start_lead_from_initialization_h": 26,
+          "start_lead_from_issue_h": 14
+        },
+        {
+          "start": "2019-08-25T03:00:00+00:00",
+          "end": "2019-08-25T04:00:00+00:00",
+          "MW": 0.606,
+          "quality": "complete",
+          "response_indices": [
+            6,
+            7
+          ],
+          "start_lead_from_initialization_h": 27,
+          "start_lead_from_issue_h": 15
+        },
+        {
+          "start": "2019-08-25T04:00:00+00:00",
+          "end": "2019-08-25T05:00:00+00:00",
+          "MW": -0.10700000000000001,
+          "quality": "complete",
+          "response_indices": [
+            8,
+            9
+          ],
+          "start_lead_from_initialization_h": 28,
+          "start_lead_from_issue_h": 16
+        },
+        {
+          "start": "2019-08-25T05:00:00+00:00",
+          "end": "2019-08-25T06:00:00+00:00",
+          "MW": -0.129,
+          "quality": "complete",
+          "response_indices": [
+            10,
+            11
+          ],
+          "start_lead_from_initialization_h": 29,
+          "start_lead_from_issue_h": 17
+        },
+        {
+          "start": "2019-08-25T06:00:00+00:00",
+          "end": "2019-08-25T07:00:00+00:00",
+          "MW": -0.128,
+          "quality": "complete",
+          "response_indices": [
+            12,
+            13
+          ],
+          "start_lead_from_initialization_h": 30,
+          "start_lead_from_issue_h": 18
+        },
+        {
+          "start": "2019-08-25T07:00:00+00:00",
+          "end": "2019-08-25T08:00:00+00:00",
+          "MW": -0.125,
+          "quality": "complete",
+          "response_indices": [
+            14,
+            15
+          ],
+          "start_lead_from_initialization_h": 31,
+          "start_lead_from_issue_h": 19
+        },
+        {
+          "start": "2019-08-25T08:00:00+00:00",
+          "end": "2019-08-25T09:00:00+00:00",
+          "MW": -0.11199999999999999,
+          "quality": "complete",
+          "response_indices": [
+            16,
+            17
+          ],
+          "start_lead_from_initialization_h": 32,
+          "start_lead_from_issue_h": 20
+        },
+        {
+          "start": "2019-08-25T09:00:00+00:00",
+          "end": "2019-08-25T10:00:00+00:00",
+          "MW": 0.068,
+          "quality": "complete",
+          "response_indices": [
+            18,
+            19
+          ],
+          "start_lead_from_initialization_h": 33,
+          "start_lead_from_issue_h": 21
+        },
+        {
+          "start": "2019-08-25T10:00:00+00:00",
+          "end": "2019-08-25T11:00:00+00:00",
+          "MW": 0.040999999999999995,
+          "quality": "complete",
+          "response_indices": [
+            20,
+            21
+          ],
+          "start_lead_from_initialization_h": 34,
+          "start_lead_from_issue_h": 22
+        },
+        {
+          "start": "2019-08-25T11:00:00+00:00",
+          "end": "2019-08-25T12:00:00+00:00",
+          "MW": 1.3940000000000001,
+          "quality": "complete",
+          "response_indices": [
+            22,
+            23
+          ],
+          "start_lead_from_initialization_h": 35,
+          "start_lead_from_issue_h": 23
+        },
+        {
+          "start": "2019-08-25T12:00:00+00:00",
+          "end": "2019-08-25T13:00:00+00:00",
+          "MW": 1.9089999999999998,
+          "quality": "complete",
+          "response_indices": [
+            24,
+            25
+          ],
+          "start_lead_from_initialization_h": 36,
+          "start_lead_from_issue_h": 24
+        },
+        {
+          "start": "2019-08-25T13:00:00+00:00",
+          "end": "2019-08-25T14:00:00+00:00",
+          "MW": 3.907,
+          "quality": "complete",
+          "response_indices": [
+            26,
+            27
+          ],
+          "start_lead_from_initialization_h": 37,
+          "start_lead_from_issue_h": 25
+        },
+        {
+          "start": "2019-08-25T14:00:00+00:00",
+          "end": "2019-08-25T15:00:00+00:00",
+          "MW": 8.834,
+          "quality": "complete",
+          "response_indices": [
+            28,
+            29
+          ],
+          "start_lead_from_initialization_h": 38,
+          "start_lead_from_issue_h": 26
+        },
+        {
+          "start": "2019-08-25T15:00:00+00:00",
+          "end": "2019-08-25T16:00:00+00:00",
+          "MW": 14.616,
+          "quality": "complete",
+          "response_indices": [
+            30,
+            31
+          ],
+          "start_lead_from_initialization_h": 39,
+          "start_lead_from_issue_h": 27
+        },
+        {
+          "start": "2019-08-25T16:00:00+00:00",
+          "end": "2019-08-25T17:00:00+00:00",
+          "MW": 17.95,
+          "quality": "complete",
+          "response_indices": [
+            32,
+            33
+          ],
+          "start_lead_from_initialization_h": 40,
+          "start_lead_from_issue_h": 28
+        },
+        {
+          "start": "2019-08-25T17:00:00+00:00",
+          "end": "2019-08-25T18:00:00+00:00",
+          "MW": 14.742999999999999,
+          "quality": "complete",
+          "response_indices": [
+            34,
+            35
+          ],
+          "start_lead_from_initialization_h": 41,
+          "start_lead_from_issue_h": 29
+        },
+        {
+          "start": "2019-08-25T18:00:00+00:00",
+          "end": "2019-08-25T19:00:00+00:00",
+          "MW": 11.940999999999999,
+          "quality": "complete",
+          "response_indices": [
+            36,
+            37
+          ],
+          "start_lead_from_initialization_h": 42,
+          "start_lead_from_issue_h": 30
+        },
+        {
+          "start": "2019-08-25T19:00:00+00:00",
+          "end": "2019-08-25T20:00:00+00:00",
+          "MW": 19.03,
+          "quality": "complete",
+          "response_indices": [
+            38,
+            39
+          ],
+          "start_lead_from_initialization_h": 43,
+          "start_lead_from_issue_h": 31
+        },
+        {
+          "start": "2019-08-25T20:00:00+00:00",
+          "end": "2019-08-25T21:00:00+00:00",
+          "MW": 23.877,
+          "quality": "complete",
+          "response_indices": [
+            40,
+            41
+          ],
+          "start_lead_from_initialization_h": 44,
+          "start_lead_from_issue_h": 32
+        },
+        {
+          "start": "2019-08-25T21:00:00+00:00",
+          "end": "2019-08-25T22:00:00+00:00",
+          "MW": 17.188,
+          "quality": "complete",
+          "response_indices": [
+            42,
+            43
+          ],
+          "start_lead_from_initialization_h": 45,
+          "start_lead_from_issue_h": 33
+        },
+        {
+          "start": "2019-08-25T22:00:00+00:00",
+          "end": "2019-08-25T23:00:00+00:00",
+          "MW": 8.947,
+          "quality": "complete",
+          "response_indices": [
+            44,
+            45
+          ],
+          "start_lead_from_initialization_h": 46,
+          "start_lead_from_issue_h": 34
+        },
+        {
+          "start": "2019-08-25T23:00:00+00:00",
+          "end": "2019-08-26T00:00:00+00:00",
+          "MW": 2.857,
+          "quality": "complete",
+          "response_indices": [
+            46,
+            47
+          ],
+          "start_lead_from_initialization_h": 47,
+          "start_lead_from_issue_h": 35
+        }
+      ],
+      "meter_source": "../evidence/b1610/2019-08-25.json",
+      "meter_sha256": "56071f346e12da287643c868b1c6aaac1e7a4ccd25c397b58829b1b19ab3f92b",
+      "ens_source": "../evidence/ens.json",
+      "ens_sha256": "1e062c4850f72c7c6f17b63099a2f23adeee72d8ec070cca6af06626da600fd6"
+    },
+    {
+      "protocol": "ens_only_offline_v1",
+      "farm": "E_BRYBW-1",
+      "initialization": "2019-08-25T00:00:00+00:00",
+      "issue_time": "2019-08-25T12:00:00+00:00",
+      "target_start": "2019-08-26T00:00:00+00:00",
+      "target_end": "2019-08-27T00:00:00+00:00",
+      "actual_available_time": null,
+      "access_assumption": "operational_ens_delivered_by_noon_utc",
+      "operational_availability_verified": false,
+      "weather_knots": [
+        {
+          "valid_time": "2019-08-26T00:00:00+00:00",
+          "initialization_lead_h": 24,
+          "issue_lead_h": 12
+        },
+        {
+          "valid_time": "2019-08-26T06:00:00+00:00",
+          "initialization_lead_h": 30,
+          "issue_lead_h": 18
+        },
+        {
+          "valid_time": "2019-08-26T12:00:00+00:00",
+          "initialization_lead_h": 36,
+          "issue_lead_h": 24
+        },
+        {
+          "valid_time": "2019-08-26T18:00:00+00:00",
+          "initialization_lead_h": 42,
+          "issue_lead_h": 30
+        },
+        {
+          "valid_time": "2019-08-27T00:00:00+00:00",
+          "initialization_lead_h": 48,
+          "issue_lead_h": 36
+        }
+      ],
+      "power_target_complete": true,
+      "ens_panel_complete": false,
+      "time_relations_pass": false,
+      "offline_sample_pass": false,
+      "errors": {
+        "ens": "Missing or invalid native ensemble panel",
+        "time": "Missing or mismatched cycle"
+      },
+      "target_MW": [
+        {
+          "start": "2019-08-26T00:00:00+00:00",
+          "end": "2019-08-26T01:00:00+00:00",
+          "MW": 4.686,
+          "quality": "complete",
+          "response_indices": [
+            0,
+            1
+          ],
+          "start_lead_from_initialization_h": 24,
+          "start_lead_from_issue_h": 12
+        },
+        {
+          "start": "2019-08-26T01:00:00+00:00",
+          "end": "2019-08-26T02:00:00+00:00",
+          "MW": 6.727,
+          "quality": "complete",
+          "response_indices": [
+            2,
+            3
+          ],
+          "start_lead_from_initialization_h": 25,
+          "start_lead_from_issue_h": 13
+        },
+        {
+          "start": "2019-08-26T02:00:00+00:00",
+          "end": "2019-08-26T03:00:00+00:00",
+          "MW": 11.36,
+          "quality": "complete",
+          "response_indices": [
+            4,
+            5
+          ],
+          "start_lead_from_initialization_h": 26,
+          "start_lead_from_issue_h": 14
+        },
+        {
+          "start": "2019-08-26T03:00:00+00:00",
+          "end": "2019-08-26T04:00:00+00:00",
+          "MW": 18.567,
+          "quality": "complete",
+          "response_indices": [
+            6,
+            7
+          ],
+          "start_lead_from_initialization_h": 27,
+          "start_lead_from_issue_h": 15
+        },
+        {
+          "start": "2019-08-26T04:00:00+00:00",
+          "end": "2019-08-26T05:00:00+00:00",
+          "MW": 20.022,
+          "quality": "complete",
+          "response_indices": [
+            8,
+            9
+          ],
+          "start_lead_from_initialization_h": 28,
+          "start_lead_from_issue_h": 16
+        },
+        {
+          "start": "2019-08-26T05:00:00+00:00",
+          "end": "2019-08-26T06:00:00+00:00",
+          "MW": 17.713,
+          "quality": "complete",
+          "response_indices": [
+            10,
+            11
+          ],
+          "start_lead_from_initialization_h": 29,
+          "start_lead_from_issue_h": 17
+        },
+        {
+          "start": "2019-08-26T06:00:00+00:00",
+          "end": "2019-08-26T07:00:00+00:00",
+          "MW": 17.846,
+          "quality": "complete",
+          "response_indices": [
+            12,
+            13
+          ],
+          "start_lead_from_initialization_h": 30,
+          "start_lead_from_issue_h": 18
+        },
+        {
+          "start": "2019-08-26T07:00:00+00:00",
+          "end": "2019-08-26T08:00:00+00:00",
+          "MW": 23.086,
+          "quality": "complete",
+          "response_indices": [
+            14,
+            15
+          ],
+          "start_lead_from_initialization_h": 31,
+          "start_lead_from_issue_h": 19
+        },
+        {
+          "start": "2019-08-26T08:00:00+00:00",
+          "end": "2019-08-26T09:00:00+00:00",
+          "MW": 45.239999999999995,
+          "quality": "complete",
+          "response_indices": [
+            16,
+            17
+          ],
+          "start_lead_from_initialization_h": 32,
+          "start_lead_from_issue_h": 20
+        },
+        {
+          "start": "2019-08-26T09:00:00+00:00",
+          "end": "2019-08-26T10:00:00+00:00",
+          "MW": 41.609,
+          "quality": "complete",
+          "response_indices": [
+            18,
+            19
+          ],
+          "start_lead_from_initialization_h": 33,
+          "start_lead_from_issue_h": 21
+        },
+        {
+          "start": "2019-08-26T10:00:00+00:00",
+          "end": "2019-08-26T11:00:00+00:00",
+          "MW": 29.997,
+          "quality": "complete",
+          "response_indices": [
+            20,
+            21
+          ],
+          "start_lead_from_initialization_h": 34,
+          "start_lead_from_issue_h": 22
+        },
+        {
+          "start": "2019-08-26T11:00:00+00:00",
+          "end": "2019-08-26T12:00:00+00:00",
+          "MW": 31.197,
+          "quality": "complete",
+          "response_indices": [
+            22,
+            23
+          ],
+          "start_lead_from_initialization_h": 35,
+          "start_lead_from_issue_h": 23
+        },
+        {
+          "start": "2019-08-26T12:00:00+00:00",
+          "end": "2019-08-26T13:00:00+00:00",
+          "MW": 28.201999999999998,
+          "quality": "complete",
+          "response_indices": [
+            24,
+            25
+          ],
+          "start_lead_from_initialization_h": 36,
+          "start_lead_from_issue_h": 24
+        },
+        {
+          "start": "2019-08-26T13:00:00+00:00",
+          "end": "2019-08-26T14:00:00+00:00",
+          "MW": 25.198,
+          "quality": "complete",
+          "response_indices": [
+            26,
+            27
+          ],
+          "start_lead_from_initialization_h": 37,
+          "start_lead_from_issue_h": 25
+        },
+        {
+          "start": "2019-08-26T14:00:00+00:00",
+          "end": "2019-08-26T15:00:00+00:00",
+          "MW": 24.396,
+          "quality": "complete",
+          "response_indices": [
+            28,
+            29
+          ],
+          "start_lead_from_initialization_h": 38,
+          "start_lead_from_issue_h": 26
+        },
+        {
+          "start": "2019-08-26T15:00:00+00:00",
+          "end": "2019-08-26T16:00:00+00:00",
+          "MW": 25.487000000000002,
+          "quality": "complete",
+          "response_indices": [
+            30,
+            31
+          ],
+          "start_lead_from_initialization_h": 39,
+          "start_lead_from_issue_h": 27
+        },
+        {
+          "start": "2019-08-26T16:00:00+00:00",
+          "end": "2019-08-26T17:00:00+00:00",
+          "MW": 15.899999999999999,
+          "quality": "complete",
+          "response_indices": [
+            32,
+            33
+          ],
+          "start_lead_from_initialization_h": 40,
+          "start_lead_from_issue_h": 28
+        },
+        {
+          "start": "2019-08-26T17:00:00+00:00",
+          "end": "2019-08-26T18:00:00+00:00",
+          "MW": 19.768,
+          "quality": "complete",
+          "response_indices": [
+            34,
+            35
+          ],
+          "start_lead_from_initialization_h": 41,
+          "start_lead_from_issue_h": 29
+        },
+        {
+          "start": "2019-08-26T18:00:00+00:00",
+          "end": "2019-08-26T19:00:00+00:00",
+          "MW": 11.165,
+          "quality": "complete",
+          "response_indices": [
+            36,
+            37
+          ],
+          "start_lead_from_initialization_h": 42,
+          "start_lead_from_issue_h": 30
+        },
+        {
+          "start": "2019-08-26T19:00:00+00:00",
+          "end": "2019-08-26T20:00:00+00:00",
+          "MW": 7.851,
+          "quality": "complete",
+          "response_indices": [
+            38,
+            39
+          ],
+          "start_lead_from_initialization_h": 43,
+          "start_lead_from_issue_h": 31
+        },
+        {
+          "start": "2019-08-26T20:00:00+00:00",
+          "end": "2019-08-26T21:00:00+00:00",
+          "MW": 4.53,
+          "quality": "complete",
+          "response_indices": [
+            40,
+            41
+          ],
+          "start_lead_from_initialization_h": 44,
+          "start_lead_from_issue_h": 32
+        },
+        {
+          "start": "2019-08-26T21:00:00+00:00",
+          "end": "2019-08-26T22:00:00+00:00",
+          "MW": 6.868,
+          "quality": "complete",
+          "response_indices": [
+            42,
+            43
+          ],
+          "start_lead_from_initialization_h": 45,
+          "start_lead_from_issue_h": 33
+        },
+        {
+          "start": "2019-08-26T22:00:00+00:00",
+          "end": "2019-08-26T23:00:00+00:00",
+          "MW": 17.174,
+          "quality": "complete",
+          "response_indices": [
+            44,
+            45
+          ],
+          "start_lead_from_initialization_h": 46,
+          "start_lead_from_issue_h": 34
+        },
+        {
+          "start": "2019-08-26T23:00:00+00:00",
+          "end": "2019-08-27T00:00:00+00:00",
+          "MW": 19.419,
+          "quality": "complete",
+          "response_indices": [
+            46,
+            47
+          ],
+          "start_lead_from_initialization_h": 47,
+          "start_lead_from_issue_h": 35
+        }
+      ],
+      "ens_blocker": "authentication required",
+      "meter_source": "probes/2019-08-25-meter.json",
+      "meter_sha256": "e82857f560dc5d02990b55225bec6c432d6cac975f794f110f97586a8c4083d7"
+    },
+    {
+      "protocol": "ens_only_offline_v1",
+      "farm": "E_BRYBW-1",
+      "initialization": "2019-08-26T00:00:00+00:00",
+      "issue_time": "2019-08-26T12:00:00+00:00",
+      "target_start": "2019-08-27T00:00:00+00:00",
+      "target_end": "2019-08-28T00:00:00+00:00",
+      "actual_available_time": null,
+      "access_assumption": "operational_ens_delivered_by_noon_utc",
+      "operational_availability_verified": false,
+      "weather_knots": [
+        {
+          "valid_time": "2019-08-27T00:00:00+00:00",
+          "initialization_lead_h": 24,
+          "issue_lead_h": 12
+        },
+        {
+          "valid_time": "2019-08-27T06:00:00+00:00",
+          "initialization_lead_h": 30,
+          "issue_lead_h": 18
+        },
+        {
+          "valid_time": "2019-08-27T12:00:00+00:00",
+          "initialization_lead_h": 36,
+          "issue_lead_h": 24
+        },
+        {
+          "valid_time": "2019-08-27T18:00:00+00:00",
+          "initialization_lead_h": 42,
+          "issue_lead_h": 30
+        },
+        {
+          "valid_time": "2019-08-28T00:00:00+00:00",
+          "initialization_lead_h": 48,
+          "issue_lead_h": 36
+        }
+      ],
+      "power_target_complete": true,
+      "ens_panel_complete": false,
+      "time_relations_pass": false,
+      "offline_sample_pass": false,
+      "errors": {
+        "ens": "Missing or invalid native ensemble panel",
+        "time": "Missing or mismatched cycle"
+      },
+      "target_MW": [
+        {
+          "start": "2019-08-27T00:00:00+00:00",
+          "end": "2019-08-27T01:00:00+00:00",
+          "MW": 18.903,
+          "quality": "complete",
+          "response_indices": [
+            0,
+            1
+          ],
+          "start_lead_from_initialization_h": 24,
+          "start_lead_from_issue_h": 12
+        },
+        {
+          "start": "2019-08-27T01:00:00+00:00",
+          "end": "2019-08-27T02:00:00+00:00",
+          "MW": 18.662,
+          "quality": "complete",
+          "response_indices": [
+            2,
+            3
+          ],
+          "start_lead_from_initialization_h": 25,
+          "start_lead_from_issue_h": 13
+        },
+        {
+          "start": "2019-08-27T02:00:00+00:00",
+          "end": "2019-08-27T03:00:00+00:00",
+          "MW": 18.671999999999997,
+          "quality": "complete",
+          "response_indices": [
+            4,
+            5
+          ],
+          "start_lead_from_initialization_h": 26,
+          "start_lead_from_issue_h": 14
+        },
+        {
+          "start": "2019-08-27T03:00:00+00:00",
+          "end": "2019-08-27T04:00:00+00:00",
+          "MW": 17.674,
+          "quality": "complete",
+          "response_indices": [
+            6,
+            7
+          ],
+          "start_lead_from_initialization_h": 27,
+          "start_lead_from_issue_h": 15
+        },
+        {
+          "start": "2019-08-27T04:00:00+00:00",
+          "end": "2019-08-27T05:00:00+00:00",
+          "MW": 23.891,
+          "quality": "complete",
+          "response_indices": [
+            8,
+            9
+          ],
+          "start_lead_from_initialization_h": 28,
+          "start_lead_from_issue_h": 16
+        },
+        {
+          "start": "2019-08-27T05:00:00+00:00",
+          "end": "2019-08-27T06:00:00+00:00",
+          "MW": 22.142,
+          "quality": "complete",
+          "response_indices": [
+            10,
+            11
+          ],
+          "start_lead_from_initialization_h": 29,
+          "start_lead_from_issue_h": 17
+        },
+        {
+          "start": "2019-08-27T06:00:00+00:00",
+          "end": "2019-08-27T07:00:00+00:00",
+          "MW": 22.332,
+          "quality": "complete",
+          "response_indices": [
+            12,
+            13
+          ],
+          "start_lead_from_initialization_h": 30,
+          "start_lead_from_issue_h": 18
+        },
+        {
+          "start": "2019-08-27T07:00:00+00:00",
+          "end": "2019-08-27T08:00:00+00:00",
+          "MW": 18.823999999999998,
+          "quality": "complete",
+          "response_indices": [
+            14,
+            15
+          ],
+          "start_lead_from_initialization_h": 31,
+          "start_lead_from_issue_h": 19
+        },
+        {
+          "start": "2019-08-27T08:00:00+00:00",
+          "end": "2019-08-27T09:00:00+00:00",
+          "MW": 10.268,
+          "quality": "complete",
+          "response_indices": [
+            16,
+            17
+          ],
+          "start_lead_from_initialization_h": 32,
+          "start_lead_from_issue_h": 20
+        },
+        {
+          "start": "2019-08-27T09:00:00+00:00",
+          "end": "2019-08-27T10:00:00+00:00",
+          "MW": 8.34,
+          "quality": "complete",
+          "response_indices": [
+            18,
+            19
+          ],
+          "start_lead_from_initialization_h": 33,
+          "start_lead_from_issue_h": 21
+        },
+        {
+          "start": "2019-08-27T10:00:00+00:00",
+          "end": "2019-08-27T11:00:00+00:00",
+          "MW": 2.653,
+          "quality": "complete",
+          "response_indices": [
+            20,
+            21
+          ],
+          "start_lead_from_initialization_h": 34,
+          "start_lead_from_issue_h": 22
+        },
+        {
+          "start": "2019-08-27T11:00:00+00:00",
+          "end": "2019-08-27T12:00:00+00:00",
+          "MW": 1.3719999999999999,
+          "quality": "complete",
+          "response_indices": [
+            22,
+            23
+          ],
+          "start_lead_from_initialization_h": 35,
+          "start_lead_from_issue_h": 23
+        },
+        {
+          "start": "2019-08-27T12:00:00+00:00",
+          "end": "2019-08-27T13:00:00+00:00",
+          "MW": 2.646,
+          "quality": "complete",
+          "response_indices": [
+            24,
+            25
+          ],
+          "start_lead_from_initialization_h": 36,
+          "start_lead_from_issue_h": 24
+        },
+        {
+          "start": "2019-08-27T13:00:00+00:00",
+          "end": "2019-08-27T14:00:00+00:00",
+          "MW": 1.687,
+          "quality": "complete",
+          "response_indices": [
+            26,
+            27
+          ],
+          "start_lead_from_initialization_h": 37,
+          "start_lead_from_issue_h": 25
+        },
+        {
+          "start": "2019-08-27T14:00:00+00:00",
+          "end": "2019-08-27T15:00:00+00:00",
+          "MW": 1.2610000000000001,
+          "quality": "complete",
+          "response_indices": [
+            28,
+            29
+          ],
+          "start_lead_from_initialization_h": 38,
+          "start_lead_from_issue_h": 26
+        },
+        {
+          "start": "2019-08-27T15:00:00+00:00",
+          "end": "2019-08-27T16:00:00+00:00",
+          "MW": 4.380000000000001,
+          "quality": "complete",
+          "response_indices": [
+            30,
+            31
+          ],
+          "start_lead_from_initialization_h": 39,
+          "start_lead_from_issue_h": 27
+        },
+        {
+          "start": "2019-08-27T16:00:00+00:00",
+          "end": "2019-08-27T17:00:00+00:00",
+          "MW": 4.92,
+          "quality": "complete",
+          "response_indices": [
+            32,
+            33
+          ],
+          "start_lead_from_initialization_h": 40,
+          "start_lead_from_issue_h": 28
+        },
+        {
+          "start": "2019-08-27T17:00:00+00:00",
+          "end": "2019-08-27T18:00:00+00:00",
+          "MW": 2.082,
+          "quality": "complete",
+          "response_indices": [
+            34,
+            35
+          ],
+          "start_lead_from_initialization_h": 41,
+          "start_lead_from_issue_h": 29
+        },
+        {
+          "start": "2019-08-27T18:00:00+00:00",
+          "end": "2019-08-27T19:00:00+00:00",
+          "MW": 2.006,
+          "quality": "complete",
+          "response_indices": [
+            36,
+            37
+          ],
+          "start_lead_from_initialization_h": 42,
+          "start_lead_from_issue_h": 30
+        },
+        {
+          "start": "2019-08-27T19:00:00+00:00",
+          "end": "2019-08-27T20:00:00+00:00",
+          "MW": 5.587999999999999,
+          "quality": "complete",
+          "response_indices": [
+            38,
+            39
+          ],
+          "start_lead_from_initialization_h": 43,
+          "start_lead_from_issue_h": 31
+        },
+        {
+          "start": "2019-08-27T20:00:00+00:00",
+          "end": "2019-08-27T21:00:00+00:00",
+          "MW": 3.027,
+          "quality": "complete",
+          "response_indices": [
+            40,
+            41
+          ],
+          "start_lead_from_initialization_h": 44,
+          "start_lead_from_issue_h": 32
+        },
+        {
+          "start": "2019-08-27T21:00:00+00:00",
+          "end": "2019-08-27T22:00:00+00:00",
+          "MW": 6.04,
+          "quality": "complete",
+          "response_indices": [
+            42,
+            43
+          ],
+          "start_lead_from_initialization_h": 45,
+          "start_lead_from_issue_h": 33
+        },
+        {
+          "start": "2019-08-27T22:00:00+00:00",
+          "end": "2019-08-27T23:00:00+00:00",
+          "MW": 8.998999999999999,
+          "quality": "complete",
+          "response_indices": [
+            44,
+            45
+          ],
+          "start_lead_from_initialization_h": 46,
+          "start_lead_from_issue_h": 34
+        },
+        {
+          "start": "2019-08-27T23:00:00+00:00",
+          "end": "2019-08-28T00:00:00+00:00",
+          "MW": 13.824,
+          "quality": "complete",
+          "response_indices": [
+            46,
+            47
+          ],
+          "start_lead_from_initialization_h": 47,
+          "start_lead_from_issue_h": 35
+        }
+      ],
+      "ens_blocker": "authentication required",
+      "meter_source": "probes/2019-08-26-meter.json",
+      "meter_sha256": "beade43332662640cab306315162acb94035b7bc3bf20fbb6738313c955df7a4"
+    }
+  ],
+  "verified_complete_windows": 1,
+  "dataset_train_ready": false,
+  "split_counts": null,
+  "split_status": "unassigned"
+}

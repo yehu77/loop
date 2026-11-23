@@ -1,0 +1,71 @@
+{
+  "url": "https://zenodo.org/records/13255991/files/ecmwf_ens_2019-2020.tar.gz?scan=256m",
+  "requested_range": "bytes=16000000-268435455",
+  "archive_bytes": 36034983151,
+  "prefix_bytes": 16000000,
+  "prefix_sha256": "72fa56c0acf4de8a61695da8f6f49a4760b94a848061f39cdcfb0a944482991a",
+  "limit_bytes": 268435456,
+  "http_requests": 1,
+  "download_bytes": 252435456,
+  "headers_seen": [
+    {
+      "path": "2019",
+      "size": 0
+    },
+    {
+      "path": "2019/tigge-GB_2019082400.nc",
+      "size": 26356124
+    },
+    {
+      "path": "2019/tigge-GB_2019032312.nc",
+      "size": 26356124
+    },
+    {
+      "path": "2019/tigge-GB_2019070200.nc",
+      "size": 26356124
+    },
+    {
+      "path": "2019/tigge-GB_2019102200.nc",
+      "size": 26356124
+    },
+    {
+      "path": "2019/tigge-GB_2019103000.nc",
+      "size": 26356124
+    },
+    {
+      "path": "2019/tigge-GB_2019102600.nc",
+      "size": 26356124
+    },
+    {
+      "path": "2019/tigge-GB_2019081612.nc",
+      "size": 26356124
+    },
+    {
+      "path": "2019/tigge-GB_2019061312.nc",
+      "size": 26356124
+    },
+    {
+      "path": "2019/tigge-GB_2019050700.nc",
+      "size": 26356124
+    },
+    {
+      "path": "2019/tigge-GB_2019022712.nc",
+      "size": 26356124
+    },
+    {
+      "path": "2019/tigge-GB_2019060912.nc",
+      "size": 26356124
+    }
+  ],
+  "complete": {
+    "2019/tigge-GB_2019082400.nc": {
+      "bytes": 26356124,
+      "sha256": "67e747701657303f1a2478dda6b4ee59e1800a1a9a6c690326656d701e38fdc3"
+    }
+  },
+  "status": 206,
+  "content_range": "bytes 16000000-268435455/36034983151",
+  "stop": "compressed_byte_limit",
+  "error": "ReadError: unexpected end of data",
+  "continuation_sha256": "c90e918a2398dd386a460541aa0c5e7f731078e51d1c24af3123991274fdd490"
+}

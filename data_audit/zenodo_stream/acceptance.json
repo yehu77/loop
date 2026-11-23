@@ -1,0 +1,23 @@
+{
+  "2019-08-24": {
+    "accepted": true,
+    "errors": {},
+    "member": "2019/tigge-GB_2019082400.nc",
+    "bytes": 26356124,
+    "sha256": "67e747701657303f1a2478dda6b4ee59e1800a1a9a6c690326656d701e38fdc3",
+    "native_steps": 61,
+    "members": 50,
+    "grid_points": 4,
+    "target_complete": true,
+    "meter_source": "../evidence/b1610/2019-08-25.json",
+    "meter_sha256": "56071f346e12da287643c868b1c6aaac1e7a4ccd25c397b58829b1b19ab3f92b"
+  },
+  "2019-08-25": {
+    "accepted": false,
+    "reason": "complete_member_not_obtained"
+  },
+  "2019-08-26": {
+    "accepted": false,
+    "reason": "complete_member_not_obtained"
+  }
+}

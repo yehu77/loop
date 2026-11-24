@@ -19,6 +19,10 @@ def cached(folder, name, url, request=None):
     return json.loads(body), receipt
 
 
+class MissingWeather(ValueError):
+    """The archive lacks a required ensemble value or member."""
+
+
 def point_values(result, day, point):
     product = result["dataProduct"]
     snapshot = result["snapshotId"]
@@ -34,15 +38,15 @@ def point_values(result, day, point):
         raise ValueError("Initialization, valid time or native lead mismatch")
     members = {m["member"]: m["data"] for m in f["ensembleMembers"]}
     if len(f["ensembleMembers"]) != 51 or set(members) != set(range(51)):
-        raise ValueError("Missing or duplicate ensemble identity")
+        raise MissingWeather("Missing or duplicate ensemble identity")
     values = []
     for m in range(1, 51):
         data = members[m]
         if set(data) != set(VARS) or any(len(data[v]) != len(LEADS) for v in VARS):
-            raise ValueError(f"Incomplete series for member {m}")
+            raise MissingWeather(f"Incomplete series for member {m}")
         sequence = [[data[v][i] for v in VARS] for i in range(len(LEADS))]
         if any(type(x) not in (int, float) or not math.isfinite(x) for row in sequence for x in row):
-            raise ValueError(f"Missing wind value for member {m}")
+            raise MissingWeather(f"Missing wind value for member {m}")
         values.append(sequence)
     return values, (product["version"], snapshot), f["links"]["canonical"]
 
@@ -66,6 +70,12 @@ def prepare_day(folder, day):
     url = ("https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream"
            f"?settlementDateFrom={target}&settlementDateTo={target + timedelta(days=1)}&bmUnit={FARM}")
     meter, meta = cached(folder, "meter", url)
+    source = dict(file="meter.json", bytes=meta["bytes"], sha256=meta["sha256"], url=url)
+    return assemble(folder, day, samples, version, snapshot, sources, meter, source)
+
+
+def assemble(folder, day, samples, version, snapshot, sources, meter, meter_source):
+    target = day + timedelta(days=1)
     hours = hourly(meter, datetime.combine(target, datetime.min.time(), timezone.utc))
     if any(h["quality"] != "complete" for h in hours):
         raise ValueError("Incomplete next-day UTC power window")
@@ -73,7 +83,7 @@ def prepare_day(folder, day):
         h["settlement_runs"] = [meter[j]["settlementRunType"] for j in h["response_indices"]]
         if not all(h["settlement_runs"]):
             raise ValueError("Missing meter revision")
-    sources.append(dict(file="meter.json", bytes=meta["bytes"], sha256=meta["sha256"], url=url))
+    sources.append(meter_source)
     sample = dict(protocol="berry_burn_dynamical_ens_v1", farm=FARM, origin=stamp(day),
                   issue=stamp(day, 12), actual_available_time=None, operational_availability_verified=False,
                   availability_assumption="operational_ens_delivered_by_noon_utc",

@@ -1,0 +1,27 @@
+{
+  "cached_months": 36,
+  "cached_pilot_days": 30,
+  "dataset_train_ready": true,
+  "joint_accepted": 1095,
+  "ledger_sha256": "687e8a9e9792177264cb397dd9698d4bce61ba3f8341e70fa0934b21af95c8c1",
+  "recorded_request_attempts": 1067,
+  "recorded_transport_failures": 1,
+  "splits": {
+    "test": {
+      "days": 365,
+      "sha256": "92ccf936db1dc91379843f3d5c8fa81b6904dcff2783e9dfb5032d7de98f226a"
+    },
+    "train": {
+      "days": 364,
+      "sha256": "206a91ea2f945bc88f7171941fc9e1fa8f53d6b2b3925c203a8550bda1cd3ec3"
+    },
+    "validation": {
+      "days": 364,
+      "sha256": "1424c5636acba8e5c57dea496225799237d5b3eafb65728e128ee2416d170a96"
+    }
+  },
+  "weather_http_errors": 1,
+  "weather_http_responses": 1066,
+  "weather_response_bytes": 84665770,
+  "weather_work_units": 7821360
+}

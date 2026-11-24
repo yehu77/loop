@@ -1,3 +1,4 @@
+import io
 import json
 import tempfile
 import unittest
@@ -6,7 +7,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 import numpy as np
-from data_audit.dynamical import multiyear, spread
+from data_audit.dynamical import collect, multiyear, spread
 
 
 class Multiyear(unittest.TestCase):
@@ -38,6 +39,18 @@ class Multiyear(unittest.TestCase):
         self.assertEqual(scores["crps_MW"][0], .5)
         self.assertTrue(scores["coverage90"][0])
         self.assertEqual(scores["width90_MW"][0], 2.)
+
+    def test_truncated_body_is_logged_and_not_cached(self):
+        first, second = io.BytesIO(b"{"), io.BytesIO(b"{}")
+        for body in (first, second):
+            body.headers = {"Content-Length": "2"}
+            body.status = 200
+        with tempfile.TemporaryDirectory() as tmp, patch.object(collect, "urlopen", side_effect=[first, second]), patch.object(collect.time, "sleep"):
+            folder = Path(tmp)
+            collect.fetch(folder, "weather", collect.WX, {"queries": []})
+            event = json.loads((folder / "transport.jsonl").read_text())
+            self.assertEqual((event["stage"], event["error"]), ("body", "IncompleteRead"))
+            self.assertEqual((folder / "weather.json").read_bytes(), b"{}")
 
     def test_calendar_boundaries(self):
         rows = multiyear.calendar()

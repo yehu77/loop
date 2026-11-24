@@ -72,6 +72,7 @@ def freeze(root, pilot):
                                reason=str(exc), split=rule["split"])
     receipts = []
     errors = []
+    transport_failures = 0
     for key, entry in ledger.items():
         attempts = []
         for folder in sorted((root / key).glob("attempt-*")):
@@ -81,6 +82,11 @@ def freeze(root, pilot):
             errors.extend(failures)
             attempt = dict(directory=folder.name, http_errors=[dict(status=r["status"], bytes=r["bytes"],
                            utc=r["observed_utc"], retry_after=r["retry_after"]) for r in failures])
+            transport = folder / "transport.jsonl"
+            if transport.exists():
+                events = [json.loads(line) for line in transport.read_text().splitlines()]
+                attempt["transport_failures"] = events
+                transport_failures += len(events)
             if weather_path.exists():
                 receipt = json.loads(weather_path.read_bytes())
                 receipts.append(receipt)
@@ -99,6 +105,8 @@ def freeze(root, pilot):
                    joint_accepted=sum(r["status"] == "accepted" for r in ledger.values()),
                    cached_pilot_days=len(baseline), cached_months=len(months),
                    weather_http_responses=len(receipts)+len(errors), weather_http_errors=len(errors),
+                   recorded_transport_failures=transport_failures,
+                   recorded_request_attempts=len(receipts)+len(errors)+transport_failures,
                    weather_work_units=sum(int(r["work_units"] or 0) for r in receipts),
                    weather_response_bytes=sum(r["bytes"] for r in receipts+errors))
     write(root / "summary.json", summary)

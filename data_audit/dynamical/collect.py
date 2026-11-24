@@ -6,6 +6,7 @@ import random
 import time
 from datetime import date, datetime, timedelta, timezone
 from email.utils import parsedate_to_datetime
+from http.client import IncompleteRead
 from pathlib import Path
 from urllib.error import HTTPError, URLError
 from urllib.request import Request, urlopen
@@ -48,18 +49,37 @@ def fetch(folder, name, url, payload=None):
         return
     req = Request(url, data=body, headers={"Content-Type": "application/json", "Accept": "application/json",
                                            "Accept-Encoding": "identity"})
+    def transport_failure(exc, stage):
+        event = dict(error=type(exc).__name__, stage=stage, url=url, request=payload,
+                     observed_utc=datetime.now(timezone.utc).isoformat(), partial_body_bytes=None)
+        with (folder / "transport.jsonl").open("a") as stream:
+            print(json.dumps(event), file=stream)
+
     for attempt in range(5):
         try:
             response = urlopen(req, timeout=180)
         except HTTPError as exc:
             response = exc
         except (URLError, TimeoutError, ConnectionError) as exc:
+            transport_failure(exc, "open")
             if attempt == 4:
                 raise
             time.sleep(2**attempt + random.random())
             continue
         with response:
-            raw = response.read(2_000_001)
+            try:
+                length = response.headers.get("Content-Length")
+                if length and int(length) > 2_000_000:
+                    raise ValueError("Unexpectedly large response")
+                raw = response.read(2_000_001)
+                if length and len(raw) < int(length):
+                    raise IncompleteRead(raw, int(length) - len(raw))
+            except (IncompleteRead, TimeoutError, ConnectionError) as exc:
+                transport_failure(exc, "body")
+                if attempt == 4:
+                    raise
+                time.sleep(2**attempt + random.random())
+                continue
             if len(raw) > 2_000_000:
                 raise ValueError("Unexpectedly large response")
             meta = dict(url=url, request=payload, request_body_bytes=len(body or b""), status=response.status,

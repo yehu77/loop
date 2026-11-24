@@ -22,3 +22,16 @@ python -m data_audit.dynamical.multiyear "$root"
 python -m data_audit.dynamical.freeze "$root" outputs/dynamical_ens_2021_v1
 OPENBLAS_NUM_THREADS=1 python -m data_audit.dynamical.spread "$root"
 ```
+
+## Frozen data and validation results
+
+All 1,095 cycles passed. The two year-boundary holdouts leave 364 training, 364 validation and 365 test windows. The daily ledger binds each sample to its source bodies and product snapshot. Each split manifest binds its dates to joint file hashes. The summary records the split and ledger fingerprints. The original 30 days retain snapshot WQ1MP2C2VR20KK8EAW80; the remaining 1,065 use 7WQ9WED3MTEE5W9TFMAG. The product version in both is 0.1.0.
+
+Expansion used 1,065 successful batch requests plus a 503 response (January 24, 2022; Retry-After 5 seconds) and a body-read timeout (December 24, 2022). The restarted collector reused the preceding 692 complete batch receipts. Complete response bodies including the 503 account for 84,665,770 bytes; the timeout's partial transfer is unknown. All 36 monthly power responses were reused. Raw response bodies and joints remain in the local output trees.
+
+| 2022 validation, 364 days | CRPS (MW) | 90% coverage | Mean 90% width (MW) |
+|---|---:|---:|---:|
+| A, central wind information | 6.198885 | 85.22% | 31.4452 |
+| B, central wind plus speed spread | 6.258133 | 85.05% | 31.6358 |
+
+The paired mean difference B minus A was +0.059248 MW. B improved CRPS on 167 of 364 days. Adding spread widened the mean interval slightly while lowering coverage. Under the frozen neighbour model and this validation year, speed spread gave no aggregate improvement. This measures the value of eight additional features in the chosen distance rule; the result does not establish that ensembles lack useful uncertainty information. The test split remains reserved.

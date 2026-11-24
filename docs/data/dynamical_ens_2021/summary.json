@@ -1,0 +1,60 @@
+{
+  "product": "ecmwf-ifs-ens-forecast-15-day-0-25-degree",
+  "matched_meter_half_hours": 1440,
+  "pilot": {
+    "days": 30,
+    "joint_verified": 30,
+    "http_responses": 150,
+    "http_error_responses": 0,
+    "weather_requests": 120,
+    "weather_body_bytes": 2523285,
+    "all_response_body_bytes": 2890909,
+    "post_body_bytes": 38880,
+    "work_units": 220320,
+    "estimated_1095_day_response_body_bytes": 105518178,
+    "remaining_weather_requests_with_cached_meter": 4260,
+    "estimated_remaining_weather_bytes_with_cached_meter": 89576618
+  },
+  "coverage_http_responses": 72,
+  "coverage_response_bytes": 13201689,
+  "by_year": {
+    "2021": {
+      "split": "train",
+      "candidates": 365,
+      "run_listed": 365,
+      "meter_complete": 365,
+      "listed_with_complete_target": 365,
+      "split_eligible": 364,
+      "boundary_holdout": [
+        "2021-12-31"
+      ],
+      "joint_verified": 30,
+      "excluded": {}
+    },
+    "2022": {
+      "split": "validation",
+      "candidates": 365,
+      "run_listed": 365,
+      "meter_complete": 365,
+      "listed_with_complete_target": 365,
+      "split_eligible": 364,
+      "boundary_holdout": [
+        "2022-12-31"
+      ],
+      "joint_verified": 0,
+      "excluded": {}
+    },
+    "2023": {
+      "split": "test",
+      "candidates": 365,
+      "run_listed": 365,
+      "meter_complete": 365,
+      "listed_with_complete_target": 365,
+      "split_eligible": 365,
+      "boundary_holdout": [],
+      "joint_verified": 0,
+      "excluded": {}
+    }
+  },
+  "dataset_train_ready": false
+}

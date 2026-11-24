@@ -1,0 +1,1267 @@
+{
+  "protocol": "berry_burn_dynamical_ens_v1",
+  "accepted": 30,
+  "days": {
+    "2021-08-01": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 22870,
+          "sha256": "e09dd2b7812fea6135e024401a5d2b292166189d12247775768c00d76c4bf4af",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-01T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-02T00%3A00%3A00Z&validTimeEnd=2021-08-03T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 22183,
+          "sha256": "b6dc5a1e5b9b34c95a171d1e0c7f4d47cc6d9dc4c5243a77991f200df10e1c3c",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-01T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-02T00%3A00%3A00Z&validTimeEnd=2021-08-03T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 22248,
+          "sha256": "14736c33e0fa8f8916ce1746f625ce3fb831658d2f265fb54c9fc6819104bfa0",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-01T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-02T00%3A00%3A00Z&validTimeEnd=2021-08-03T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 21696,
+          "sha256": "8deac1007269fa28b81b6afa1f97673f7794eebc2e2d130a772562b052d25d92",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-01T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-02T00%3A00%3A00Z&validTimeEnd=2021-08-03T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12267,
+          "sha256": "1b09906059ef0d1de31e1bd3882394578a8ddf3d8ecb63afe9692f73a756fdd4",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-02&settlementDateTo=2021-08-03&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "08f7a8ce02c255a6a4cff0fe63921a54ac219c6676ce1184a963422cc16a2fde"
+    },
+    "2021-08-02": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 21268,
+          "sha256": "312cb54481e9a84c5b77b9f43d060aeb1ec1a82456f42307e87431b6fab85519",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-02T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-03T00%3A00%3A00Z&validTimeEnd=2021-08-04T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 20923,
+          "sha256": "4ecadbca1ec2913dbfec4d9792c8059e407af42ae7596d97ba8676a2e8561138",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-02T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-03T00%3A00%3A00Z&validTimeEnd=2021-08-04T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 21997,
+          "sha256": "b62a5ecd9b45cc279cdd0c53185bbe11b691e216beb8a1acc0923ca1e61b3617",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-02T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-03T00%3A00%3A00Z&validTimeEnd=2021-08-04T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 22041,
+          "sha256": "546e8bcbf5995852d134702dc624cff92c8ec86417d2f5bdc8b72417490ef3c0",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-02T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-03T00%3A00%3A00Z&validTimeEnd=2021-08-04T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12257,
+          "sha256": "6c9036fd49c8010f7b3f6fa207096d206b1ccc1ae8cb08268bda6afdfc58beeb",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-03&settlementDateTo=2021-08-04&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "8f91ffe99d764398ba167077298c781960232d3852a9780a3fe8a47ea71b2fba"
+    },
+    "2021-08-03": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 20805,
+          "sha256": "362dc2b21fee1b961389d665596cb1f2c56f3ad6056e1367a1ff5f4d9a0305e9",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-03T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-04T00%3A00%3A00Z&validTimeEnd=2021-08-05T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 20505,
+          "sha256": "7034634864d67ff3e88e080993ad5066f52d683510b5db66b1b187648ed8c7d6",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-03T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-04T00%3A00%3A00Z&validTimeEnd=2021-08-05T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 21145,
+          "sha256": "a9f4c5c7ee006ef22cc5a0f8767d4708491983cfe28e061bba74c8d579b34700",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-03T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-04T00%3A00%3A00Z&validTimeEnd=2021-08-05T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 20944,
+          "sha256": "a2ae0366ac0c014f4d56a266406ecaa08634fd6a0a81de60a346bb730f146521",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-03T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-04T00%3A00%3A00Z&validTimeEnd=2021-08-05T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12242,
+          "sha256": "da7a8c446d2658323533d13a51ca0f86a77430b52d2c382455ef10818409da4f",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-04&settlementDateTo=2021-08-05&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "20ffe6600bccf3c2bc9d60b5e21fce75a02d2fe0208f80f5977e4d822c4d4fdc"
+    },
+    "2021-08-04": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 19380,
+          "sha256": "a7474ecf3e6024afd3e4c2380c8f8b6c69e6907315e6922b2965de6fad1cd9a2",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-04T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-05T00%3A00%3A00Z&validTimeEnd=2021-08-06T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 19369,
+          "sha256": "900318ed5506a633ba467b7db60f02fff4df9113603a4ef09e27d8864fd1c249",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-04T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-05T00%3A00%3A00Z&validTimeEnd=2021-08-06T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 19254,
+          "sha256": "2785cb9f80a2ebdd52521160a9b59a03e9e956f6c61efb4fcdbeda104de596a9",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-04T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-05T00%3A00%3A00Z&validTimeEnd=2021-08-06T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 19004,
+          "sha256": "b67367228183cb9e4e309dc981005ee4556b703ce53cfc7853591fca1db41d02",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-04T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-05T00%3A00%3A00Z&validTimeEnd=2021-08-06T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12259,
+          "sha256": "45667c8a1837c1bd7534a0ed91168f00a63384243dd909945c3f138c719523aa",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-05&settlementDateTo=2021-08-06&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "a286ec43b6b978e2c99cd8650977cb2e2c808a168c03651f66665277eb765bec"
+    },
+    "2021-08-05": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 19352,
+          "sha256": "3cabe952115c43a72cb8bad24bcf97d04fa162d6d5ae15254eb8d4f0932e93b3",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-05T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-06T00%3A00%3A00Z&validTimeEnd=2021-08-07T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 19187,
+          "sha256": "dbb966269e030f5d3cb0293d254c4b27c969d5afcdf35ae107107f16e771185b",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-05T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-06T00%3A00%3A00Z&validTimeEnd=2021-08-07T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 19516,
+          "sha256": "2bdfe86c139e697bc0369fb8f508c63f6bbe85c278fe925863012cb4842c9f13",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-05T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-06T00%3A00%3A00Z&validTimeEnd=2021-08-07T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 18963,
+          "sha256": "f73b3ff977e8886ecd17d827529b2c1a0eccb1e95bb35843791e1b9f968f0d96",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-05T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-06T00%3A00%3A00Z&validTimeEnd=2021-08-07T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12264,
+          "sha256": "1cacbb70dbc67b359f95046eced51731b990bd068d027d34c30e259152ad9084",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-06&settlementDateTo=2021-08-07&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "654cf9a32f4178bde3c4fc892b3d5fa10b9cc35c06d67a0bdde4bf6f86170f6d"
+    },
+    "2021-08-06": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 20598,
+          "sha256": "4ff6d47d4727822579b9a5e170cc4cb2707ff1b89d21b2372675b36df9aba917",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-06T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-07T00%3A00%3A00Z&validTimeEnd=2021-08-08T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 20316,
+          "sha256": "37a0f218e4adb3ca7073662df2f26824a11afb20922396217e5c0a83493404b7",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-06T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-07T00%3A00%3A00Z&validTimeEnd=2021-08-08T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 20278,
+          "sha256": "4b80dff172fa49f122101db04fa10a86a3efd95f81a696241c47642f0a80cf3b",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-06T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-07T00%3A00%3A00Z&validTimeEnd=2021-08-08T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 19906,
+          "sha256": "5d83881e2e7fc14d89554b7348f390122a76f98cb3bab25a3345faa1094661a7",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-06T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-07T00%3A00%3A00Z&validTimeEnd=2021-08-08T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12244,
+          "sha256": "886700247988186696f904a963a7970122e7277cecba3d615c805aa254fbb100",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-07&settlementDateTo=2021-08-08&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "baa99530e905fedbc35d5edf2160a69dccbad2a6f28d96ae3eb7587134bf07f7"
+    },
+    "2021-08-07": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 22131,
+          "sha256": "994f821d3f6efe88504f8bf3687caf077b1b3b81595ac1e5907d0b509f90b69d",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-07T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-08T00%3A00%3A00Z&validTimeEnd=2021-08-09T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 21997,
+          "sha256": "83149cc6a43f857ed9b2707c80ef86fd6ed3d620d4eab97463e15fa2a56ecd15",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-07T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-08T00%3A00%3A00Z&validTimeEnd=2021-08-09T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 21793,
+          "sha256": "1aa9ff41f3218885e5f7aa2bd5b7f7b2657d1c32d5581149eaead4db71c36957",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-07T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-08T00%3A00%3A00Z&validTimeEnd=2021-08-09T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 21909,
+          "sha256": "e1a6df3fe3ae721bbc65f5815e17e1d382867a72277c77a14e84cfc6e94861cb",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-07T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-08T00%3A00%3A00Z&validTimeEnd=2021-08-09T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12242,
+          "sha256": "6327b4c221cd01590d49e8a2f8c9c385baaf0ec4112740f34212bb6c7dc5b6ad",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-08&settlementDateTo=2021-08-09&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "a69e72b55280de153c750f08415e55c76ea30331ba97bff516d6a23de371509c"
+    },
+    "2021-08-08": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 21228,
+          "sha256": "e29bd5f1ec35110c6a82980c4965bfc7549336eafd6fa5400c884abf0e1a5e52",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-08T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-09T00%3A00%3A00Z&validTimeEnd=2021-08-10T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 21163,
+          "sha256": "277d74802368871d77eaa82da8250c3ab3657fae49d59e30021e654030b51e00",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-08T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-09T00%3A00%3A00Z&validTimeEnd=2021-08-10T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 21050,
+          "sha256": "82841374f48357cc4858e8a797d08990ecf034c3fbf9316b080eb5ea45420996",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-08T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-09T00%3A00%3A00Z&validTimeEnd=2021-08-10T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 20555,
+          "sha256": "2700f4386bd0f9857d17288bc211977f828d31958910e9d31744e89f2ca09789",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-08T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-09T00%3A00%3A00Z&validTimeEnd=2021-08-10T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12243,
+          "sha256": "bc36a5f59f63d4dd1b109dce1b06ea336ecad46474ea7be47d23df8521c88e22",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-09&settlementDateTo=2021-08-10&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "5dcefa2b551ed23dddc209d0340d06543fdfb175eb063edefbd0d54eb0c6d0f3"
+    },
+    "2021-08-09": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 21770,
+          "sha256": "7a6ee8ef44e76210dc9694f0714744a39e25d102eca72795b9a86eff418cb8f7",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-09T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-10T00%3A00%3A00Z&validTimeEnd=2021-08-11T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 21713,
+          "sha256": "dd991620e398644d989bcc93349481ec18b211a701527bb7e4c0142f69aec661",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-09T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-10T00%3A00%3A00Z&validTimeEnd=2021-08-11T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 21555,
+          "sha256": "1a07dbcc601e22460be40b239dcc7542cd9bf1d3e59d53ce80b78c6429a1da72",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-09T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-10T00%3A00%3A00Z&validTimeEnd=2021-08-11T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 21174,
+          "sha256": "5b9dee38cd8eb33eb1a42a7b67223f512fa90ab7fa1d0edcfaa0679451b42a13",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-09T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-10T00%3A00%3A00Z&validTimeEnd=2021-08-11T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12242,
+          "sha256": "3b61ee0c818925f9d8f4b537b4d73a9486b07c9ec74560b7e8d4f6ec6194ee35",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-10&settlementDateTo=2021-08-11&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "2bfaf01793c873da6fa9edc9195722a766c8faaae1c798dc126918918981b616"
+    },
+    "2021-08-10": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 20796,
+          "sha256": "6f8c0ca503eab6494f37bf3119545586826f193ae63bc65f597d6d8f7373eede",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-10T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-11T00%3A00%3A00Z&validTimeEnd=2021-08-12T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 21088,
+          "sha256": "b8b1cdfdbeb8bb117496d2f6cd56d3e1eac8125f1a53b50cc0f59969251df5e4",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-10T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-11T00%3A00%3A00Z&validTimeEnd=2021-08-12T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 20204,
+          "sha256": "b5fb96773dc39ec9eed207b614f86f7a77e8fc9218074e5722a09bc3944118c9",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-10T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-11T00%3A00%3A00Z&validTimeEnd=2021-08-12T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 20225,
+          "sha256": "76c2cfe37a422dbd5a618e6560cc0e3f8d125b61643d0cabf1656886a576db45",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-10T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-11T00%3A00%3A00Z&validTimeEnd=2021-08-12T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12252,
+          "sha256": "d189ecffdcac92d906865de6eadee2122459b003681e9d82ca14b000f1d4a9f0",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-11&settlementDateTo=2021-08-12&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "35b44babeeacf498c94221e5ab6b2605e6f8fd86cfbc3c8b01f5b6bd8b1a08f6"
+    },
+    "2021-08-11": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 20144,
+          "sha256": "bf123bdb41ba9caa7eb27f2e50bcb3d4f0e8fb4cf6960e9a5853a837d8e5fd23",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-11T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-12T00%3A00%3A00Z&validTimeEnd=2021-08-13T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 20188,
+          "sha256": "bbc983cfe0c64b1a971c365850cfffb157d5bc3fa4db86da03300354208108d7",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-11T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-12T00%3A00%3A00Z&validTimeEnd=2021-08-13T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 19945,
+          "sha256": "b56dce27b30dc8fbffd269f3c3352603a8b8ccc457c6f170ce291f7e92e6dd18",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-11T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-12T00%3A00%3A00Z&validTimeEnd=2021-08-13T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 20000,
+          "sha256": "187a63e86911bc2445321628f32e51832f530dd4ad86f2b702d09c5ad7c0135a",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-11T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-12T00%3A00%3A00Z&validTimeEnd=2021-08-13T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12268,
+          "sha256": "381346c09914064c426c1ae4f3561d276263276ffa3d6bbfd8815f672dff2529",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-12&settlementDateTo=2021-08-13&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "16cf6a6476d65c5063480b5a8832581e01e8491f41ba9636bea0748ade228b31"
+    },
+    "2021-08-12": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 18028,
+          "sha256": "3f4867e428d8181b85b5907ff390ffb037b30abd4381a6da7927792856fc08d3",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-12T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-13T00%3A00%3A00Z&validTimeEnd=2021-08-14T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 17853,
+          "sha256": "ea3ed11d7362675353b5e00d0c304d9df125e3f97a43d417926832842ffc01ab",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-12T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-13T00%3A00%3A00Z&validTimeEnd=2021-08-14T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 18165,
+          "sha256": "d7a582e2e39ae508d5d9583f44aa066bad8a35fc031fbff029cabaf22e3dba38",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-12T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-13T00%3A00%3A00Z&validTimeEnd=2021-08-14T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 18371,
+          "sha256": "d6086af5eea754d390c7f2bc7d68813b5608c33a579ba16cda624089f707e247",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-12T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-13T00%3A00%3A00Z&validTimeEnd=2021-08-14T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12287,
+          "sha256": "92ad73589df67ed0b15209f4cf398a685e4823adfd82099f3e1609af10bf4d2c",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-13&settlementDateTo=2021-08-14&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "3855d862c4a8be46b093450262c78b16ab873f608c295492520513df56e20a9b"
+    },
+    "2021-08-13": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 19334,
+          "sha256": "a7bf0f1b350bf24396ecb1230570d1fcd2df5e649e3129650e3f92fce9652527",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-13T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-14T00%3A00%3A00Z&validTimeEnd=2021-08-15T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 19188,
+          "sha256": "e01b440fa9233bf587e79389114572e5c01cdbc6edad61ab20f4ec5648a2e981",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-13T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-14T00%3A00%3A00Z&validTimeEnd=2021-08-15T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 19103,
+          "sha256": "945d5faba3c5b53c0e283606cfe21415065e903d6c17a7618751787e4e0760e6",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-13T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-14T00%3A00%3A00Z&validTimeEnd=2021-08-15T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 19120,
+          "sha256": "f48f1c532803b9ead07eaa3dc1a5338d856cfe91d1795f9a42214e982e6b3493",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-13T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-14T00%3A00%3A00Z&validTimeEnd=2021-08-15T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12265,
+          "sha256": "5a5e61b7abc46d88c32555842ab1c964f1e72cdbc762e61883cacf0346afbddc",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-14&settlementDateTo=2021-08-15&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "78ab36d55c3331301ec38e4b9da3f30f4c0cdb08583ca9ef6a653a0a67230f2d"
+    },
+    "2021-08-14": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 20482,
+          "sha256": "a4e733e8e0a0bdfc1ddfdf9e35d2d75971863e56d064116a30f912e0d873fa87",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-14T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-15T00%3A00%3A00Z&validTimeEnd=2021-08-16T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 20442,
+          "sha256": "4e464148db6a5cc693e8d582e06fb1f633b15e41a894562ff3ac4aa081c056d1",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-14T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-15T00%3A00%3A00Z&validTimeEnd=2021-08-16T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 19411,
+          "sha256": "5e933915f7e707e201fa1744bfb4ffe5601a27c58e2917c2d16899affa4f64f8",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-14T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-15T00%3A00%3A00Z&validTimeEnd=2021-08-16T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 19655,
+          "sha256": "e509434990aafdb3a57496c0b482f5665ad21f0255b4e8a23f9572113ba077c8",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-14T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-15T00%3A00%3A00Z&validTimeEnd=2021-08-16T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12245,
+          "sha256": "e1b9198284c4b0b421da8c83fce3ce2c307f9e7185e7917520f58ea1a26efe7c",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-15&settlementDateTo=2021-08-16&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "8824dbfeaec50f40084f3169be52eb3c7c96c6facb999c2f3f3560e353e65ef8"
+    },
+    "2021-08-15": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 19379,
+          "sha256": "9f097c8befefccdd6fd9b5ef0fdf85b4dce6bb08ce9a432efda8e8d3b6e6afaf",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-15T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-16T00%3A00%3A00Z&validTimeEnd=2021-08-17T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 19319,
+          "sha256": "bd029b8f1548975c071361adc9fbb53d686386a102bbabc46ec0de1bcfe43083",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-15T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-16T00%3A00%3A00Z&validTimeEnd=2021-08-17T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 19317,
+          "sha256": "08763ebde58a9e59e920b315ec24622c1d832cb681c7e53d3f3b554a98863616",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-15T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-16T00%3A00%3A00Z&validTimeEnd=2021-08-17T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 19223,
+          "sha256": "aabafeb5d89333cf231ef6d065a2047d21ffa80227e6ee95b366b12fdaab983a",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-15T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-16T00%3A00%3A00Z&validTimeEnd=2021-08-17T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12241,
+          "sha256": "e4bc027c9ff2f2fffde2b14ece9eb3596559bfea9dfee73c26a141abe3a7c322",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-16&settlementDateTo=2021-08-17&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "b692d558e8bf13a84ad27bd823211c9fa67fd1931e7a9cf72ebc0f19dfc72243"
+    },
+    "2021-08-16": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 19494,
+          "sha256": "90e69e9e2bc042bf4583cc505860aa80d79dca3010d7cbf856c4b917ba51be3a",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-16T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-17T00%3A00%3A00Z&validTimeEnd=2021-08-18T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 19208,
+          "sha256": "4e96887cca39225740f2682a9fe04d7ce70b372798a8db7af72007e0ca526f6e",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-16T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-17T00%3A00%3A00Z&validTimeEnd=2021-08-18T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 19641,
+          "sha256": "11ea4184afed69b63180c4fe002b54f49316dee51a1b25e3d3b71cbdbdc13afa",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-16T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-17T00%3A00%3A00Z&validTimeEnd=2021-08-18T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 19302,
+          "sha256": "6b0febb50dd467c1f0445f0b15aa78710ac0a41a633884ba1ed0532044dbb533",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-16T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-17T00%3A00%3A00Z&validTimeEnd=2021-08-18T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12248,
+          "sha256": "4ee3b76dbfb58b8e506e585e30853cd18c7acad97f1314c4b56248c869f65d65",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-17&settlementDateTo=2021-08-18&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "b773ffacf5049ad3662d01985ff800292908ae0da7441b9afdbf0e6b7950d7c4"
+    },
+    "2021-08-17": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 19548,
+          "sha256": "7bcafcef3a0ab823ae18ac6a7234626d7bfb29fdd039ba5e29049ad847bbad69",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-17T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-18T00%3A00%3A00Z&validTimeEnd=2021-08-19T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 19086,
+          "sha256": "fdd3aad494c3adac93bfc26889ab62cf090c3e5d66dc0ba067f88bb1de285300",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-17T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-18T00%3A00%3A00Z&validTimeEnd=2021-08-19T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 19746,
+          "sha256": "facedf06fae69e4615300c01467eda15c86b00eeba03613d5f7faa36946c1df5",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-17T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-18T00%3A00%3A00Z&validTimeEnd=2021-08-19T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 19442,
+          "sha256": "03d159a34be5637d4e6f1e9fbf6a1dd96de8d45199ca366332b1a06962e3ffa9",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-17T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-18T00%3A00%3A00Z&validTimeEnd=2021-08-19T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12271,
+          "sha256": "31b781eaf0d9061cfeab026af6765f4e80121fc88c4143798e0b9fa5120837bc",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-18&settlementDateTo=2021-08-19&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "58947a8cd7c0ae0dc17e56dc02d55c2a935ea5fa58979c77e9670574c1ca44ee"
+    },
+    "2021-08-18": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 22616,
+          "sha256": "e60c318d0b13f744e2ed45629d485c3e49aa0a50e0a56c5c5b042f6c85934c0f",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-18T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-19T00%3A00%3A00Z&validTimeEnd=2021-08-20T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 22173,
+          "sha256": "fdb39507e02288d46f38c0589e3f4d8fbcca2f32a0b9f190b52867feb592ae7a",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-18T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-19T00%3A00%3A00Z&validTimeEnd=2021-08-20T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 22247,
+          "sha256": "e0860dcadd8fad0b0d0bc3f9ae98adbc819e1496774c147a70e81244f28a5b21",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-18T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-19T00%3A00%3A00Z&validTimeEnd=2021-08-20T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 21922,
+          "sha256": "dc6b0cd96cbe366dd4b57220cc963f5b6065225bf1f3d94d8d3f7fc2f210520e",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-18T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-19T00%3A00%3A00Z&validTimeEnd=2021-08-20T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12263,
+          "sha256": "b0912eff2421d69bfcbac75048fed90aeca58bb103220d7634fd2908fcd1f688",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-19&settlementDateTo=2021-08-20&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "db6f9088ec6f60fecc67045816048db44a3086b4071080dcdf1f9c2e99eac860"
+    },
+    "2021-08-19": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 20600,
+          "sha256": "63de12613f69cad0b79210535ca994206d9243f3f560a66e827254cbc2358181",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-19T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-20T00%3A00%3A00Z&validTimeEnd=2021-08-21T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 20212,
+          "sha256": "a4b1c41f8f41bf22813c19f61a40a6024baff574b6aedebb60b0e99e9ded65c2",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-19T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-20T00%3A00%3A00Z&validTimeEnd=2021-08-21T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 20055,
+          "sha256": "0f49263bc4643b70d8c7fb9fc4e2b8708f7f0811cdb20ad5dccbfa6b77598ebb",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-19T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-20T00%3A00%3A00Z&validTimeEnd=2021-08-21T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 19735,
+          "sha256": "c6adde3b03ccf793e855892a1cdcaf7144ee6297db7d77209c38553847c8a442",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-19T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-20T00%3A00%3A00Z&validTimeEnd=2021-08-21T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12242,
+          "sha256": "dc91486944a27469c1e1f96fbcf1ffb7135308388e63bde8f0b09ed2be07fe84",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-20&settlementDateTo=2021-08-21&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "15c59263220db41bbecb3d81cbd2c224ab5b6b37f17a052959ba6e38f581e1e6"
+    },
+    "2021-08-20": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 21368,
+          "sha256": "10cb8c3f3d2ebadc33ad98939f7764aa7b4f9884739cfac9c95c4a282e9ee3d7",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-20T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-21T00%3A00%3A00Z&validTimeEnd=2021-08-22T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 20994,
+          "sha256": "f03d116170a8777fa8450a2de65b17bdcb73119ff1042f6e503258fd2cd433ba",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-20T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-21T00%3A00%3A00Z&validTimeEnd=2021-08-22T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 21174,
+          "sha256": "72e4fe26e252ece199774a3475e36e45cae45bea895805667fbcb26beed4bea9",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-20T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-21T00%3A00%3A00Z&validTimeEnd=2021-08-22T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 20505,
+          "sha256": "26a66e89c8218fba57e9dc19faeef3d9383ab53e98f9570e76e4ec314fd71ada",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-20T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-21T00%3A00%3A00Z&validTimeEnd=2021-08-22T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12247,
+          "sha256": "3924c56d43a19fd0bf59f6dd342a6c58eaed241a08fa06ec87077d9a1a44ae71",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-21&settlementDateTo=2021-08-22&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "0e0d4938fa92374a4e012a9a901c4e6d44035bff80854c04e84f0ae4529f334e"
+    },
+    "2021-08-21": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 23037,
+          "sha256": "f247fc985789377ff8a1c26e31cbc85820c2ff51b57674defaf49d696c8c3e16",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-21T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-22T00%3A00%3A00Z&validTimeEnd=2021-08-23T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 22159,
+          "sha256": "73ccf0af31df246c93c06fbe33112ce0db16f56980f9c6d4bce35364ba06767a",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-21T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-22T00%3A00%3A00Z&validTimeEnd=2021-08-23T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 22743,
+          "sha256": "e630998238133be0c122ebe91a2a36c3b6d39de3384e77aa7dde2573ef4d6cd9",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-21T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-22T00%3A00%3A00Z&validTimeEnd=2021-08-23T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 22296,
+          "sha256": "9fafa92411e3ea63f84ba358b2647ac50531c97e4ed34f7872511affe582012d",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-21T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-22T00%3A00%3A00Z&validTimeEnd=2021-08-23T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12260,
+          "sha256": "485686ff460018548fcad22fc36d02997d668e8a2489942c2d632e5e5d1e0e91",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-22&settlementDateTo=2021-08-23&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "d59681d584d6e8b7accf7d7461a39f0bdf87e9e6a5392ae4df18690f4b0ff0d3"
+    },
+    "2021-08-22": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 23057,
+          "sha256": "60cc3ec6436fa2e6b6c8b3787bbabf5986b8a8aa1e0ab0ffaf3c95bd2d17cef2",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-22T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-23T00%3A00%3A00Z&validTimeEnd=2021-08-24T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 22896,
+          "sha256": "de72aa88e714a01686b51759d099e58d81af4f9ec5ad5e19d262a558267a3e1a",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-22T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-23T00%3A00%3A00Z&validTimeEnd=2021-08-24T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 23725,
+          "sha256": "6340a87a4698692a1e48fada9e9b372be6ab52b194229c12f7548e7b36529735",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-22T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-23T00%3A00%3A00Z&validTimeEnd=2021-08-24T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 23116,
+          "sha256": "e1103b0dbd489a80e723c8bdfdbc65a94a4488b94ba06e62d6440358823455f2",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-22T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-23T00%3A00%3A00Z&validTimeEnd=2021-08-24T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12279,
+          "sha256": "54dd23f5e0d722f3b0039a318d63cff11659e8b819c3e09e6253b6963a48b8cb",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-23&settlementDateTo=2021-08-24&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "2886da12a41361f9d26e8bd5587853a4eddd10fc8dbf538590aae87f8118cde1"
+    },
+    "2021-08-23": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 22794,
+          "sha256": "76ad236046af14da294708e3513371cf3c121a904bab6a35988841c48931289d",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-23T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-24T00%3A00%3A00Z&validTimeEnd=2021-08-25T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 22530,
+          "sha256": "a0a96d3bfedc5bc1a781151dfe3d62ba513db868e2552a8ca5b3404c23332e64",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-23T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-24T00%3A00%3A00Z&validTimeEnd=2021-08-25T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 22727,
+          "sha256": "29b19888fd8ce8eb366452e279316daa85c439257e129d8f77e712d8a4933444",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-23T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-24T00%3A00%3A00Z&validTimeEnd=2021-08-25T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 22665,
+          "sha256": "084aeb41eb351124a463c683a2b0d3accecb5959ab8965ece3027d34cde64a8e",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-23T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-24T00%3A00%3A00Z&validTimeEnd=2021-08-25T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12263,
+          "sha256": "e0da69fecc81f661e625bc132ae44807a3ca380c80a27861c544b0ec00493bc3",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-24&settlementDateTo=2021-08-25&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "1d65d4f0e904334725839f4a011379f2a43b8d6b9d05c943b003ed7a527e5eec"
+    },
+    "2021-08-24": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 21352,
+          "sha256": "2ace5babc0039b3f4cd2fdfdc22426f026f72f6c02a407c31fed6cfbe62df0fa",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-24T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-25T00%3A00%3A00Z&validTimeEnd=2021-08-26T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 20448,
+          "sha256": "2aba0a1121bbf0d5b6c16994835f7b11925fc9df53bf137a9a69f53058b64a7c",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-24T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-25T00%3A00%3A00Z&validTimeEnd=2021-08-26T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 21828,
+          "sha256": "987869f805c6fbaf7043eafb371ec504d36ae277c7c4a79875e1c88885a77949",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-24T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-25T00%3A00%3A00Z&validTimeEnd=2021-08-26T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 20932,
+          "sha256": "53ea59015f63482fc979c76a3b06db03d0d0a11758fc65a3d3a96d013bddaa3a",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-24T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-25T00%3A00%3A00Z&validTimeEnd=2021-08-26T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12242,
+          "sha256": "1f0a7676fde332342c091fb674c7d870ac7fd35e21f7767cf141dbbf46905f8e",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-25&settlementDateTo=2021-08-26&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "a672f65f18f9087d30879b1e190e30f1a78a5cb42f862a861026fd2860d3caf5"
+    },
+    "2021-08-25": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 23191,
+          "sha256": "569a6d330d22ce28653de054cf9a8af1afa8826c79f69c24363908ee23de0c01",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-25T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-26T00%3A00%3A00Z&validTimeEnd=2021-08-27T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 22148,
+          "sha256": "cfb1ed6440dc4ba900497642cfd16419657d3cbae041b5b4f01f6b5553a9e029",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-25T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-26T00%3A00%3A00Z&validTimeEnd=2021-08-27T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 22019,
+          "sha256": "dbad0896c4362cd6eba393222f168cca57457c853eb861c8c1e6373c2d8ecf18",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-25T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-26T00%3A00%3A00Z&validTimeEnd=2021-08-27T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 23001,
+          "sha256": "6abb42b2eedc16e336fb948f2ef8ea235a005fb7673323f3c1aa146fb4d89ef7",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-25T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-26T00%3A00%3A00Z&validTimeEnd=2021-08-27T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12243,
+          "sha256": "bcadbf7f289ca3b57aa64da25a65cdd7276fa60d6974de76b27ab1e22a368198",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-26&settlementDateTo=2021-08-27&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "eed9eedb6d3dd2429d7ef681367710275a78ebf2e15ce82cc045b0adc6b84bde"
+    },
+    "2021-08-26": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 23948,
+          "sha256": "52cc2d5d0b8d1186e1d57a226a747fa22a33e52cb3517fabbbc7756141a47da3",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-26T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-27T00%3A00%3A00Z&validTimeEnd=2021-08-28T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 23434,
+          "sha256": "41db6fffbb02a7808eb5811d8fd10894ce304d21b8344e231661726729bb5dc6",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-26T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-27T00%3A00%3A00Z&validTimeEnd=2021-08-28T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 23202,
+          "sha256": "4d0c67b96bafa17646b2995b992ad80d2c3ffb306f2da34246a0efdb3225ee85",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-26T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-27T00%3A00%3A00Z&validTimeEnd=2021-08-28T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 23072,
+          "sha256": "0e9ac1939dce1d5db23559a0fb4cee15b466cee5485a87963c18405e7e39c44d",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-26T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-27T00%3A00%3A00Z&validTimeEnd=2021-08-28T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12269,
+          "sha256": "f5ee3e4ae02c5c764e21a6d96873cbbfe5c052a7670bea2d1b5ef1ff0400a5c7",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-27&settlementDateTo=2021-08-28&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "a5c68c02141d3160dc9a9aa90a0c656fd3bb4967eb629fb3ba100afb1b745dac"
+    },
+    "2021-08-27": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 22112,
+          "sha256": "a2a6404f77341d7f49722a9c0e0385f4b0ddf119d542e218680644d02485a7c8",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-27T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-28T00%3A00%3A00Z&validTimeEnd=2021-08-29T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 21766,
+          "sha256": "e7a609515b58576ca9dfd4882aaa1d726c754526ee6542d40896e315fef3f595",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-27T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-28T00%3A00%3A00Z&validTimeEnd=2021-08-29T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 21969,
+          "sha256": "c5bf6b7954a2d97ff8b27178602d314479bb86249f5e4e2107c19690ede5b4ee",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-27T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-28T00%3A00%3A00Z&validTimeEnd=2021-08-29T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 21970,
+          "sha256": "82ed83fa863bd91b0a8cb4dd7f444be6ebe436dc19d34f151d0a24f113b334bc",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-27T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-28T00%3A00%3A00Z&validTimeEnd=2021-08-29T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12253,
+          "sha256": "84a992bca04191bef7aaf446113cb8858346290ee89491a13deafe311de1335d",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-28&settlementDateTo=2021-08-29&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "c5f711521341d34f454e6988cf745da0cdd61e02e8939f4c4c484d422a060848"
+    },
+    "2021-08-28": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 21931,
+          "sha256": "a52e51a1dbbffc50094f289830f99a624d7a3d9857f0be296d1fcdac5e696edb",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-28T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-29T00%3A00%3A00Z&validTimeEnd=2021-08-30T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 21738,
+          "sha256": "9fc1e956e82a8d3f8fb0479fc85af24346eb1dd4c08c0c50914aeab9c4cf4540",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-28T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-29T00%3A00%3A00Z&validTimeEnd=2021-08-30T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 21928,
+          "sha256": "ebc3dc54409384c76a317482d09034e2f2a90575612ab1dca76441f4a1e36d69",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-28T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-29T00%3A00%3A00Z&validTimeEnd=2021-08-30T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 21601,
+          "sha256": "5f1467a66b87934a2cffba39bad1c296fdb8e79c3f426029ff1101c34041c7d8",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-28T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-29T00%3A00%3A00Z&validTimeEnd=2021-08-30T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12243,
+          "sha256": "ef33261ff3cd8a12d93e482ccbc315cdeab015b43c51a25495418f11797c29be",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-29&settlementDateTo=2021-08-30&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "a508b100866070a58eeef315f6ba6489c8643d2dbae9b5f04ee2e1d98be1eecf"
+    },
+    "2021-08-29": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 22212,
+          "sha256": "a7a7135845506213519b21a80f6b9db16ccab5d3da04c519ff503e8a2108dae5",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-29T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-30T00%3A00%3A00Z&validTimeEnd=2021-08-31T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 22531,
+          "sha256": "fdb7f6d60757e5cd4eee98695d777c1fe148639868bf4512e62d31edb8d6d0d9",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-29T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-30T00%3A00%3A00Z&validTimeEnd=2021-08-31T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 22095,
+          "sha256": "68d177fcca48fdcb1bce06d2fe6882d03dc2097d03d560301710c64da8c3dc9b",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-29T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-30T00%3A00%3A00Z&validTimeEnd=2021-08-31T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 22148,
+          "sha256": "e21bbba98e8f4c227ea327ca2fc267d3fefd938d022ea6512314aad99399578a",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-29T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-30T00%3A00%3A00Z&validTimeEnd=2021-08-31T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12241,
+          "sha256": "bf7f559c802724cfd3ad57f4400422ca0b3b8651d189d3bcab9e5917f9d2253a",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-30&settlementDateTo=2021-08-31&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "a7b70fa124285edae7245bd75f94310849d9b3dd0ea10fb858e128fd929a0b0d"
+    },
+    "2021-08-30": {
+      "accepted": true,
+      "version": "0.1.0",
+      "snapshot": "WQ1MP2C2VR20KK8EAW80",
+      "sources": [
+        {
+          "file": "point0.json",
+          "bytes": 22611,
+          "sha256": "16ca19e821ea580f97e50073f21378fdc667a838c91d5f2d5f0d3ed6349968e7",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-30T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-31T00%3A00%3A00Z&validTimeEnd=2021-09-01T01%3A00%3A00Z"
+        },
+        {
+          "file": "point1.json",
+          "bytes": 21057,
+          "sha256": "ecf8edf824af8eb372a8c0179f990f9247f91c5887108ed3f6d7f1379df391e1",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/131,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-30T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-31T00%3A00%3A00Z&validTimeEnd=2021-09-01T01%3A00%3A00Z"
+        },
+        {
+          "file": "point2.json",
+          "bytes": 22287,
+          "sha256": "9fb5767f94bbbe3007f04c5641c12d17ca6574a751d3c65c1df0b9617b32742f",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,706?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-30T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-31T00%3A00%3A00Z&validTimeEnd=2021-09-01T01%3A00%3A00Z"
+        },
+        {
+          "file": "point3.json",
+          "bytes": 21175,
+          "sha256": "3b7e4f83fe15bc91cef633fb05b0a3d85e3858eae45eb2b9392cfbf37e78b286",
+          "work_units": "1836",
+          "canonical": "/v1/data/ecmwf-ifs-ens-forecast-15-day-0-25-degree/WQ1MP2C2VR20KK8EAW80/points/130,707?variables=wind_u_100m%2Cwind_u_10m%2Cwind_v_100m%2Cwind_v_10m&initTime=2021-08-30T00%3A00%3A00Z&maxLeadTimeHours=48&validTimeStart=2021-08-31T00%3A00%3A00Z&validTimeEnd=2021-09-01T01%3A00%3A00Z"
+        },
+        {
+          "file": "meter.json",
+          "bytes": 12242,
+          "sha256": "bc54492d46160ce89164d0c8319f00172a4203e21010ef9a04a80f8e96fe0b2a",
+          "url": "https://data.elexon.co.uk/bmrs/api/v1/datasets/B1610/stream?settlementDateFrom=2021-08-31&settlementDateTo=2021-09-01&bmUnit=E_BRYBW-1"
+        }
+      ],
+      "sample_sha256": "230ea26124a3305f12a28a6654d158b19568ad991c1a573966284c90f915d792"
+    }
+  },
+  "dataset_train_ready": false
+}
